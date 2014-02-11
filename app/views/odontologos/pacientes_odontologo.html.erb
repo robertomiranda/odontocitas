@@ -1,0 +1,831 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">  
+          DR . <%= current_user.apellido.partition(" ")[0] %>.
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> ' link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente_over.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: 'activo_menu link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: ' link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_superior_agendar">
+    <div class="dia_especifico">
+
+    </div>
+    <div class="menu_dia_sem_mes">
+        <%= image_tag "pestana_pacientes.png", class:'pestana_historial'%>
+    </div>
+  </div>
+  <div class="contenedor_navegacion_home_odontologo">
+    <div class="buscador_paciente">
+      <input type="text" class="buscar_nombre_paciente" placeholder="¿Conoces el nombre de tu paciente?">
+      <%= image_tag "icono_lupa.png", class:'buscar_paciente_icono'%>
+      
+    </div>
+    <div style="width:790px;height:40px;margin:0 5px 0 5px;">
+      
+          <table class="tabla_estilos_datos">
+              <thead >
+                <tr>
+                  <th style="width:30px;">
+                    <p class="espacio_top">
+                      COD.
+                  </th>
+                  <th style="width:260px;">
+                    <p class="espacio_top">
+                      CORREO
+                    </p>
+                  </th>
+                  <th style="width:60px;">
+                     <p class="espacio_top">
+                      NOMBRE
+                    </p>
+                  </th>
+                  <th style="width:60px;">
+                    <p class="espacio_top">
+                      APELLIDO
+                    </p>
+                  </th>
+                  <th style="width:80px;">
+                    <p class="espacio_top">
+                      CELULAR
+                    </p>
+                  </th>
+                  <th style="width:30px;">
+                    <p class="espacio_top">
+                      EDAD
+                    </p>
+                  </th >
+                  <th style="width:30px;">NUM. <br> CITAS</th>
+                  <th style="width:90px;">
+                      CREADO POR
+                  </th>
+                   <th style="width:60px;">
+                    <p class="espacio_top">
+                      ACCIONES
+                    </p>
+                  </th>
+                </tr>
+              </thead>
+          </table>
+      </div>
+          <div class="contenedor_overflow_pacientexodonto">
+          <table class="tabla_estilos_datos">
+              
+              <tbody id="tabla_pacientes_mios">
+
+                    <!-- Aca va el template de pacientes -->
+              </tbody>
+            </table>
+          </div>
+  </div>
+
+</div>
+
+ <div class="form_paciente">
+        <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_cita' %>
+          <form name ="cita">
+             <div class="titulo_form_paciente">
+                Información del Paciente
+              </div>
+          <div class="form_cita_izquierda_paciente naranja">
+             
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Nombre'  %> :
+                <%= text_field_tag 'nombre_paciente' ,nil,:class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                <%= label_tag 'Apellidos' %> :
+                <%= text_field_tag 'apellido_paciente' ,nil, :class=> 'registro_campo'%>
+              </div>
+              <div style="float:left;">
+                  &nbsp;&nbsp;Genero : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="genero" class="genero" value="Masculino"> M  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="genero" class="genero" value="Femenino" > F <br>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Correo'  %> :
+                <%= text_field_tag 'correo_paciente',nil,:class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Celular'  %> :
+                <%= text_field_tag 'celular_paciente',nil,:class=> 'registro_campo'%>
+              </div>
+
+              
+         </div>
+
+       
+       <!--
+         <div class="form_cita_izquierda_paciente naranja" style="position:relative; top:-11px;">
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Pacientes Asociados'  %> :
+                <ul class="lista_pacientes_asociados">
+
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+                  <li class="paciente_asociado_li">Pepito Perez</li>
+                </ul>
+                <div class="agregar_paciendo_asociado_odonto">
+                   <%= image_tag "mis_pacientes/icono_mas_naranja_pequeño.png"%>
+                   Agregar otro asociado
+                </div>
+              </div>
+              
+               <%= submit_tag "Guardar",  :class => 'submit_cita'   %>
+         </div>
+  -->
+
+          <div class="form_abajo_paciente">
+            <div class="titulo_form_paciente" style="margin: 5px 0 5px 0;">
+                Historial de citas
+            </div>
+            <table class="tabla_estilos_datos">
+              <thead>
+                <tr>
+                  <th style="width:60px;" >
+                      Cod. cita
+                  </th>
+                  <th style="width:100px;" class="activar_desplegar_mostrar_paciente">
+                      Fecha
+                  </th>
+                  <th style="width:60px;" class="activar_desplegar_mostrar_paciente">
+                      Hora
+                  </th>
+                  <th style="width:200px;" class="activar_desplegar_mostrar_paciente">
+                      Motivo
+                  </th>
+                  <th style="width:80px;" class="activar_desplegar_mostrar_paciente">
+                      Creado Por
+                  </th>
+                  <th style="width:60px;" class="activar_desplegar_mostrar_paciente">
+                      Asistio
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody id="tabla_historial_paciente" >
+                <!--Aca va el template de historial de citas-->
+              </tbody>
+            </table>
+          </div>
+        </form>
+
+       
+      </div>
+
+
+<div class="form_cita">
+        <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_cita' %>
+          <form name ="cita">
+          <div class="form_cita_izquierda naranja">
+              <div class="titulo_form">
+                Información del Paciente
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'nombre'  %> :
+                <%= text_field_tag 'nombre_paciente_c' ,nil,:class=> 'registro_campo', disabled: true%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'correo' %> :
+                <%= text_field_tag 'correo_paciente_c' ,nil, :class=> 'registro_campo' ,disabled:true%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'celular'  %> :
+                <%= text_field_tag 'celular_paciente_c',nil,:class=> 'registro_campo', disabled:true%>
+              </div>
+               &nbsp;&nbsp; <label for="name" id="name_label">Comentarios del Paciente</label>
+              <br> 
+              <textarea id="comentarios_paciente_cita" cols="37" rows="15" >
+              </textarea>
+         </div>
+
+         <div class="form_cita_izquierda naranja" style="position:relative; top:-11px;">
+              <div class="titulo_form">
+                Información de la Cita
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Motivo Consulta'  %> :
+                <%= text_field_tag 'motivo_consulta' ,nil,:class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Modo Pago' %> :
+                <%= text_field_tag 'modo_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Medio Pago' %> :
+                <%= text_field_tag 'medio_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              
+              <div class="fecha_cita" style="float:left; margin: 5px 0 0 11px;">
+                <div style="with:100px; float:left;">
+                  <label for="name" id="name_label">Fecha de <br> la cita</label> 
+                </div>
+
+                  <div class="styled_dropdown" style="width: 100px;height: 25px; float:left; margin-left:7px;">
+                   <select id="mes_cita"  style="width :100px">
+                    <option value="--">mm</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="dia_cita" >
+                    <option value="--">dd</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  </div>
+              </div>
+
+               <br>
+               <br>
+               <br>
+                <div class="hora_cita" style="float:left; margin-left:11px;" >
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Hora de <br> la cita</label> 
+                  </div>
+                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                       <select id="hora_cita" >
+                          <option value="--">h</option>
+                          <option value ='12'>00</option>
+                          <option value ='1'>1</option>  
+                          <option value ='2'>2</option>
+                          <option value ='3'>3</option>
+                          <option value ='4'>4</option>  
+                          <option value ='5'>5</option>
+                          <option value ='6'>6</option>
+                          <option value ='7'>7</option>  
+                          <option value ='8'>8</option>
+                          <option value ='9'>9</option>
+                          <option value ='10'>10</option>  
+                          <option value ='11'>11</option>
+                      </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="minutos_cita" >
+                      <option value="--">m</option>
+                      <option value ='00'>00</option>
+                      <option value ='15'>15</option>  
+                      <option value ='30'>30</option>
+                      <option value ='45'>45</option>
+                  </select>
+                 </div>
+
+                 <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="seccion_hora" >
+                      <option value="am">am</option>
+                      <option value="pm">pm</option>
+                  </select>
+                 </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="duracion_cita" style="margin: 12px 0 10px 11px;">
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Duracion de <br> la cita</label> 
+                  </div>
+                  
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                     <select id="duracion_cita" >
+                        <option value="--">mm</option>
+                        <option value ='15'>15</option>  
+                        <option value ='30'>30</option>
+                        <option value ='45'>45</option>
+                        <option value ='60'>60</option>
+                    </select>
+                  </div>
+              </div>
+         </div>
+
+         <div class="actions botonera_formulario">
+            <ul class="all_botones_formulario_cita">
+              <li>
+                <%= submit_tag "Pedir Cita",  :class => 'submit_cita btn_pedir_cita'   %>
+              </li>
+              <li>
+                <%= submit_tag "Cancelar",  :class => 'submit_cita btn_cancelar_reagendar'   %>
+                <%= submit_tag "Aceptar",  :class => 'submit_cita btn_aceptar_reagendar'   %>
+              </li>
+              <li>
+                <%= submit_tag "Continuar",  :class => 'submit_cita' %>
+              </li>
+            </ul>
+          </div>
+        </form>
+  </div>
+
+
+<script id="template_pacientes" type="text/x-handlebars-template">
+
+
+    {{#if lista_render_template}}
+      
+      {{#each lista_render_template}}
+         <tr class="elemento">
+            <td class="id_paciente activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:40px;">{{id_paciente}}</td>
+            <td class="correo activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:50px;">{{correo}}</td>
+            <td class="nombre_paciente activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:70px;">{{nombre_paciente}}</td>
+            <td class="apellido_paciente activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:70px;">{{apellido_paciente}}</td>
+            <td class="celular activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:30px;">{{celular}}</td>
+            <td class="edad activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:30px;">{{{edadXfecha fecha_nacimiento}}}</td>
+            <td class="num_citas activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:30px;">{{num_citas}}</td>
+            <td class="creado activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}" style="width:150px;">{{creado}}</td>
+            <td style="width:100px;">
+              <img src="assets/historial_citas/icono_editar.png" class ="activar_desplegar_mostrar_paciente" id_paciente="{{id_paciente}}">
+               &nbsp;&nbsp;
+               <img src="assets/historial_citas/icono_mas.png" class ="pedir_cita_paciente" id_paciente="{{id_paciente}}">
+            </td>
+          </tr>
+      {{/each}}
+      <tr style="visibility:hidden;">
+            <th style="width:41px;">
+                    <p class="espacio_top">
+                      COD.
+                  </th>
+                  <th style="width:250px;">
+                    <p class="espacio_top">
+                      CORREO
+                    </p>
+                  </th>
+                  <th style="width:70px;">
+                     <p class="espacio_top">
+                      NOMBRE
+                    </p>
+                  </th>
+                  <th style="width:70px;">
+                    <p class="espacio_top">
+                      APELLIDO
+                    </p>
+                  </th>
+                  <th style="width:70px;">
+                    <p class="espacio_top">
+                      CELULAR
+                    </p>
+                  </th>
+                  <th style="width:30px;">
+                    <p class="espacio_top">
+                      EDAD
+                    </p>
+                  </th >
+                  <th style="width:30px;">NUM. <br> CITAS</th>
+                  <th style="width:100px;">
+                      CREADO POR
+                  </th>
+                   <th style="width:60px;">
+                    <p class="espacio_top">
+                      ACCIONES
+                  </p>
+              </th>
+        </tr>
+    {{else}}
+        <div class="titulo_form" style="position:relative;top:40px;left:300px;">
+            Aun no tienes pacientes
+        </div>
+    {{/if}}
+</script>
+
+<script id="template_historial_citas" type="text/x-handlebars-template">
+      {{#each historial_citas}}
+         <tr class="elemento">
+            <td class="cita_id" id_cita="{{id}}" >{{id}}</td>
+            <td class="fecha_cita" id_cita="{{id}}" > {{{fecha_humanos ano dia mes}}}</td>
+            <td class="hora_cita" id_cita="{{id}}">{{{hora_humanos hora}}}</td>
+            <td class="motivo_cita " id_cita="{{id}}">{{motivo}}</td>
+            <td class="creado_por " id_cita="{{id}}">{{{pedido_por tipo_consulta}}}</td>
+            <td class="asistio " id_cita="{{id}}">
+                <img src="assets/historial_citas/icono_asistio.png" id_cita="{{id}}">
+            </td>
+          </tr>
+      {{/each}}
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+           $('body').css('background','#E6E6E6');
+           moment.lang('en', {
+              weekdays : [
+                  "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"
+              ],
+              weekdaysShort : ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+              months : [
+              "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+              "Agosto", "Septiembre", "Obtubre", "Noviembre", "Diciembre"
+              ],
+               monthsShort : [
+                  "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                  "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+              ]
+          });
+
+
+     var misCitas,citas_dia;
+      Citas = Backbone.Collection.extend({
+        url :'/appointments',
+        comparator : function(c){
+          return parseInt(c.get("hora"));
+        }
+      });
+      
+      
+      Pacientes = Backbone.Collection.extend({
+        url : '/pacientes'
+      });
+
+    window.pacientes = new Pacientes;
+    window.citas = new Citas;
+
+    //window.paciente_view = new PacientesView;
+    //console.log(paciente_view.render());
+
+    
+     $.when(pacientes.fetch(),citas.fetch()).done(function(){
+          
+          misCitas = citas.where({odontologo_id: parseInt(id_odontologo)});
+          console.log(misCitas);
+
+          var nombres_auto_comp = new Array();
+          var mis_pacientes = new Array();
+          var lista_render_template =  new Array();
+          var obj; 
+          for (var i = 0; i < misCitas.length; i++) {
+                    var p = pacientes.where({id:misCitas[i].get('paciente_id')});
+                    mis_pacientes.push(p[0]);
+          }
+          var unicos = _.uniq(mis_pacientes);
+          //console.log(unicos);
+
+          var contador = 0;
+
+          for (var i = 0; i < unicos.length; i++) {
+            for (var j = 0; j < mis_pacientes.length; j++) {
+              console.log(unicos[i]);
+              console.log(mis_pacientes[i]);
+              if ( unicos[i].id==mis_pacientes[j].id) {contador++;} 
+            }
+            var creado_p = 'Odontologo';
+            if (unicos[i].get('usuario')=='borrar'){creado_p ='Paciente'}
+
+            obj = {
+              id_paciente : unicos[i].id,
+              tokens: new Array(unicos[i].get('nombre'),unicos[i].get('apellido')),
+              nombre_paciente : unicos[i].get('nombre'),
+              apellido_paciente : unicos[i].get('apellido'),
+              correo : unicos[i].get('correo').slice(0,20)+'...',
+              celular : unicos[i].get('celular'),
+              num_citas : contador,
+              fecha_nacimiento : unicos[i].get('fecha_nacimiento'),
+              creado : creado_p
+
+            }
+            lista_render_template.push(obj);
+            contador = 0;
+            nombres_auto_comp.push( unicos[i].get('nombre') +' '+unicos[i].get('apellido')+' '+unicos[i].id);
+          }
+          //console.log(lista_render_template);
+          
+          //render handlebar
+          var source   = $("#template_pacientes").html();
+          var context = Handlebars.compile(source);
+          //var html_1 = context({tabla_citas_para_hoy : pacientes_mios});
+          //console.log(html_1);
+          $('#tabla_pacientes_mios').html(context({lista_render_template : lista_render_template}));
+
+          console.log(lista_render_template);
+
+          $('.buscar_nombre_paciente').typeahead({
+            name: 'nombre',
+            local: lista_render_template,
+            template :['<p id_paciente="{{id_paciente}}">',
+                          '{{nombre_paciente}} {{apellido_paciente}} {{correo}}',
+                      '</p>'].join(''),
+            engine: Hogan
+          });
+
+    });
+
+
+    $('.buscar_nombre_paciente').on('typeahead:selected', autocompletar_form);
+
+      function autocompletar_form(e,d) {
+            //console.log(d.id_paciente);
+            informacion_paciente_desplegable.llenar_form_paciente(d.id_paciente);
+            informacion_paciente_desplegable.historial_citas_paciente(d.id_paciente);
+
+            $('.form_paciente').attr('id_paciente',$(this).attr('id_paciente'));
+              $('.pantalla_negra').fadeIn(1000);
+              $('.form_paciente').animate({
+                top : '50%',
+            },1000);
+      }
+     
+    
+     var informacion_paciente_desplegable = {
+        init : function () {
+            this.eventos();
+        },
+        eventos : function(){
+          $('body').on('click','.activar_desplegar_mostrar_paciente',function () {
+              informacion_paciente_desplegable.llenar_form_paciente($(this).attr('id_paciente'));
+              informacion_paciente_desplegable.historial_citas_paciente($(this).attr('id_paciente'));
+              $('.form_paciente').attr('id_paciente',$(this).attr('id_paciente'));
+              $('.pantalla_negra').fadeIn(1000);
+              $('.form_paciente').animate({
+                top : '50%',
+              },1000);
+          });
+
+
+
+          $('.cerrar_form_cita').on('click', function() {
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_paciente').animate({
+                top : '-1500px'
+              },1500);
+          });
+
+          $('body').on('click','.pedir_cita_paciente',function () {
+                //semana.obtener_cita($(this).attr('id_cita'));
+                //calendario_dia.obtener_cita($(this).attr('id_cita'));
+                console.log($(this).attr('id_paciente'));
+                informacion_paciente_desplegable.llenar_form_paciente($(this).attr('id_paciente'));
+                $('.form_cita').attr('id_paciente',$(this).attr('id_paciente'));
+                $('.pantalla_negra').fadeIn(1000);
+                $('.form_cita').animate({
+                  top : '50%',
+                },1000);
+            });
+
+          $('.btn_pedir_cita').on('click',function (e) {
+              e.preventDefault();
+
+              //console.log('se va a pedir la cita '+$('.form_cita').attr('id_paciente'));
+              informacion_paciente_desplegable.pedir_cita($('.form_cita').attr('id_paciente'));
+          });
+
+
+
+          $('.cerrar_form_cita').on('click', function() {
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_cita').animate({
+                top : '-1500px'
+              },1500);
+
+            });
+
+        },
+        llenar_form_paciente : function(id_paciente) {
+          var p = pacientes.where({id:parseInt(id_paciente)})[0];
+          //console.log(p);
+
+          $('#nombre_paciente_c').val(p.get('nombre')+' '+p.get('apellido'));
+          $('#correo_paciente_c').val(p.get('correo'));
+          $('#celular_paciente_c').val(p.get('celular'));
+
+          //formulario historial de citas
+          $('#nombre_paciente').val(p.get('nombre'));
+          $('#apellido_paciente').val(p.get('apellido'));
+           if (p.get('genero') == 'Masculino') {
+            $(".genero[value='Masculino']").attr('checked', true);
+          }else{
+            $(".genero[value='Femenino']").attr('checked', true);
+          }
+          $('#correo_paciente').val(p.get('correo'));
+          $('#celular_paciente').val(p.get('celular'));
+
+          
+        },
+        historial_citas_paciente: function (id_paciente) {
+            var citasXpaciente = citas.where({paciente_id: parseInt(id_paciente), odontologo_id: parseInt(id_odontologo)});
+            //console.log( (JSON.stringify(citasXpaciente) ));
+            var historial_citas = new Array();
+            for (var i = 0; i < citasXpaciente.length; i++) {
+
+              var obj = {
+                id : citasXpaciente[i].id,
+                ano : citasXpaciente[i].get('ano'),
+                dia :citasXpaciente[i].get('dia'),
+                mes : citasXpaciente[i].get('mes'),
+                hora : citasXpaciente[i].get('hora'),
+                motivo : citasXpaciente[i].get('motivo'),
+                tipo_consulta : citasXpaciente[i].get('tipo_consulta')
+
+              }
+              historial_citas.push(obj)
+            };
+            
+            console.log(historial_citas);
+            //render handlebar
+          var source   = $("#template_historial_citas").html();
+          var context = Handlebars.compile(source);
+          //var html_1 = context({historial_citas : historial_citas} );
+          //console.log(html_1);
+          $('#tabla_historial_paciente').html(context({historial_citas : historial_citas }));
+        },
+        pedir_cita : function(id_paciente){
+          citas_o.fetch({
+            success : function  () {
+              console.log(citas_o);
+              
+
+              var hora_cita = $('#hora_cita').val();
+              var minutos_cita = $('#minutos_cita').val();
+              var seccion = $('#seccion_hora').val();
+              console.log('hora cita '+hora_cita);
+              console.log('minutos cita '+minutos_cita);
+              console.log('seccion hora' + seccion);
+              if ( seccion=="pm") {
+                    hora_cita = parseInt(hora_cita)+12;
+                    hora_cita = parseInt(hora_cita) * 60;
+                    hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+              }else{
+                    hora_cita = parseInt(hora_cita) * 60;
+                    hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+              }
+              citas_o.create({
+                ano: "2013",
+                comentarios: $('#comentarios_paciente_cita').val(),
+                dia: $('#dia_cita').val(),
+                duracion: $('#duracion_cita').val(),
+                estado: 'confirmada',
+                hora: hora_cita,
+                medio_pago: $('#medio_pago').val(),
+                mes: $('#mes_cita').val(),
+                modo_pago: $('#modo_pago').val(),
+                motivo: $('#motivo_consulta').val(),
+                odontologo_id: parseInt(id_odontologo),
+                paciente_id: parseInt(id_paciente),
+                tipo_consulta: "offline"
+              });
+              console.log(citas_o);
+
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_cita').animate({
+                top : '-1500px'
+              },1500);
+
+            }
+          })
+        }
+     }
+    
+     informacion_paciente_desplegable.init();
+
+
+
+      //helpers handlebars
+      Handlebars.registerHelper('fecha_humanos' ,function ( ano, dia, mes) {
+        if (mes < 10){mes = '0'+mes}
+        if (dia < 10){dia = '0'+dia}
+        var date = moment(ano +mes+ dia, "YYYYMMDD");
+        return new Handlebars.SafeString(
+           date.format('ddd')+' '+ dia+' '+ date.format('MMM') +' '+ ano
+        );
+      });
+
+
+       Handlebars.registerHelper('hora_humanos' ,function ( hora_minutos) {
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              
+        return new Handlebars.SafeString(
+           n[0]
+        );
+      });
+      
+
+      Handlebars.registerHelper('pedido_por' ,function ( pedido) {
+        var imprimir;
+        if (pedido == "offline"){imprimir="odontologo"}else{imprimir="paciente"}
+        return new Handlebars.SafeString(
+          imprimir
+        );
+      });
+      
+
+      Handlebars.registerHelper('edadXfecha' ,function ( fecha_nacimiento) {
+        var arre = fecha_nacimiento.split('/');
+        if (arre[1] < 10){arre[1] = '0'+arre[1]}
+        if (arre[0] < 10){arre[0] = '0'+arre[0]}
+        var date = moment(arre[2] +arre[1]+ arre[0], "YYYYMMDD").fromNow().split(' ');
+        
+        return new Handlebars.SafeString(
+          date[0]
+        );
+      });
+  })
+</script>

@@ -1,0 +1,81 @@
+// Place all the styles related to the appointments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$naranja : #F37021;
+
+/*formulario cita*/
+
+.form_cita{
+    width: 800px;
+    height: 550px;
+    background: white;
+    position: fixed;
+    top: -1500px;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -400px;
+    z-index: 103;
+}
+
+.cerrar_form_cita{
+    float: right;
+    position: relative;
+    top:20px;
+    left: -20px;
+    cursor: pointer;
+}
+
+.form_cita_izquierda{
+	margin: 40px 0 0 40px;
+	width: 360px;
+	height: 430px;
+	float: left;
+}
+
+.botonera_formulario{
+	position: relative;
+	left: 100px;
+	width: 600px;
+	height: 50px;
+	float: left;	
+	overflow: hidden;
+}
+
+.all_botones_formulario_cita{
+	width: 1800px;
+	list-style: none;
+	position: relative;
+}
+
+.all_botones_formulario_cita li{
+	width: 600px;
+	height: 50px;
+	display: inline-block;
+	float: left;
+	margin: 0 0 0 0;
+	text-align: center;
+}
+
+.submit_cita{
+	color: #fff;
+    font-size: 13pt;
+    width: 170px;
+    height: 35px;
+    border: none;
+    margin: 5px 0 0 10px;
+    padding: 0;
+    background: $naranja !important;
+    cursor: pointer;
+}
+
+#comentarios_paciente_cita{
+	resize:none;
+	margin: 5px 0 0 10px;
+}
+
+.campo_cita{
+ 	width: 270px;
+ 	height: 20px;
+ 	margin: 5px 0 5px 10px;
+}

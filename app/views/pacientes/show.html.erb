@@ -1,0 +1,688 @@
+<div class="saludo_p">
+
+</div>
+<div class="pestana_p">
+  <%= image_tag 'pacientes/pestana_perfil.png' %>
+</div>
+<div class="arriba_p">
+  <div class="izquierda_p">
+    <div class="nombre_odontologo">
+      <p class="n_apellido">
+          <%= @paciente.nombre.partition(" ")[0] %>
+          <%= @paciente.apellido.partition(" ")[0] %>
+      </p>
+    </div>
+    <div class="submenu_paciente">
+      <p class="activo_p"><%= image_tag 'pacientes/icono_citas_over.png' %> Mis Citas</p>
+      <p><%= image_tag 'pacientes/icono_ajustes.png' %> Configuración</p>
+    </div>
+    <div class="area_sincornizar_p">
+      <p>
+        Sincroniza tu cita con:
+      </p>
+      <table>
+        <tr>
+          <td><%= image_tag 'agendar_online/icono_outlook.png' %></td>
+          <td>Outlook</td>
+        </tr>
+        <tr>
+          <td><%= image_tag 'agendar_online/icono_ical.png' %></td>
+          <td>iCal</td>
+        </tr>
+        <tr>
+          <td><%= image_tag 'agendar_online/icono_gmail.png' %></td>
+          <td>Gmail</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="derecha_p">
+    <% if @paciente.appointments.any? %> 
+    <div class="titulo_p">
+      Próxima Cita
+      <p id="datos_demograficos" data-citas="" data-delta="0" >
+        <em id="boton_anterior">Anterior</em>
+        <em id="boton_siguiente">Siguiente</em>
+      </p>
+    </div>
+    <hr>
+    <div class="acciones" >
+      <p id="fecha_cita">
+        <!--<%= @paciente.appointments.first.dia %> de 
+        <% case  @paciente.appointments.first.mes %> 
+          <% when  '1' %>
+            Enero
+          <% when  '2' %>
+            Febrero
+          <% when  '3' %>
+            Marzo
+          <% when  '4' %>
+            Abril
+          <% when  '5' %>
+            Mayo
+          <% when  '6' %>
+            Junio
+          <% when  '7' %>
+            Julio
+          <% when  '8' %>
+            Agosto
+          <% when  '9' %>
+            Septiembre 
+          <% when  '10' %>
+            Octubre
+          <% when  '11' %>
+            Noviembre
+          <% when  '12' %>
+            Diciembre
+        <% end %>
+        del <%= @paciente.appointments.first.ano %> - <%= @paciente.appointments.first.hora_arreglada %>  -->
+      </p>
+
+       <img src="/assets/pacientes/boton_reagendar.png" data-cita="" id="reagendar_cita">
+       <img src="/assets/pacientes/boton_cancelar.png" data-cita="" id="cancelar_cita">
+    </div>    
+    <div class="contenido_arriba_p">
+      <div class="perfil_odontologo_area">
+        
+        <img src=" <% @paciente.appointments.first.odontologo.image_url %>" style="width:120px;" id="img_odontologo">
+       
+        <div class="nombre_doctor" >
+          <p id="nombre_doctor_cita">
+              <!--dr. <%= @paciente.appointments.first.odontologo.apellido.partition(" ")[0] %>-->
+          </p>
+          
+        </div>
+
+
+      </div>
+      <div class="informacion_perfil_odontologo_area">
+        
+        
+        <p class="titulo_perfil_p" >
+          Estado de la cita
+        </p>
+        <p id="estado_cita">
+          <!--<% if @paciente.appointments.first.estado == 'porconfirmar' %>
+            por confirmar
+          <% else %>
+            <%= @paciente.appointments.first.estado %>
+          <% end %>-->
+        </p>  
+        
+
+        <div class="puntuacion" style="height:130px;margin:10px 0 0 0;">
+          <div class="puntualidad">
+            Puntualidad: 
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+          </div>
+          <div class="servicio">
+            Servicio: 
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+          </div>
+          <div class="calidad">
+            Calidad:
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+            <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+          </div>
+        </div>
+
+
+        <p class="titulo_perfil_p">
+          Comentarios
+        </p>
+        <p id="comentarios_odontologo">
+         <!--<%= @paciente.appointments.first.comentarios %>-->
+        </p>
+
+
+
+      </div>
+      <div class="mapa_perfil_odontologo_area">
+        <div id="mapa_cita_paciente">
+          <!--
+          <%= @paciente.appointments.first.odontologo.consultorios.first.lat %> ~
+          <%= @paciente.appointments.first.odontologo.consultorios.first.long %>
+          -->
+        </div>
+        
+        
+        <table>
+          <tr>
+            <td><%= image_tag 'pacientes/icono_lugar.png' %></td>
+            <td id="direccion_odontologo"><!--<%= @paciente.appointments.first.odontologo.consultorios.first.direccion %>--></td>
+          </tr>
+          <tr>
+            <td><%= image_tag 'pacientes/icono_celular.png' %></td>
+            <td id="telefono_odontologo"> <!--<%= @paciente.appointments.first.odontologo.consultorios.first.telefono %> --></td>
+          </tr>
+        </table>
+        
+
+      </div>
+
+    </div>
+   <% else %>
+    No has agendado ninguna cita aun para hacerlo, has <%= link_to 'click aca' , root_url %> 
+   <% end %>
+  </div>
+</div>
+<div class="separador_p">
+    <%= image_tag 'odontologo/perfil_publico/flecha_abajo.png' %>
+</div>
+<div class="mitad_p">
+  <div class="der_m_p">
+    <%= image_tag 'pacientes/icono_mis_odontologos.png' %>
+  </div>
+  <div class="izq_m_p">
+      <div class="lista_doctores_p" style="width: <%= 255*@paciente.appointments.select('odontologo_id').group("odontologo_id").length %>px;">
+        <% if @paciente.appointments.any? %> 
+            <% @paciente.appointments.select('odontologo_id').group("odontologo_id").each do |cita| %>
+              <div class="carta_doctor">
+                <img src=" <%= cita.odontologo.image_url %>" style="width:120px;margin:0 0 0 60px;">
+                  <div class="nombre_doctor" style="margin: 5px auto 0 auto;">
+                    <p>
+                      dr. <%= cita.odontologo.apellido.partition(" ")[0] %>
+                    </p>
+                    
+                  </div>
+                  <div class="puntuacion" style="height:130px;margin:10px 0 0 0; ">
+                      <div class="puntualidad">
+                        Puntualidad: 
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+                      </div>
+                      <div class="servicio">
+                        Servicio: 
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+                      </div>
+                      <div class="calidad">
+                        Calidad:
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+                        <%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+                      </div>
+                    </div>
+                    <a href="<%= doctor_path(cita.odontologo) %>" style="position:relative;z-index:10;">
+                       <%= submit_tag "Agendar", :class=> 'submit', style:'margin: -10px 0 0px 70px; width: 100px;' %>
+                    </a>
+              </div>
+
+            <% end %>
+        <% else %>
+        <div style="width:400px;">
+          Aun no has pedido citas con tu odontologo de confianza para hacerlo, has <%= link_to 'click aca' , root_url %> 
+        </div>
+          
+         <% end %>
+      </div>
+  </div>
+</div>
+<div class="separador_p">
+    <%= image_tag 'odontologo/perfil_publico/flecha_abajo.png' %>
+</div>
+<div class="abajo_p">
+    <div class="izquierda_a_p">
+      <%= image_tag 'pacientes/icono_citaparaotrospacientes.png' %>
+
+      <ul id="lista_pacientes_asoaciados">
+        <li style="font-weight:bold;cursor:progress;" >+ Agregar</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="derecha_a_p">
+        <%= image_tag 'pacientes/icono_historial_de_citas.png' %>
+        <div class="buscar_cita">
+          <% if @paciente.appointments.any? %> 
+          <div class="styled_dropdown_home" id="filtro_odontologos" style="width: 300px;height: 27px; margin:auto ;">
+                <select id="especialidad_odonto" name="especialidad_odonto">
+                    <option value="--">¿Recuerdas su especialidad?</option>
+                    <% @arreglo.each do |item| %>
+                      <option value="<%= item %>"> <%= item %></option>
+                    <% end %>
+                </select>
+            </div>
+          <% end %>
+        </div>
+        <ul id="lista_odontologos_p_especialidad">
+          <% if @paciente.appointments.any? %> 
+          <% @paciente.appointments.each do |cita| %>
+            <li data-especialidades="
+              <% cita.odontologo.specialities.each do |especialidad| %>
+                <%= especialidad.especialidad %>
+              <% end %>
+            ">
+              <div class="derecha_odontologo">
+                  <img src=" <%= cita.odontologo.image_url %>" style="width:120px;margin:20px 0 0 0;">
+                  <div class="nombre_doctor" style="margin: 5px auto 0 auto;">
+                      <p style="left:0px;">
+                        dr. <%= cita.odontologo.apellido.partition(" ")[0] %>
+                      </p>
+                  </div>
+              </div>
+              <div class="izquierda_odontologo">
+                  Fecha de la cita <%= cita.dia %>-<%= cita.mes %>-<%= cita.ano %><br>
+                  Hora de la cita <%= cita.hora_arreglada %>
+                  <div style="width;100%;height:1px;background:#ccc;margin:5px 0 5px 0;"></div>
+                  Motivo de la cita : <em class="motivo_cita"><%= cita.motivo %></em> <br>
+                  Estado de la cita : <em class="motivo_cita"><% if cita.estado == 'porconfirmar' %>
+            por confirmar
+          <% else %>
+            <%= cita.estado %>
+          <% end %></em>
+                  <p class="direccion_o">
+                    <%= image_tag 'pacientes/icono_lugar.png' %><%= cita.odontologo.consultorios.first.direccion %>
+                  </p>
+                  
+              </div>
+              <a href="<%= doctor_path(cita.odontologo) %>">
+                    <%= submit_tag "Agendar", :class=> 'submit', style:'margin: 0px 0 10px 150px; width: 90px; height:25px;' %>
+              </a>
+              
+            </li>
+          <% end %>
+          <% else %>
+        <div style="width:200px;margin:auto;">
+          No has agendado ninguna cita aun para hacerlo, has <%= link_to 'click aca' , root_url %> 
+        </div>
+          
+         <% end %>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+      function initialize(lat,longi) {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          draggable: false, 
+          zoomControl: false, 
+          scrollwheel: false, 
+          disableDoubleClickZoom: true
+        };
+        map = new google.maps.Map(document.getElementById("mapa_cita_paciente"),mapOptions);
+        marker = new google.maps.Marker({
+          map: map,
+          position: map.getCenter()
+        });
+
+         google.maps.event.addListener(map, 'center_changed', function() {
+          //console.log(map.getCenter());
+          marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          console.log(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+          //marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          console.log(map.getCenter());
+          //marker.setPosition(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+
+        });
+      }
+
+      var historial_citas_paciente = {
+        init : function(){
+            if ($('#mapa_cita_paciente').html()) {
+              var arr = $('#mapa_cita_paciente').html().trim().split('~');
+              google.maps.event.addDomListener(window, 'load', initialize(arr[0],arr[1]));
+            }
+            //this.buscar_citas();
+            this.eventos();
+        },
+        buscar_citas: function(especialidad){
+          $('#lista_odontologos_p_especialidad').children('li').each(function(index,elem){
+            var arreglo = $(elem).data('especialidades').trim().split(/\r\n|\r|\n/g);
+            for (var i = 0; i < arreglo.length; i++) {
+
+              if (especialidad.trim() != '--') {
+                if(arreglo[i].trim()==especialidad.trim()) {
+                  $(elem).addClass('mostrar');
+                  break;
+                 //console.log('entro');
+                }
+              }else{
+                console.log('entro aca');
+                $(elem).addClass('mostrar');
+                break;
+                
+              }
+            };
+            //console.log(arreglo);
+          });
+          this.mostrar_odontologos();
+        },
+
+        eventos :function () {
+          $('select#especialidad_odonto').change(function(){
+            historial_citas_paciente.reset_lista_odonto();
+            //console.log($(this).val());
+            historial_citas_paciente.buscar_citas($(this).val());
+          });
+        },
+        reset_lista_odonto : function(){
+            $('#lista_odontologos_p_especialidad').children('li').each(function(index,elem){
+                  $(elem).hide();
+                  $(elem).removeClass('mostrar');
+            });
+        },
+        mostrar_odontologos : function(){
+          $('#lista_odontologos_p_especialidad').children('li').each(function(index,elem){
+            $(elem).hide();
+            if ($(elem).hasClass('mostrar')) {
+                $(elem).show();
+            };
+          });
+        }
+
+      }
+
+      historial_citas_paciente.init();
+
+      Citas = Backbone.Collection.extend({
+          url :'/appointments',
+          comparator : function(c){
+              var hora_minutos=parseFloat(c.get('hora'))/60;
+              var n= String(hora_minutos).split(".");
+              var minutos;
+              if(n[1]){
+                
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+              }else{
+                minutos = '00';
+              }
+            var date = new Date( c.get("ano"),  c.get("mes"),  c.get("dia"),  n[0], minutos, '0', '0');
+            return date.getTime();
+
+          }
+      });
+      
+      var lista_citas = new Citas;
+
+
+      $.when(odontologos.fetch(),lista_citas.fetch(),consultorio.fetch()).done(function(){
+            mostrar_citas.init();
+            acciones_citas.init();
+      });
+
+      var mostrar_citas ={
+        mis_citas : "",
+        init : function(){
+
+          this.mis_citas = _.filter(lista_citas.models, function(cita){
+            if(cita.get('paciente_id')==parseInt(getCookie("login").substring(6))){ 
+              if (cita.get('estado') == 'confirmada' || cita.get('estado') == 'porconfirmar') {
+                return cita;
+              }
+            } 
+          });
+          console.log(this.mis_citas);
+          
+          $('#cancelar_cita').data('cita', this.mis_citas[0].id);
+          $('#reagendar_cita').data('cita',this.mis_citas[0].id);
+
+          this.mostrar_cita(0);
+          console.log(this.mis_citas.length);
+          $('#datos_demograficos').data('citas',this.mis_citas.length);  
+          this.eventos();
+            
+          
+        },
+        mostrar_cita: function(pos){
+          
+          $('#reagendar_cita').data('cita',this.mis_citas[pos].id);
+          $('#cancelar_cita').data('cita',this.mis_citas[pos].id);
+          $('#datos_demograficos').data('cita',this.mis_citas.length);
+
+          var odontologo = odontologos.get(this.mis_citas[pos].get('odontologo_id'));
+          var consultor = consultorio.where({odontologo_id: odontologo.id})[0];
+          //console.log(consultor);
+          //console.log(odontologo.get('image').url);
+          //console.log(this.mis_citas[pos]);
+          $('#img_odontologo').attr('src',odontologo.get('image').url);
+          $('#nombre_doctor_cita').html('DR '+odontologo.get('apellido').split(" ")[0]);
+          if (this.mis_citas[pos].get('estado') == "porconfirmar") {
+            $('#estado_cita').html('por confirmar');
+          }else{
+            $('#estado_cita').html(this.mis_citas[pos].get('estado'));
+          } 
+          $('#comentarios_odontologo').html(this.mis_citas[pos].get('comentarios'));
+          google.maps.event.addDomListener(window, 'load', initialize(consultor.get('lat'),consultor.get('long')));
+          $('#direccion_odontologo').html(consultor.get('direccion'));
+          $('#telefono_odontologo').html(consultor.get('telefono'));
+          $('#fecha_cita').html(this.mis_citas[pos].get('dia')+' de '+this.nombre_mes(this.mis_citas[pos].get('mes'))+' del '+this.mis_citas[pos].get('ano')+' - '+this.hora_humanos(this.mis_citas[pos].get('hora')) );
+
+        },
+        eventos: function() {
+          $("#boton_anterior").on('click',function(){
+            var delta = parseInt($('#datos_demograficos').data('delta'));
+            if (delta > 0) {
+              delta -= 1;
+              mostrar_citas.mostrar_cita(delta);
+              $('#datos_demograficos').data('delta',delta.toString());
+            }
+          });
+
+          $("#boton_siguiente").on('click',function() {
+            var delta = parseInt($('#datos_demograficos').data('delta'));
+            if ( delta+1 < parseInt($('#datos_demograficos').data('citas'))) {
+              delta += 1;
+              mostrar_citas.mostrar_cita(delta);
+              $('#datos_demograficos').data('delta',delta.toString());
+            }
+          });
+        },
+        nombre_mes : function(mes_num){
+          switch(mes_num){
+            case '1' :
+              return 'Enero';
+            break;
+            case '2' :
+              return 'Febrero';
+            break;
+            case '3' :
+              return 'Marzo';
+            break;
+            case '4' :
+              return 'Abril';
+            break;
+            case '5' :
+              return 'Mayo';
+            break;
+            case '6' :
+              return 'Junio';
+            break;
+            case '7' :
+              return 'Julio';
+            break;
+            case '8' :
+              return 'Agosto';
+            break;
+            case '9' :
+              return 'Septiembre';
+            break;
+            case '10' :
+              return 'Obtubre';
+            break;
+            case '11' :
+              return 'Noviembre';
+            break;
+            case '12' :
+              return 'Diciembre';
+            break;
+          } 
+        },
+        hora_humanos:function(hora_minutos){
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              return n[0];
+        }
+
+      }
+
+      
+
+      var acciones_citas ={
+        init : function(){
+          this.eventos();
+        },
+        eventos : function(){
+          $('#cancelar_cita').on('click',function(){
+            var r=confirm("¿Seguro quieres borrar la cita?");
+            if (r==true){
+              acciones_citas.cancelar_cita($(this).data('cita'));
+            }
+          });
+
+          $('#reagendar_cita').on('click',function(){
+            var r=confirm("¿Seguro quieres reagendar la cita?");
+            if (r==true){
+              acciones_citas.reagendar_cita($(this).data('cita'));
+            }
+          });
+          
+        },
+        cancelar_cita : function(id_cita){
+          var cita = lista_citas.get(parseInt(id_cita));
+          //console.log(cita);
+          //cita.set({'comentarios':'esto va desde el perfil'});
+          //cita.save();
+          
+          cita.save({'estado':'cancelada'}, {
+            success: function(){ 
+                location.reload(); 
+                //console.log(cita);
+            },
+            error: function(){ 
+              alert('La conexion con el servidor fallo vuelvelo a intentar mas tarde') 
+            }
+          });
+          
+        },
+        reagendar_cita : function(id_cita) {
+          var cita = lista_citas.get(parseInt(id_cita));
+          //console.log(cita);
+          //cita.set({'comentarios':'esto va desde el perfil'});
+          //cita.save();
+          
+          cita.save({'estado':'reagandada'}, {
+            success: function(){ 
+                window.location = "/doctor/"+cita.get('odontologo_id');
+                //console.log(cita);
+            },
+            error: function(){ 
+              alert('La conexion con el servidor fallo vuelvelo a intentar mas tarde') 
+            }
+          });
+          
+        }
+      }
+
+      
+      
+
+    });
+    
+
+    
+
+</script>

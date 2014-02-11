@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  direccion: MyString
+  ciudad: MyString
+  zona: MyString
+  lat: MyString
+  long: MyString
+  id_odontologo: 1
+  imagen1: MyString
+  imagen2: MyString
+  imagen3: MyString
+
+two:
+  nombre: MyString
+  direccion: MyString
+  ciudad: MyString
+  zona: MyString
+  lat: MyString
+  long: MyString
+  id_odontologo: 1
+  imagen1: MyString
+  imagen2: MyString
+  imagen3: MyString

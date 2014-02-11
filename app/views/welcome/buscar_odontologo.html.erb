@@ -1,0 +1,579 @@
+<div class="wrapper_buscador_odontologos">
+	<div class="pestana_odonto">
+		<%= image_tag 'buscar_odontologo/pestana_buscar_odontologo.png' %>
+	</div>
+	<div class="area_de_busqueda">
+		<div class="izquierda">
+			<div class="titulo">
+				Tu Odontólogo <br> a solo unos clics
+			</div>
+			<%= form_tag("/buscar_odontologo" , :method => :get) do %>
+					<div class="styled_dropdown_home" style="width: 300px;height: 27px;">
+		                  <select id="ciudad" name="ciudad">
+		                    <option value="--">Ciudad</option>
+		                    <option value="bogota">Bogotá</option>
+		                    <option value="medellin">Medellin</option>
+		                    <option value="bucaramanga">Bucaramanga</option>
+		                 </select>
+		            </div>
+					<div class="styled_dropdown_home" style="width: 300px;height: 27px;">
+		                  <select id="especialidad" name="especialidad">
+		                    <option value="--">Especialidad</option>
+		                    <option value="Odontopediatria">Odontopediatria</option>
+		                    <option value="Endodoncia">Endodoncia</option>
+		                    <option value="Ortodoncia">Ortodoncia</option>
+		                    <option value="Estetica Dental">Estetica Dental</option>
+		                    <option value="Rehabilitacion Oral">Rehabilitacion Oral</option>
+		                    <option value="Cirugia Dental">Cirugia Dental</option>
+		                    <option value="Cirugia Maxilofacial">Cirugia Maxilofacial</option>
+		                    <option value="Odontólogía integral">Odontólogía integral</option>
+                            <option value="Odontólogía general">Odontólogía general</option>
+                            <option value="Prostodoncia">Prostodoncia</option>
+                            <option value="Implantología oral y reconstructiva">Implantología oral y reconstructiva</option>
+		                 </select>
+		            </div>
+					<div class="styled_dropdown_home_disable" style="width: 300px;height: 27px;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Forma de Pago</option>
+		                 </select>
+		            </div>
+					<div class="styled_dropdown_home_disable" style="width: 300px;height: 27px;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Prepagada</option>
+		                 </select>
+		            </div>
+		            <div class="styled_dropdown_home_disable" style="width: 300px;height: 27px;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Zona</option>
+		                 </select>
+		            </div>
+					<%= submit_tag "Buscar",  :class => 'submit_cita btn_agendar_publico'   %>
+			<% end %>
+		</div>
+		<div id="derecha">
+		</div>
+	</div>
+	<div class="separacion">
+		<%= image_tag 'buscar_odontologo/icono_elige_tu_odontologo.png' %>
+	</div>
+	<div class="area_buscar_por_nombre">
+	<!--
+		<div class="buscador_nombre">
+			<input type="text" placeholder="¿Conoces el nombre de tu especialista?" style='width:250px;' id="buscar_odonto">
+			<%= image_tag 'buscar_odontologo/icono_lupa.png' %>
+		</div>
+	-->
+	</div>
+
+	<div class="lista_odontologos">
+
+		<% if @odontologos %>
+				<% @odontologos.each do |odontologo| %>
+
+					<% if odontologo.is_a?(Odontologo)%>
+							<div class="area_odontologo">
+								<div class="izquierda">
+									<div class="arriba">
+										<div class="nombre_doctor">
+											<p>
+												DR. <%= odontologo.apellido %>
+											</p>
+										</div>
+										
+									</div>
+									<div class="mitad_listar">
+										<div class="izquierda">
+											<%= image_tag odontologo.image_url, style: 'width 180px; height 100px;', class: 'imagen_lista' %>
+										</div>
+										<div class="derecha">
+											<div class="ranking">
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_gris.png' %>
+											</div>
+	
+											<p class="direccion" data-latlong="<%= odontologo.consultorios[0].lat %>/<%=odontologo.consultorios[0].long%>">
+												<%= odontologo.consultorios[0].direccion %>
+											</p>
+											<p class="titulo_especialidades">
+												Especialidad<% if  odontologo.specialities.length > 1 %>es<% end %>
+											</p>
+											<p class="especialidades">
+												<% odontologo.specialities.limit(4).each do |especialidad| %>
+													<%= especialidad.especialidad %><br>
+												<% end %>
+											</p>
+
+										</div>
+									</div>
+									<div class="abajo">
+										<a href=" doctor/<%= odontologo.usuario %>">
+											<%= submit_tag "Ver Perfil",  :class => 'submit_cita btn_agendar_publico'   %>
+										</a>
+									</div>
+								</div>
+
+								<div class="derecha">
+									<div class="arriba" data-delta="0">
+										Elige la hora y el día de tu cita
+										<span class="next" data-odontologo="<%= odontologo.id %>" >Siguiente <%= image_tag 'agendar/flecha_der.png' %></span>
+										<span class="prev" data-odontologo="<%= odontologo.id %>" > <%= image_tag 'agendar/flecha_izq.png' %> Anterior</span>
+									</div>
+									<div class="abajo">
+										<div class="semana">
+											<ul class="titulo_dias_semana">
+												<li class="dia1_sem">Lun 21</li>
+												<li>Mar 22</li>
+												<li>Mie 23</li>
+												<li>Jue 24</li>
+												<li>Vie 25</li>
+												<li>Sab 26</li>
+												<li style="margin:0;">Dom 27</li>
+											</ul>
+											<div class="horas_disponibles " data-odontologo="<%= odontologo.id %>">
+												<ul class="horas_disponibles_dia dia1">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia2">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia3">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia4">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia5">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia6">
+
+												</ul>
+												<ul class="horas_disponibles_dia dia7" style="margin:0;" >
+
+												</ul>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					<% else %>
+							<div class="area_odontologo">
+								<div class="izquierda">
+									
+									<div class="arriba">
+										<div class="nombre_doctor">
+											<p>
+												Clinica <%= odontologo.nombre %>
+											</p>
+										</div>
+										
+									</div>
+
+									<div class="mitad_listar">
+										<div class="izquierda">
+											<%= image_tag odontologo.foto_perfil_url, style: 'width 180px; height 100px;', class: 'imagen_lista' %>
+										</div>
+										<div class="derecha">
+											<div class="ranking">
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' %>
+												<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_gris.png' %>
+											</div>
+	
+											<p class="direccion" data-latlong="<%= odontologo.lat %>/<%=odontologo.long%>">
+												<%= odontologo.direccion %>
+											</p>
+
+										</div>
+									</div>
+
+									
+									<div class="abajo">
+										<a href=" clinica/<%= odontologo.nombre %>">
+											<%= submit_tag "Ver Clinica",  :class => 'submit_cita btn_agendar_publico'   %>
+										</a>
+									</div>
+								</div>
+								
+
+
+							</div>
+					<% end %>
+
+				<% end %>
+
+		<% else %>
+			No hay doctores disponibles con estas caracteristicas
+		<% end %>
+
+	</div>
+</div>
+
+ <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		function initialize(lat,longi) {
+	        geocoder = new google.maps.Geocoder();
+	        var mapOptions = {
+	          disableDefaultUI: true,
+	          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+	          zoom:13,
+	          mapTypeId: google.maps.MapTypeId.ROADMAP,
+	          draggable: true, 
+	          zoomControl: true, 
+	          scrollwheel: false, 
+	          disableDoubleClickZoom: true
+	        };
+	        map = new google.maps.Map(document.getElementById("derecha"),mapOptions);
+      }
+      
+      /*
+      console.log($('.direccion').data('latlong'));
+      console.log($('.direccion').length);
+      */
+
+      $direccion = $('.direccion');
+      if ($direccion.length > 0) {
+	      google.maps.event.addDomListener(window, 'load', initialize($($direccion[0]).data('latlong').split('/')[0],$($direccion[0]).data('latlong').split('/')[1]));
+
+	      $direccion.map(function(index,elem){
+	      	var latlong = $(elem).data('latlong').split('/');
+			new google.maps.Marker({map: map,position: new google.maps.LatLng(parseFloat(latlong[0]), parseFloat(latlong[1]))});
+	      });
+      }else{
+      	google.maps.event.addDomListener(window, 'load', initialize(4.673562375325823, -74.05718582248687));
+      }
+
+      moment.lang('en', {
+	        weekdays : [
+	            "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"
+	        ],
+	        weekdaysShort : ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+	        months : [
+	        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+	        "Agosto", "Septiembre", "Obtubre", "Noviembre", "Diciembre"
+	        ],
+	         monthsShort : [
+	            "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+	            "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+	        ]
+	    });
+
+      var Horas_DisPonibles =  Backbone.Collection.extend({
+        url : "/horas_disponibles",
+        comparator : function(c){
+          return parseInt(c.get("hora"));
+        }
+      });
+
+      var horas_disponibles = new Horas_DisPonibles();
+
+      horas_disponibles.fetch({
+      	success: function(){
+      		dibujar_disponibilidad.init();
+      	}
+      })
+      var dibujar_disponibilidad = {
+      	init : function(){
+      		this.eventos();
+      		this.dibujar();
+      	},
+      	eventos : function(){
+      		$('.next').on('click',function(){
+      			dibujar_disponibilidad.mover_horas($(this));
+      			//console.log($(this).data('odontologo'));
+      			//console.log($(this).parent().next().children('.semana').children('.horas_disponibles'));
+      		});
+
+      		$('.prev').on('click',function(){
+      			dibujar_disponibilidad.mover_horas($(this));
+      			//console.log($(this).data('odontologo'));
+      			//console.log($(this).parent().next().children('.semana').children('.horas_disponibles'));
+      		});
+      	},
+      	dibujar : function(){
+      		$('.horas_disponibles ').each(function(index,elem){
+      			  //console.log($(elem).data('odontologo'));
+      			  var horasxodonto =  horas_disponibles.where({'odontologo_id':$(elem).data('odontologo')});
+      			  var prev = $(elem).prev().children('li');
+      			  //console.log(horasxodonto);
+      			  if (horasxodonto.length > 0) {
+	      			  var semana = moment().add('days',0);
+			          var dia1_nom = semana.format('ddd');
+			          var dia1_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[0]).html(dia1_nom+' '+dia1_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),1,$(elem));
+
+			          var dia2_nom = semana.add('days',1).format('ddd');
+			          var dia2_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[1]).html(dia2_nom+' '+dia2_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),2,$(elem));
+
+			          var dia3_nom = semana.add('days',1).format('ddd');
+			          var dia3_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[2]).html(dia3_nom+' '+dia3_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),3,$(elem));
+
+			          var dia4_nom = semana.add('days',1).format('ddd');
+			          var dia4_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[3]).html(dia4_nom+' '+dia4_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),4,$(elem));
+
+			          var dia5_nom = semana.add('days',1).format('ddd');
+			          var dia5_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[4]).html(dia5_nom+' '+dia5_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),5,$(elem));
+
+			          var dia6_nom = semana.add('days',1).format('ddd');
+			          var dia6_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[5]).html(dia6_nom+' '+dia6_num+' '+mes_inic);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),6,$(elem));
+
+			          var dia7_nom = semana.add('days',1).format('ddd');
+			          var dia7_num = semana.format('D');
+			          var mes_fin = semana.format('MMM');
+			          $(prev[6]).html(dia7_nom+' '+dia7_num+' '+mes_fin);
+			          dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),7,$(elem));
+
+		          }else{
+
+		          	  var semana = moment().add('days',0);
+			          var dia1_nom = semana.format('ddd');
+			          var dia1_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[0]).html(dia1_nom+' '+dia1_num+' '+mes_inic);
+
+			          var dia2_nom = semana.add('days',1).format('ddd');
+			          var dia2_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[1]).html(dia2_nom+' '+dia2_num+' '+mes_inic);
+
+			          var dia3_nom = semana.add('days',1).format('ddd');
+			          var dia3_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[2]).html(dia3_nom+' '+dia3_num+' '+mes_inic);
+
+			          var dia4_nom = semana.add('days',1).format('ddd');
+			          var dia4_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[3]).html(dia4_nom+' '+dia4_num+' '+mes_inic);
+
+			          var dia5_nom = semana.add('days',1).format('ddd');
+			          var dia5_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[4]).html(dia5_nom+' '+dia5_num+' '+mes_inic);
+
+			          var dia6_nom = semana.add('days',1).format('ddd');
+			          var dia6_num = semana.format('D');
+			          var mes_inic = semana.format('MMM');
+			          $(prev[5]).html(dia6_nom+' '+dia6_num+' '+mes_inic);
+
+			          var dia7_nom = semana.add('days',1).format('ddd');
+			          var dia7_num = semana.format('D');
+			          var mes_fin = semana.format('MMM');
+			          $(prev[6]).html(dia7_nom+' '+dia7_num+' '+mes_fin);
+
+			      }
+      		});
+      		/*
+      		var semana = moment().add('days',0);
+      		var dia1_nom = semana.format('ddd');
+         	var dia1_num = semana.format('D');
+          	var mes_inic = semana.format('MMM');
+          	$('.dia1_sem').html(dia1_nom+' '+dia1_num+' '+mes_inic);*/
+      	},
+      	mover_horas : function($elem){
+      		this.limpiar_semana();
+      		//console.log($elem);
+      		if ($elem.hasClass('next')) {
+      			$elem.parent().data('delta', parseInt($elem.parent().data('delta'))+7);
+      		}else{
+      			if ( parseInt($elem.parent().data('delta'))>0 ) {
+      				$elem.parent().data('delta', parseInt($elem.parent().data('delta'))-7);
+      			}
+
+      		}
+      		//$('.next').parent().next().children('.semana').children('.titulo_dias_semana').children('li')
+      		var prev = $elem.parent().next().children('.semana').children('.titulo_dias_semana').children('li');
+      		var horasxodonto =  horas_disponibles.where({'odontologo_id':$elem.data('odontologo')});
+      		var area_odonto = $elem.parent().next().children('.semana').children('.horas_disponibles');
+
+      		//limpiar
+      		$elem.parent().next().children('.semana').children('.horas_disponibles').children('.horas_disponibles_dia').html('')
+
+
+      		if (horasxodonto.length > 0) {
+				 var semana = moment().add('days',parseInt($elem.parent().data('delta')));
+				 var dia1_nom = semana.format('ddd');
+				 var dia1_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[0]).html(dia1_nom+' '+dia1_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),1,area_odonto);
+
+				 var dia2_nom = semana.add('days',1).format('ddd');
+				 var dia2_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[1]).html(dia2_nom+' '+dia2_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),2,area_odonto);
+
+				 var dia3_nom = semana.add('days',1).format('ddd');
+				 var dia3_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[2]).html(dia3_nom+' '+dia3_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),3,area_odonto);
+
+				 var dia4_nom = semana.add('days',1).format('ddd');
+				 var dia4_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[3]).html(dia4_nom+' '+dia4_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),4,area_odonto);
+
+				 var dia5_nom = semana.add('days',1).format('ddd');
+				 var dia5_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[4]).html(dia5_nom+' '+dia5_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),5,area_odonto);
+
+				 var dia6_nom = semana.add('days',1).format('ddd');
+				 var dia6_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[5]).html(dia6_nom+' '+dia6_num+' '+mes_inic);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),6,area_odonto);
+
+				 var dia7_nom = semana.add('days',1).format('ddd');
+				 var dia7_num = semana.format('D');
+				 var mes_fin = semana.format('MMM');
+				 $(prev[6]).html(dia7_nom+' '+dia7_num+' '+mes_fin);
+				 dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),7,area_odonto);
+			 }else{
+			 	 var semana = moment().add('days',parseInt($elem.parent().data('delta')));
+				 var dia1_nom = semana.format('ddd');
+				 var dia1_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[0]).html(dia1_nom+' '+dia1_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),1,area_odonto);
+
+				 var dia2_nom = semana.add('days',1).format('ddd');
+				 var dia2_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[1]).html(dia2_nom+' '+dia2_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),2,area_odonto);
+
+				 var dia3_nom = semana.add('days',1).format('ddd');
+				 var dia3_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[2]).html(dia3_nom+' '+dia3_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),3,area_odonto);
+
+				 var dia4_nom = semana.add('days',1).format('ddd');
+				 var dia4_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[3]).html(dia4_nom+' '+dia4_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),4,area_odonto);
+
+				 var dia5_nom = semana.add('days',1).format('ddd');
+				 var dia5_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[4]).html(dia5_nom+' '+dia5_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),5,area_odonto);
+
+				 var dia6_nom = semana.add('days',1).format('ddd');
+				 var dia6_num = semana.format('D');
+				 var mes_inic = semana.format('MMM');
+				 $(prev[5]).html(dia6_nom+' '+dia6_num+' '+mes_inic);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),6,area_odonto);
+
+				 var dia7_nom = semana.add('days',1).format('ddd');
+				 var dia7_num = semana.format('D');
+				 var mes_fin = semana.format('MMM');
+				 $(prev[6]).html(dia7_nom+' '+dia7_num+' '+mes_fin);
+				 //dibujar_disponibilidad.horasPorFecha(horasxodonto,semana.format('YYYY'),semana.format('M'),semana.format('D'),7,area_odonto);
+			 }	
+      	},
+      	horasPorFecha : function(mis_horas,ano,mes,dia,diaDsemana,$odonto){
+
+      		var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')==ano && c.get('mes')==parseInt(mes) && c.get('dia')==parseInt(dia)) {return c}; });
+            horas_dia = _.without(horas_dia, undefined);
+            this.dibujar_citas_dia(horas_dia,diaDsemana,$odonto);
+
+            //console.log(horas_dia);
+            //console.log(ano+" "+mes+" "+dia+" "+diaDsemana);
+            
+      	},
+      	dibujar_citas_dia : function(citas,dia_sem,$odonto) {
+
+        	if (citas.length == 0) {
+        		$odonto.find('.'+'dia'+dia_sem).append('<li></li>');
+        	};
+
+            for (var i = 0; i < citas.length; i++) {
+                    var hora = citas[i].get('hora');
+                    var duracion = citas[i].get('duracion');
+                   	$odonto.find('.'+'dia'+dia_sem).append('<a href="/agendar_cita?id_cita_hora='+citas[i].id+'"> <li>'+dibujar_disponibilidad.hora_humanos(hora)+'</li> </a>');
+            };
+        },
+        limpiar_semana : function () {
+          //$('.quince_minu_hora').tipper("destroy");
+          //$('.quince_minu_hora').html('').removeClass('activo_seleccion_mid').removeClass('activo_seleccion_inic').removeAttr('duracion').removeAttr('medio_pago').removeAttr('id_cita');
+
+          //$('.horas_disponibles_dia').html('');
+        },
+        hora_humanos : function(hora_minutos){
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              return n[0];
+         }
+
+      }
+
+        $('#buscar_odonto').typeahead({
+            name: 'nombre',
+            local: [ "santi",  "santi",   "santi",   "santi", "santi الحال؟", "santi","santi السلامة","santi أتكلم العربية","santi أفهم","santi جائع"]     
+        });
+      
+	});
+</script>

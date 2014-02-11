@@ -1,0 +1,132 @@
+<%= form_for(@consultorio) do |f| %>
+  <% if @consultorio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consultorio.errors.count, "error") %> prohibited this consultorio from being saved:</h2>
+
+      <ul>
+      <% @consultorio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br />
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :ciudad %><br />
+    <%= f.text_field :ciudad %>
+  </div>
+  <div class="field">
+    <%= f.label :zona %><br />
+    <%= f.text_field :zona %>
+  </div>
+
+  <div id="map_canvas" style="width:300px;height:300px;"></div>
+
+  <div class="field">
+    <%= f.hidden_field :lat , id:'lat' %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :long , id:'long'%>
+  </div>
+  <div class="field">
+    <%= f.label :odontologo_id %><br />
+    <%= select_tag 'consultorio[odontologo_id]', options_for_select( Odontologo.all.collect{ |u| [u.nombre_completo, u.id] } ,selected: @consultorio.odontologo_id) %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen1 %><br />
+    <%= f.file_field :imagen1 %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen2 %><br />
+    <%= f.file_field :imagen2 %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen3 %><br />
+    <%= f.file_field :imagen3 %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <label>Usuario</label> <br>
+    <% if @consultorio.odontologo %>
+        <%= text_field_tag 'username', @consultorio.odontologo.usuario %>
+    <% else %>
+        <%= text_field_tag 'username'  %>
+    <% end %>
+
+    
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+<script type="text/javascript">
+  $(function(){
+
+    //google maps
+
+       function initialize(lat,longi) {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        marker = new google.maps.Marker({
+          map: map,
+          position: map.getCenter()
+        });
+
+         google.maps.event.addListener(map, 'center_changed', function() {
+          //console.log(map.getCenter());
+          marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          console.log(map.getCenter());
+
+          $('#lat').val(map.getCenter().ob);
+          $('#long').val(map.getCenter().pb);
+
+
+        });
+
+
+
+       
+      }
+
+
+      if ($('#lat').val().trim()=="") {
+        $('#lat').val(4.6719904784999695);
+        $('#long').val(-74.05475574111938);
+
+        google.maps.event.addDomListener(window, 'load', initialize(4.6719904784999695,-74.05475574111938));
+
+      }else{
+
+        google.maps.event.addDomListener(window, 'load', initialize($('#lat').val().trim(),$('#long').val().trim()));
+      }
+
+      
+
+      
+
+
+  });
+
+</script>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  odontologo_id: 1
+  paciente_id: 1
+  dia: MyString
+  mes: MyString
+  ano: MyString
+
+two:
+  odontologo_id: 1
+  paciente_id: 1
+  dia: MyString
+  mes: MyString
+  ano: MyString

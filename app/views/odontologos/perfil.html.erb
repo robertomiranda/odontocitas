@@ -1,0 +1,1112 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">  
+          DR . <%= current_user.apellido.partition(" ")[0] %>.
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> 'link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil_over.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: 'activo_menu link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_superior_agendar">
+    <div class="dia_especifico">
+
+    </div>
+    <div class="menu_perfil_odonto">
+        <%= image_tag "perfil_odontologos/boton_datos_personales_over.png", class:'datos_personales_btn activo'%>
+        <%= image_tag "perfil_odontologos/boton_datos_consultorio.png", class:'datos_consultorio_btn '%>
+        <%= image_tag "perfil_odontologos/boton_datos_profesionales.png", class:'datos_profesionales_btn'%>
+        <%= image_tag "perfil_odontologos/boton_cambio_de_clave.png", class:'cambio_clave_btn'%>
+    </div>
+  </div>
+  <div class="contenedor_navegacion_home_odontologo">
+          <div class="container">
+            <div class="content-1 active div_mov">
+                  <div class="izquierda_perfil">
+                  <div class="arriba">
+                    <div class="izquierda">
+                       <%= form_tag("/odontologos/7" , :method => :put, id:'formulario_imagen') do %>
+                        <div class="file-wrapper">
+                          <input class="registro_campo" id="odontologo_image" name="odontologo[image]" type="file" >
+                          <span class="button_sArc" ></span>
+                        </div>
+                      <% end %>
+                      
+                    </div>
+                    <div class="derecha">
+                      <div class="field">
+                        <label>Nombre :</label>
+                        <input type="text" id="nombre_odontologo" class="tam_input">
+                      </div>
+                      <div class="field">
+                        <label>Apellido:</label>
+                        <input type="text" id="apellido_odontologo" class="tam_input">
+                      </div>
+                      <div class="fecha_nacimiento_p">
+                              <div style="float:left;">
+                                <label for="name" id="name_label">Fecha de <br> nacimiento</label> 
+                              </div>
+
+                              <div class="styled_dropdown" style="width: 76px;height: 25px; float:left; margin-left:7px;">
+                                <select id="mes" style="width: 77px;height: 25px;">
+                                  <option value="--">mm</option>
+                                  <option value="1">Ene</option>
+                                  <option value="2">Feb</option>
+                                  <option value="3">Mar</option>
+                                  <option value="4">Abr</option>
+                                  <option value="5">May</option>
+                                  <option value="6">Jun</option>
+                                  <option value="7">Jul</option>
+                                  <option value="8">Ago</option>
+                                  <option value="9">Sep</option>
+                                  <option value="10">Oct</option>
+                                  <option value="11">Nov</option>
+                                  <option value="12">Dic</option>
+                                </select>
+                              </div>
+                               
+                              <div class="styled_dropdown" style="width: 76px;height: 25px; float:left; margin-left:7px;">
+                              <select id="dia" style="width: 77px;height: 25px;">
+                                <option value="--">dd</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                              </select>
+                              </div>
+
+                               <div class="styled_dropdown" style="width: 77px;height: 25px; float:left; margin-left:7px;">
+                               <select id="ano" style="width: 77px;height: 25px;">
+                                  <option value="--">aa</option>
+                                  <option value="2013">2013</option>
+                                  <option value="2012">2012</option>
+                                  <option value="2011">2011</option>
+                                  <option value="2010">2010</option>
+                                  <option value="2009">2009</option>
+                                  <option value="2008">2008</option>
+                                  <option value="2007">2007</option>
+                                  <option value="2006">2006</option>
+                                  <option value="2005">2005</option>
+                                  <option value="2004">2004</option>
+                                  <option value="2003">2003</option>
+                                  <option value="2002">2002</option>
+                                  <option value="2001">2001</option>
+                                  <option value="2000">2000</option>
+                                  <option value="1999">1999</option>
+                                  <option value="1998">1998</option>
+                                  <option value="1997">1997</option>
+                                  <option value="1996">1996</option>
+                                  <option value="1995">1995</option>
+                                  <option value="1994">1994</option>
+                                  <option value="1993">1993</option>
+                                  <option value="1992">1992</option>
+                                  <option value="1991">1991</option>
+                                  <option value="1990">1990</option>
+                                  <option value="1989">1989</option>
+                                  <option value="1988">1988</option>
+                                  <option value="1987">1987</option>
+                                  <option value="1986">1986</option>
+                                  <option value="1985">1985</option>
+                                  <option value="1984">1984</option>
+                                  <option value="1983">1983</option>
+                                  <option value="1982">1982</option>
+                                  <option value="1981">1981</option>
+                                  <option value="1980">1980</option>
+                                  <option value="1979">1979</option>
+                                  <option value="1978">1978</option>
+                                  <option value="1977">1977</option>
+                                  <option value="1976">1976</option>
+                                  <option value="1975">1975</option>
+                                  <option value="1974">1974</option>
+                                  <option value="1973">1973</option>
+                                  <option value="1972">1972</option>
+                                  <option value="1971">1971</option>
+                                  <option value="1970">1970</option>
+                                  <option value="1969">1969</option>
+                                  <option value="1968">1968</option>
+                                  <option value="1967">1967</option>
+                                  <option value="1966">1966</option>
+                                  <option value="1965">1965</option>
+                                  <option value="1964">1964</option>
+                                  <option value="1963">1963</option>
+                                  <option value="1962">1962</option>
+                                  <option value="1961">1961</option>
+                                  <option value="1960">1960</option>
+                                  <option value="1959">1959</option>
+                                  <option value="1958">1958</option>
+                                  <option value="1957">1957</option>
+                                  <option value="1956">1956</option>
+                                  <option value="1955">1955</option>
+                                  <option value="1954">1954</option>
+                                  <option value="1953">1953</option>
+                                  <option value="1952">1952</option>
+                                  <option value="1951">1951</option>
+                                  <option value="1950">1950</option>
+                                  <option value="1949">1949</option>
+                                  <option value="1948">1948</option>
+                                  <option value="1947">1947</option>
+                                  <option value="1946">1946</option>
+                                  <option value="1945">1945</option>
+                                  <option value="1944">1944</option>
+                                  <option value="1943">1943</option>
+                                  <option value="1942">1942</option>
+                                  <option value="1941">1941</option>
+                                  <option value="1940">1940</option>
+                                  <option value="1939">1939</option>
+                                  <option value="1938">1938</option>
+                                  <option value="1937">1937</option>
+                                  <option value="1936">1936</option>
+                                  <option value="1935">1935</option>
+                                  <option value="1934">1934</option>
+                                  <option value="1933">1933</option>
+                                  <option value="1932">1932</option>
+                                  <option value="1931">1931</option>
+                                  <option value="1930">1930</option>
+                                  <option value="1929">1929</option>
+                                  <option value="1928">1928</option>
+                                  <option value="1927">1927</option>
+                                  <option value="1926">1926</option>
+                                  <option value="1925">1925</option>
+                                  <option value="1924">1924</option>
+                                  <option value="1923">1923</option>
+                                  <option value="1922">1922</option>
+                                  <option value="1921">1921</option>
+                                  <option value="1920">1920</option>
+                                  <option value="1919">1919</option>
+                                  <option value="1918">1918</option>
+                                  <option value="1917">1917</option>
+                                  <option value="1916">1916</option>
+                                  <option value="1915">1915</option>
+                                  <option value="1914">1914</option>
+                                  <option value="1913">1913</option>
+                                  <option value="1912">1912</option>
+                                  <option value="1911">1911</option>
+                                  <option value="1910">1910</option>
+                                  <option value="1909">1909</option>
+                                  <option value="1908">1908</option>
+                                  <option value="1907">1907</option>
+                                  <option value="1906">1906</option>
+                                  <option value="1905">1905</option>
+                                  <option value="1904">1904</option>
+                                  <option value="1903">1903</option>
+                                  <option value="1902">1902</option>
+                                  <option value="1901">1901</option>
+                                  <option value="1900">1900</option>
+                              </select>
+                              </div>
+                            </div>
+                            <br><br>
+
+                      <div class="field">
+                        <label>Celular :</label>
+                        <input type="text" id="celular_odontologo" class="tam_input">
+                      </div>
+                      <div class="field">
+                        <label>Email :</label>
+                        <input type="text" id="email_odontologo" class="tam_input">
+                      </div>
+
+                      <div class="field_vincular">
+                        <label>Vincular :</label>
+                        <div id="movimiento_vertical_vincular">
+                          <%= image_tag 'perfil_odontologos/icono_facebook.png', class: 'espacio_img face_vincular'%>
+                          <%= image_tag 'perfil_odontologos/icono_twitter.png', class: 'espacio_img twt_vincular'%>
+                          <%= image_tag 'perfil_odontologos/icono_linkedin.png', class: 'espacio_img linked_vincular'%>
+                          <%= image_tag 'perfil_odontologos/icono_youtube.png', class: 'espacio_img utube_vincular'%>
+                          <%= image_tag 'perfil_odontologos/icono_sitioweb.png', class: 'espacio_img web_vincular'%>
+                          <input type="text" id="vincular_odontologo" class="tam_input">
+                          <%= image_tag 'perfil_odontologos/icono_confirmar_over.png', class: 'aceptar_vincular'%>
+                        </div>
+                        
+                      </div>
+                    </div>
+                     
+                    
+                  </div>
+                  <div class="abajo">
+                      <label>Perfil : (maximo: 491 caracteres)</label> <br>
+                      <textarea  id="perfil_odontologo" cols="58" rows="8"></textarea>
+                  </div>
+                  </div>
+                  <div class="derecha_perfil">
+                    <input type="submit" name="submit" class="button" id="submit_btn_pef" value="Guardar">
+                  </div>
+            </div>
+            <div class="content-2 div_mov">
+              <div class="datos_consultorio_izq">
+                  <div class="field">
+                      <label>Nombre :</label>
+                      <input type="text" id="nombre_consultorio" class="tam_input" disabled>
+                  </div>
+                  <div class="field">
+                      <label>Ciudad:</label>
+                      <input type="text" id="ciudad_consultorio" class="tam_input" disabled>
+                  </div>
+                  <div class="field">
+                      <label>Zona :</label>
+                      <input type="text" id="zona_consultorio" class="tam_input" disabled>
+                  </div>
+                  <div class="field">
+                      <label>Dirección:</label>
+                      <input type="text" id="direccion_consultorio" class="tam_input" disabled>
+                  </div>
+                  <div class="field" style="margin: 0 0 20px 0;">
+                      <label>Teléfono :</label>
+                      <input type="text" id="telefono_consultorio" class="tam_input" disabled>
+                  </div>
+
+
+                  <div class="fotos_consultorio">
+                        <p style="margin: 0 0 10px 15px;">Fotos consultorio:</p>
+                        <!--<%= form_tag("/odontologos/7" , :method => :put, id:'formulario_imagen_1_consultorio') do %>-->
+                        <div class="file_wrapper_f">
+                          <!--<input class="registro_campo" id="odontologo_image" name="odontologo[image]" type="file">-->
+                          <span class="button_sArcC foto_consul_1"></span>
+                        </div>
+                      <!--<% end %> 
+                      <%= form_tag("/odontologos/7" , :method => :put, id:'formulario_imagen_2_consultorio') do %>-->
+                        <div class="file_wrapper_f">
+                          <!--<input class="registro_campo" id="odontologo_image" name="odontologo[image]" type="file">-->
+                          <span class="button_sArcC foto_consul_2"></span>
+                        </div>
+                      <!--<% end %>
+                      <%= form_tag("/odontologos/7" , :method => :put, id:'formulario_imagen_3_consultorio') do %>-->
+                        <div class="file_wrapper_f">
+                          <!--<input class="registro_campo" id="odontologo_image" name="odontologo[image]" type="file">-->
+                          <span class="button_sArcC foto_consul_3"></span>
+                        </div>
+                     <!-- <% end %>-->
+                  </div>
+
+              </div>
+              <div class="datos_consultorio_der">
+                  <div id="map_canvas"></div>
+              </div>
+            </div>
+            <div class="content-3 div_mov">
+                    <div class="datos_prof_arriba">
+                      <div class="especialidad">
+                        <h2 class="nav">Especialidad <span><%= image_tag 'perfil_odontologos/icono_flecha_menu_datos_profesionales.png' %></span></h2>
+                        <ul class="select" >
+                            <li data-value="odontopediatria" >Odontopediatria</li>
+                            <li data-value="endodoncia" >Endodoncia</li>
+                            <li data-value="ortodoncia">Ortodoncia</li>
+                            <li data-value="estetica_dental">Estetica Dental</li>
+                            <li data-value="rehabilitacion_oral">Rehabilitacion Oral</li>
+                            <li data-value="cirugia_dental">Cirugia Dental</li>
+                            <li data-value="cirugia_maxilofacial">Cirugia Maxilofacial</li>
+                            <li data-value="odontologia_integral">Odontólogía integral</li>
+                            <li data-value="odontologia_general">Odontólogía general</li>
+                            <li data-value="Prostodoncia">Prostodoncia</li>
+                            <li data-value="implantologia_oral_reconstructiva" style="font-size:9pt;">Implantología oral y reconstructiva</li>
+                        </ul>
+
+                      </div>
+                      
+                      <div class="prepagadas">
+                         <h2 class="nav">Prepagadas aceptadas <span><%= image_tag 'perfil_odontologos/icono_flecha_menu_datos_profesionales.png' %></span></h2>
+                          <ul class="select">
+                              <li data-value="cafesalud">Cafesalud</li>
+                              <li data-value="colmedica">Colmedica</li>
+                              <li data-value="colpatria">Colpatria</li>
+                              <li data-value="colsanitas">Colsanitas</li>
+                              <li data-value="coomeva">Coomeva</li>
+                              <li data-value="humana">Humana</li>
+                              <li data-value="medisalud">Medisalud</li>
+                              <li data-value="medisanitas">Medisanitas</li>
+                              <li data-value="vivir">Vivir</li>
+                              <li data-value="salud">Salud</li>
+                              <li data-value="colmena">Colmena</li>
+                              <li data-value="susalud">Susalud</li>
+                              <li data-value="ninguna">Ninguna</li>
+                          </ul>
+                      </div>
+                     
+                      <div class="consultas">
+                        <h2 class="nav">Consultas aceptadas <span><%= image_tag 'perfil_odontologos/icono_flecha_menu_datos_profesionales.png' %></span></h2>
+                        <ul class="select">
+                            <li data-value="blanqueamiento">Blanqueamiento</li>
+                            <li data-value="diseno_sonrisa">Diseño de sonrisa</li>
+                            <li data-value="consulta_general">Consulta General</li>
+                            <li data-value="calzas_retinas">Calzas, Resinas ...</li>
+                            <li data-value="carillas_obturacion">Carillas y Obturacion</li>
+                            <li data-value="frenillos_retenedores">Frenillos y Retenedores</li>
+                            <li data-value="cordales">Cordales</li>
+                            <li data-value="cita_control">Cita de Control</li>
+                            <li data-value="implantes_protesis">Implantes y Protesis</li>
+                            <li data-value="conductos">Conductos</li>
+                            <li data-value="consulta_preventiva">Consulta Preventiva</li>
+                        </ul>
+
+                      </div>
+                      
+                    </div>
+
+                    <div class="datos_prof_medio">
+                      <div class="izquierda">
+                        <p>Estudios (maximo: 180 caracteres)</p>
+                        <textarea id="profesionales_estudios_profesionales" cols="38" rows="9"></textarea>
+                      </div>
+                      <div class="derecha">
+                        <p>Promociones (maximo: 180 caracteres)</p>
+                        <textarea id="profesionales_membrecias_profesionales"  cols="38" rows="9"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="datos_prof_abajo">
+                      <p>Medio <br> de pago:</p>
+                      <div class="grupo_seleccion_forma_pago">
+                        <input type="checkbox" name="medio_pago" value="Efectivo" id="efectivo"> Efectivo
+                        <input type="checkbox" name="medio_pago" value="Tarjeta Crédito Visa" id="visa"> Tarjeta Crédito Visa
+                        <input type="checkbox" name="medio_pago" value="Tarjeta Crédito MasterCard" id="mastercard">  Tarjeta Crédito MasterCard
+                      </div>
+                      
+                      <input type="submit" name="submit" class="button" id="submit_btn_perso" value="Guardar">
+                    </div>  
+            </div>
+            <div class="content-4 div_mov">
+                <div class="area_cambio_clave">
+                    <div class="input">
+                        <label for="name" >Contraseña Antigua :</label> 
+                        <input type="password" id="contra_antigua" class="tam_input">
+                     </div>
+                    <div class="input">
+                        <label for="name" >Contraseña nueva :</label>
+                        <input type="password" id="contra_nueva" class="tam_input">
+                    </div>
+                    <div class="input">
+                        <label for="name" >Confirme la contraseña :</label> 
+                        <input type="password" id="confirmacion_nueva_contra" class="tam_input">
+                    </div>
+                     <input type="submit" name="submit" class="button" id="submit_btn_cambio_clave" value="Guardar">
+                </div>
+            </div>
+          </div>
+  </div>
+
+</div>
+
+ <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+
+<script type="text/javascript">
+  $(function(){
+    $('#formulario_imagen').fileupload({
+      type:'PUT',
+      dataType:'json',
+      done : function (e, data) {
+       //console.log(data.result);
+       console.log(data.result.image.url);
+       //console.log($('.button_sArc'));
+       $('.button_sArc').css({'background':'url('+data.result.image.url+') '});
+       //$('.perfil_odontologo_area').append('<img style="width:200px;height:200px;" src='+data.result.image.url+'>');
+      }
+    });
+
+
+      //google maps
+
+       function initialize(lat,longi) {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        marker = new google.maps.Marker({
+          map: map,
+          position: map.getCenter()
+        });
+
+         google.maps.event.addListener(map, 'center_changed', function() {
+          //console.log(map.getCenter());
+          marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          console.log(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+          //marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          console.log(map.getCenter());
+          //marker.setPosition(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+
+        });
+
+       
+      }
+
+      //dir = 'C80 30 # 21 bogota'
+      //google.maps.event.addDomListener(window, 'load', initialize);
+      
+      var funcion_direccion = function ( dir) {
+        geocoder.geocode( { 'address': dir}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            marker.setPosition(map.getCenter());
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+
+        });
+      }
+
+
+      var css_a_meter = {
+            '-webkit-transform':' translateX(0px)',
+          '-moz-transform': 'translateX(0px)',
+          '-o-transform': 'translateX(0px)',
+          '-ms-transform': 'translateX(0px)',
+          'transform': 'translateX(0px)',
+          'z-index': '100',
+            '-ms-filter':"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)",
+            'filter': 'alpha(opacity=100)',
+            'opacity': 1,
+            '-webkit-transition': 'all ease-out 0.3s 0.1s',
+            '-moz-transition':' all ease-out 0.3s 0.1s',
+            '-o-transition': 'all ease-otu 0.3s 0.1s',
+            '-ms-transition': 'all ease-out 0.3s 0.1s',
+            'transition': 'all ease-out 0.3s 0.1s'
+            };
+
+          var css_reset_1 = {
+              'z-index': 1,
+            'opacity': 0,
+              '-webkit-transform': 'translateX(-250px)',
+          '-moz-transform': 'translateX(-250px)',
+          '-o-transform': 'translateX(-250px)',
+          '-ms-transform': 'translateX(-250px)',
+          'transform': 'translateX(-250px)'
+            };
+
+          var css_reset_2 = {
+              'z-index': 1,
+            'opacity': 0,
+              '-webkit-transform': 'translateX(250px)',
+          '-moz-transform': 'translateX(250px)',
+          '-o-transform': 'translateX(250px)',
+          '-ms-transform': 'translateX(250px)',
+          'transform': 'translateX(250px)'
+            };
+          $('.tab-label-1').on('click',function() {
+            $('.content-1').css(css_a_meter);
+            $('.content-2').css(css_reset_2);
+            $('.content-3').css(css_reset_1);
+            $('.content-4').css(css_reset_2);
+          });
+
+          $('.tab-label-2').on('click',function() {
+           
+          });
+
+          $('.tab-label-3').on('click',function() {
+            
+          });
+
+
+      $('.datos_personales_btn').on('click',function () {
+  
+        if ($(this).hasClass('activo')) {
+          //console.log('lo quito');
+          //$(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+        }else{
+          
+          $(this).addClass('activo').attr('src', $(this).attr('src').replace('.png','_over.png'));
+          $(this).siblings().each(function (index) {
+              $(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+          });
+          
+           $('.content-1').css(css_a_meter);
+            $('.content-2').css(css_reset_2);
+            $('.content-3').css(css_reset_1);
+            $('.content-4').css(css_reset_2);
+        }
+
+      });
+
+      $('.datos_consultorio_btn').on('click',function () {
+  
+        if ($(this).hasClass('activo')) {
+          //console.log('lo quito');
+          //$(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+        }else{
+          
+          $(this).addClass('activo').attr('src', $(this).attr('src').replace('.png','_over.png'));
+          $(this).siblings().each(function (index) {
+              $(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+          });
+          
+          $('.content-1').css(css_reset_1);
+            $('.content-2').css(css_a_meter);
+            $('.content-3').css(css_reset_1);
+            $('.content-4').css(css_reset_2);
+
+           
+
+        }
+
+      });
+
+      $('.datos_profesionales_btn').on('click',function () {
+  
+        if ($(this).hasClass('activo')) {
+          //console.log('lo quito');
+          //$(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+        }else{
+          
+          $(this).addClass('activo').attr('src', $(this).attr('src').replace('.png','_over.png'));
+          $(this).siblings().each(function (index) {
+              $(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+          });
+
+          $('.content-1').css(css_reset_1);
+            $('.content-2').css(css_reset_2);
+            $('.content-3').css(css_a_meter);
+            $('.content-4').css(css_reset_2);
+        }
+        
+      });
+
+       $('.cambio_clave_btn').on('click',function () {
+  
+        if ($(this).hasClass('activo')) {
+          //console.log('lo quito');
+          //$(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+        }else{
+         
+          $(this).addClass('activo').attr('src', $(this).attr('src').replace('.png','_over.png'));
+          $(this).siblings().each(function (index) {
+              $(this).removeClass('activo').attr('src', $(this).attr('src').replace('_over.png','.png'));
+          });
+        }
+        
+         $('.content-1').css(css_reset_1);
+           $('.content-2').css(css_reset_2);
+           $('.content-3').css(css_reset_1);
+           $('.content-4').css(css_a_meter);
+
+      });
+
+
+
+       /*
+       <input type="checkbox" name="medio_pago" value="visa" id="visa"> Tarjeta Crédito Visa
+       <input type="checkbox" name="medio_pago" value="mastercard" id="mastercard">  Tarjeta Crédito MasterCard
+        */
+
+     // var odonto_registrado = new Odontocitas.Collections.OdontologosCollection();
+
+      var perfil = {
+        mis_especialidades : '',
+        mis_prepagadas : '',
+        mis_consultas : '',
+        mis_medios_pago : '',
+        init :  function () {
+
+          $('.content-1').css(css_a_meter);
+          $('.content-2').css(css_reset_2);
+          $('.content-3').css(css_reset_1);
+          $('.content-4').css(css_reset_2);
+
+          odonto_registrado.fetch({
+              success:function () {
+                   perfil.llenar_formulario_personal();
+                   perfil.llenar_formulario_profesionales();
+                   var arre = $('#formulario_imagen').attr('action').split('/');
+                   arre[2] = odonto_registrado.id;
+                   $('#formulario_imagen').attr('action',arre.join('/'));
+              }
+          });
+
+          consultorio.fetch({
+              success:function () {
+                perfil.llenar_consultorio();
+              }
+          });
+
+          especialidades.fetch({
+                success:function () {
+                  perfil.llenar_especialidades();
+                }
+           });
+
+         prepagadas.fetch({
+                success:function () {
+                  perfil.llenar_prepagadas();
+                }
+           });
+
+     
+   
+          consultas.fetch({
+                success:function () {
+                  perfil.llenar_consultas();
+                }
+           });
+
+   
+          medioPagos.fetch({
+                success:function () {
+                  perfil.llenar_medios_pago();
+                }
+           });
+          
+          this.eventos();
+          
+        },
+        eventos : function(){
+          $('.face_vincular').on('click',function () {
+              $('#vincular_odontologo').val(odonto_registrado.get('facebook'));
+              $('#movimiento_vertical_vincular').addClass('facebook');
+              $('#movimiento_vertical_vincular').animate({
+                top:'-35px'
+              },500);
+          });
+
+          $('.twt_vincular').on('click',function () {
+               $('#vincular_odontologo').val(odonto_registrado.get('twitter'));
+               $('#movimiento_vertical_vincular').addClass('twt');
+               $('#movimiento_vertical_vincular').animate({
+                top:'-35px'
+              },500);
+          });
+
+           $('.linked_vincular').on('click',function () {
+              $('#vincular_odontologo').val(odonto_registrado.get('linkedin'));
+              $('#movimiento_vertical_vincular').addClass('linked');
+              $('#movimiento_vertical_vincular').animate({
+                top:'-35px'
+              },500);
+          });
+
+            $('.utube_vincular').on('click',function () {
+               $('#vincular_odontologo').val(odonto_registrado.get('youtube'));
+               $('#movimiento_vertical_vincular').addClass('utube');
+               $('#movimiento_vertical_vincular').animate({
+                top:'-35px'
+              },500);
+          });
+
+           $('.web_vincular').on('click',function () {
+               $('#vincular_odontologo').val(odonto_registrado.get('web'));
+               $('#movimiento_vertical_vincular').addClass('web');
+               $('#movimiento_vertical_vincular').animate({
+                top:'-35px'
+              },500);
+          });
+
+            //agregar vinculacion
+
+            $('.aceptar_vincular').on('click',function () {
+              if ($('#movimiento_vertical_vincular').hasClass('twt')) {
+                $('#movimiento_vertical_vincular').removeClass('twt');
+                odonto_registrado.set('twitter',$('#vincular_odontologo').val());
+              };
+
+              if ($('#movimiento_vertical_vincular').hasClass('linked')) {
+                $('#movimiento_vertical_vincular').removeClass('linked');
+                odonto_registrado.set('linkedin',$('#vincular_odontologo').val());
+              };
+
+              if ($('#movimiento_vertical_vincular').hasClass('facebook')) {
+                $('#movimiento_vertical_vincular').removeClass('facebook');
+                odonto_registrado.set('facebook',$('#vincular_odontologo').val());
+              };
+
+              if ($('#movimiento_vertical_vincular').hasClass('utube')) {
+                $('#movimiento_vertical_vincular').removeClass('utube');
+                odonto_registrado.set('youtube',$('#vincular_odontologo').val());
+              };
+
+              if ($('#movimiento_vertical_vincular').hasClass('web')) {
+                $('#movimiento_vertical_vincular').removeClass('web');
+                odonto_registrado.set('web',$('#vincular_odontologo').val());
+              };
+               
+               $('#movimiento_vertical_vincular').animate({
+                top:'0px'
+              },500,function () {
+                $('#vincular_odontologo').val('');
+              });
+          });
+
+           $('#submit_btn_cambio_clave').on('click',function (e) {
+                e.preventDefault();
+                perfil.validacion_cambio_pass();
+            });
+            
+            //guardar datos personales
+
+          $('#submit_btn_pef').on('click',function(e) {
+            e.preventDefault();
+            console.log('voy a guardarlo');
+
+            odonto_registrado.save({'nombre' : $('#nombre_odontologo').val(),
+                   'apellido' : $('#apellido_odontologo').val(),
+                   'celular' : $('#celular_odontologo').val(),
+                   'correo' : $('#email_odontologo').val(),
+                   'perfil' : $('#perfil_odontologo').val(),
+                   'fecha_nacimiento' : $('#dia').val()+'/'+$('#mes').val()+'/'+$('#ano').val()
+
+            },{
+              success:function(){
+                 alert('Se actualizó correctamente');
+                //console.log('se actualizo correctamente');
+              }
+            });
+            console.log(odonto_registrado);
+
+          }); 
+
+          //acciones dropdowns
+
+          $('.nav').click(function(event) {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $(this).next().stop().slideUp(200);
+            } else {
+                $(this).addClass('active');
+                $(this).next().slideDown(200);
+            }
+            event.preventDefault();
+          });
+
+          $('.select').find('li').click(function(event) {
+              //select.removeClass('active');
+              //$(this).toggleClass('active');
+
+              if ($(this).hasClass('active')) {
+                //console.log($(this).parent().parent());
+                if($(this).parent().parent().hasClass('especialidad')){
+                  perfil.eliminar_especialidad($(this).html().trim());
+                }
+                if($(this).parent().parent().hasClass('prepagadas')){
+                  perfil.eliminar_prepagada($(this).html().trim());
+                }
+                if($(this).parent().parent().hasClass('consultas')){
+                  perfil.eliminar_consulta($(this).html().trim());
+                }
+                $(this).removeClass('active');
+              }else{
+                //console.log($(this).parent().parent());
+                if($(this).parent().parent().hasClass('especialidad')){
+                  perfil.guardar_especialidad($(this).html().trim());
+                }
+                if($(this).parent().parent().hasClass('prepagadas')){
+                  perfil.guardar_prepagada($(this).html().trim());
+                }
+                if($(this).parent().parent().hasClass('consultas')){
+                  perfil.guardar_consulta($(this).html().trim());
+                }
+                $(this).addClass('active');
+              }
+          });
+
+        //acciones checkboxes
+
+        
+           $("#efectivo").on('click',function () {
+              if (this.checked) {
+                perfil.guardar_medio_pago($(this).val().trim());
+              }else{
+                perfil.eliminar_medio_pago($(this).val().trim());
+              }
+           });
+
+           $("#visa").on('click',function () {
+              if (this.checked) {
+                perfil.guardar_medio_pago($(this).val().trim());
+              }else{
+                perfil.eliminar_medio_pago($(this).val().trim());
+              }
+           });
+
+           $("#mastercard").on('click',function () {
+              if (this.checked) {
+                perfil.guardar_medio_pago($(this).val().trim());
+              }else{
+                perfil.eliminar_medio_pago($(this).val().trim());
+              }
+           });
+
+        },
+        llenar_formulario_personal : function () {
+            if (odonto_registrado.get('image').url == null) {
+              $('.button_sArc').css({'background':'url(assets/perfil_odontologos/subir_foto_perfil.png)'});
+            }else{
+              console.log('hola');
+              $('.button_sArc').css({'background':'url('+odonto_registrado.get('image').url+')'});
+            }
+           
+           $('#nombre_odontologo').val(odonto_registrado.get('nombre'));
+           $('#apellido_odontologo').val(odonto_registrado.get('apellido'));
+           $('#celular_odontologo').val(odonto_registrado.get('celular'));
+           $('#email_odontologo').val(odonto_registrado.get('correo'));
+           $('#perfil_odontologo').val(odonto_registrado.get('perfil'));
+           /*
+           console.log(odonto_registrado.get('fecha_nacimiento').split('/')[0]);
+           console.log(odonto_registrado.get('fecha_nacimiento').split('/')[1]);
+           console.log(odonto_registrado.get('fecha_nacimiento').split('/')[2]);
+           */
+           $('#dia').val(odonto_registrado.get('fecha_nacimiento').split('/')[0]);
+           $('#mes').val(odonto_registrado.get('fecha_nacimiento').split('/')[1]);
+           $('#ano').val(odonto_registrado.get('fecha_nacimiento').split('/')[2]);
+
+          //odonto_registrado
+        },
+        llenar_formulario_profesionales : function() {
+            $('#profesionales_estudios_profesionales').val(odonto_registrado.get('estudio'));
+            $('#profesionales_membrecias_profesionales').val(odonto_registrado.get('membrecia'));
+
+
+
+            //guardar datos profesionales
+
+            $('#submit_btn_perso').on('click',function (e) {
+                e.preventDefault();
+
+                //perfil.guardar_especialidades();
+                //perfil.guardar_prepagadas();
+                //perfil.guardar_consultas();
+                //perfil.guardar_medios_pago();
+                odonto_registrado.save({'estudio':$('#profesionales_estudios_profesionales').val(),
+                                        'membrecia':$('#profesionales_membrecias_profesionales').val()
+                                      },
+                                        {success:function(){
+                                          //console.log(odonto_registrado);
+                                           alert('Se actualizo correctamente');
+                                          //console.log('se actualizo correctamente');
+                                        }
+                                      });
+
+            });
+
+
+        },
+        llenar_consultorio : function () {
+          var mi_consultorio =consultorio.where({odontologo_id:parseInt(id_odontologo)})[0]; 
+          if (mi_consultorio) {
+            $('.foto_consul_1').css('background','url('+mi_consultorio.get('imagen1').url+')');
+            $('.foto_consul_2').css('background','url('+mi_consultorio.get('imagen2').url+')');
+            $('.foto_consul_3').css('background','url('+mi_consultorio.get('imagen3').url+')');
+
+
+            $('#nombre_consultorio').val(mi_consultorio.get('nombre'));
+            $('#ciudad_consultorio').val(mi_consultorio.get('ciudad'));
+            $('#direccion_consultorio').val(mi_consultorio.get('direccion'));
+            $('#zona_consultorio').val(mi_consultorio.get('zona'));
+            $('#telefono_consultorio').val(mi_consultorio.get('telefono'));
+            google.maps.event.addDomListener(window, 'load', initialize(mi_consultorio.get('lat'),mi_consultorio.get('long')));
+          }
+          
+
+        },
+        llenar_especialidades : function () {
+          this.mis_especialidades= especialidades.where({odontologo_id:id_odontologo});
+          $('.especialidad .select li').map(function(index,element){
+              for (var i = 0; i < perfil.mis_especialidades.length ; i++) {
+
+                if ($(element).html().trim() == perfil.mis_especialidades[i].get('especialidad').trim()) {
+                   $(element).addClass('active');
+                }
+              }
+          });
+        },
+        guardar_especialidad : function(especialidad){
+          //console.log(especialidad);
+          especialidades.create({odontologo_id:id_odontologo,especialidad:especialidad});
+          
+        },
+        eliminar_especialidad : function(especialidad){
+          //console.log(especialidad);
+          especialidades.where({odontologo_id:id_odontologo,especialidad:especialidad})[0].destroy();
+        },
+        llenar_prepagadas : function () {
+          this.mis_prepagadas= prepagadas.where({odontologo_id:parseInt(id_odontologo)});
+          //console.log(prepagadas);
+          //console.log(this.mis_prepagadas);
+          $('.prepagadas .select li').map(function(index,element){
+              for (var i = 0; i < perfil.mis_prepagadas.length ; i++) {
+                if ($(element).html().trim() == perfil.mis_prepagadas[i].get('prepagada').trim()) {
+                   $(element).addClass('active');
+                }
+              }
+          });
+        },
+        guardar_prepagada : function(prepagada){
+          //console.log(especialidad);
+          prepagadas.create({odontologo_id:parseInt(id_odontologo),prepagada:prepagada});
+          
+        },
+        eliminar_prepagada : function(prepagada){
+          //console.log(especialidad);
+          prepagadas.where({odontologo_id:parseInt(id_odontologo),prepagada:prepagada})[0].destroy();
+        },
+        llenar_consultas :function () {
+          
+          this.mis_consultas= consultas.where({odontologo_id:parseInt(id_odontologo)});
+          $('.consultas .select li').map(function(index,element){
+              for (var i = 0; i < perfil.mis_consultas.length ; i++) {
+                //console.log(perfil.mis_consultas[i]);
+                if ($(element).html().trim() == perfil.mis_consultas[i].get('consulta_aceptada').trim()) {
+                   $(element).addClass('active');
+                }
+              }
+          });
+
+        },
+        guardar_consulta: function(consulta_aceptada){
+          //console.log(especialidad);
+          consultas.create({odontologo_id:parseInt(id_odontologo),consulta_aceptada:consulta_aceptada});
+          
+        },
+        eliminar_consulta : function(consulta_aceptada){
+          //console.log(especialidad);
+          consultas.where({odontologo_id:parseInt(id_odontologo),consulta_aceptada:consulta_aceptada})[0].destroy();
+        },
+        llenar_medios_pago : function () {
+
+          this.mis_medios_pago= medioPagos.where({odontologo_id:parseInt(id_odontologo)});
+          $('.grupo_seleccion_forma_pago input').map(function(index,element){
+              for (var i = 0; i < perfil.mis_medios_pago.length ; i++) {
+                //console.log(perfil.mis_medios_pago[i]);
+                if ($(element).val().trim() == perfil.mis_medios_pago[i].get('medio_pago').trim()) {
+                   $(element).prop('checked', true);
+                }
+              }
+          });
+
+        },
+        guardar_medio_pago : function(medio_pago){
+          medioPagos.create({odontologo_id:parseInt(id_odontologo),medio_pago:medio_pago});
+        },
+        eliminar_medio_pago : function(medio_pago){
+          medioPagos.where({odontologo_id:parseInt(id_odontologo),medio_pago:medio_pago})[0].destroy();
+        },
+        validacion_cambio_pass : function(){
+
+            if (odonto_registrado.get('clave') == $('#contra_antigua').val().trim()) {
+              if ($('#contra_nueva').val().trim() == $('#confirmacion_nueva_contra').val().trim()) {
+                odonto_registrado.save({'clave' : $('#contra_nueva').val()
+                  },{
+                    success:function(){
+                      alert('Su cambio de contraseña se hizo correctamente');
+                    //console.log('se actualizo correctamente');
+                    },
+                    error: function(){
+                      alert('hubo un error en la red, por favor vuelvalo a intentar mas tarde');
+                    }
+                });
+              }else{
+                alert('La contraseña nueva no coindice con su confirmacion');
+              }
+            }else{
+              alert('La contraseña antigua que usted digito no coincide');
+            }
+
+            $('#contra_nueva').val('');
+            $('#contra_antigua').val('');
+            $('#confirmacion_nueva_contra').val('');
+        }
+      }
+
+      perfil.init()
+
+      //console.log(odonto_registrado);
+      
+      $('.link_agendar').bind("ajax:success", function(evt, data, status, xhr){
+        html = $.parseHTML( data )
+        console.log(evt);
+         console.log(data);
+        $('.contenedor_navegacion_home_odontologo').html($(html[80]).children('.contenedor_navegacion_home_odontologo').html());
+        //console.log($(html[80]).children('.contenedor_navegacion_home_odontologo').html());
+        console.log(status);
+        console.log(xhr);
+      });
+      
+   
+});
+
+
+
+
+</script>

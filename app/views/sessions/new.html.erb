@@ -1,0 +1,29 @@
+<div class="area_error_login">
+	<p id="mensaje">
+		El correo o la contraseña es incorrecta
+	</p>
+
+	<div class="login_form naranja">
+
+					<%= form_tag sessions_path do %>
+						<div class="conjunto_login">
+							&nbsp;&nbsp;Correo:
+							<input type="text" size="50" name="username">
+		          		</div>
+		          		<br>
+		          		<div class="conjunto_login">
+		          			&nbsp;&nbsp;&nbsp;&nbsp;Clave:
+		          			<input type="password" size="50" name="password">
+		          		</div>
+		          		
+		          		<br>
+		          		<%= submit_tag "Log In", :class=> 'submit' %>
+		          		<br>
+		          		<br>
+		          		<p class="gris olvidasta_contra">
+		          			¿Olvidaste la contraseña?
+		          		</p>
+		        	<% end %>
+
+	</div>
+</div>

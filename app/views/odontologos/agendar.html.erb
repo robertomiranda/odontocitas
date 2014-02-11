@@ -1,0 +1,826 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">  
+          DR . <%= current_user.apellido.partition(" ")[0] %>.
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> 'link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar_over.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar activo_menu' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div>  
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+
+  <div class="contenedor_navegacion_home_odontologo" style="top:100px;">
+      <form name="agendar" action="">  
+     
+
+        <div class="izquierda_form_agendar">
+               <label for="name" id="name_label">Informacion Paciente</label> 
+                <br>
+                <br>
+                <input placeholder="   Correo" type="text" name="correo" id="correo_age"  size="40" value="" class="text-input" />  
+                <br>
+                <br>
+                <input placeholder="   Nombre del Paciente" type="text" name="nombre" id="name" size="40" value="" class="text-input" />
+                <br>
+                <br>
+                <input placeholder="   Apellido del Paciente" type="text" name="apellido" id="apellido_age" size="40" value="" class="text-input" /> 
+                <br>
+                <br>
+                <input placeholder="   Celular" type="text" name="celular" id="celular_age" size="40" value="" class="text-input" /> 
+                <br>
+                <br>
+                <div class="fecha_nacimiento">
+                  <div style="float:left;">
+                    <label for="name" id="name_label">Fecha de <br> Nacimiento</label> 
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                    <select id="mes_age">
+                      <option value="--">mm</option>
+                      <option value="1">Ene</option>
+                      <option value="2">Feb</option>
+                      <option value="3">Mar</option>
+                      <option value="4">Abr</option>
+                      <option value="5">May</option>
+                      <option value="6">Jun</option>
+                      <option value="7">Jul</option>
+                      <option value="8">Ago</option>
+                      <option value="9">Sep</option>
+                      <option value="10">Oct</option>
+                      <option value="11">Nov</option>
+                      <option value="12">Dic</option>
+                    </select>
+                  </div>
+                   
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="dia_age">
+                    <option value="--">dd</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  </div>
+
+                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="ano_age">
+                      <option value="--">aa</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
+                      <option value="2009">2009</option>
+                      <option value="2008">2008</option>
+                      <option value="2007">2007</option>
+                      <option value="2006">2006</option>
+                      <option value="2005">2005</option>
+                      <option value="2004">2004</option>
+                      <option value="2003">2003</option>
+                      <option value="2002">2002</option>
+                      <option value="2001">2001</option>
+                      <option value="2000">2000</option>
+                      <option value="1999">1999</option>
+                      <option value="1998">1998</option>
+                      <option value="1997">1997</option>
+                      <option value="1996">1996</option>
+                      <option value="1995">1995</option>
+                      <option value="1994">1994</option>
+                      <option value="1993">1993</option>
+                      <option value="1992">1992</option>
+                      <option value="1991">1991</option>
+                      <option value="1990">1990</option>
+                      <option value="1989">1989</option>
+                      <option value="1988">1988</option>
+                      <option value="1987">1987</option>
+                      <option value="1986">1986</option>
+                      <option value="1985">1985</option>
+                      <option value="1984">1984</option>
+                      <option value="1983">1983</option>
+                      <option value="1982">1982</option>
+                      <option value="1981">1981</option>
+                      <option value="1980">1980</option>
+                      <option value="1979">1979</option>
+                      <option value="1978">1978</option>
+                      <option value="1977">1977</option>
+                      <option value="1976">1976</option>
+                      <option value="1975">1975</option>
+                      <option value="1974">1974</option>
+                      <option value="1973">1973</option>
+                      <option value="1972">1972</option>
+                      <option value="1971">1971</option>
+                      <option value="1970">1970</option>
+                      <option value="1969">1969</option>
+                      <option value="1968">1968</option>
+                      <option value="1967">1967</option>
+                      <option value="1966">1966</option>
+                      <option value="1965">1965</option>
+                      <option value="1964">1964</option>
+                      <option value="1963">1963</option>
+                      <option value="1962">1962</option>
+                      <option value="1961">1961</option>
+                      <option value="1960">1960</option>
+                      <option value="1959">1959</option>
+                      <option value="1958">1958</option>
+                      <option value="1957">1957</option>
+                      <option value="1956">1956</option>
+                      <option value="1955">1955</option>
+                      <option value="1954">1954</option>
+                      <option value="1953">1953</option>
+                      <option value="1952">1952</option>
+                      <option value="1951">1951</option>
+                      <option value="1950">1950</option>
+                      <option value="1949">1949</option>
+                      <option value="1948">1948</option>
+                      <option value="1947">1947</option>
+                      <option value="1946">1946</option>
+                      <option value="1945">1945</option>
+                      <option value="1944">1944</option>
+                      <option value="1943">1943</option>
+                      <option value="1942">1942</option>
+                      <option value="1941">1941</option>
+                      <option value="1940">1940</option>
+                      <option value="1939">1939</option>
+                      <option value="1938">1938</option>
+                      <option value="1937">1937</option>
+                      <option value="1936">1936</option>
+                      <option value="1935">1935</option>
+                      <option value="1934">1934</option>
+                      <option value="1933">1933</option>
+                      <option value="1932">1932</option>
+                      <option value="1931">1931</option>
+                      <option value="1930">1930</option>
+                      <option value="1929">1929</option>
+                      <option value="1928">1928</option>
+                      <option value="1927">1927</option>
+                      <option value="1926">1926</option>
+                      <option value="1925">1925</option>
+                      <option value="1924">1924</option>
+                      <option value="1923">1923</option>
+                      <option value="1922">1922</option>
+                      <option value="1921">1921</option>
+                      <option value="1920">1920</option>
+                      <option value="1919">1919</option>
+                      <option value="1918">1918</option>
+                      <option value="1917">1917</option>
+                      <option value="1916">1916</option>
+                      <option value="1915">1915</option>
+                      <option value="1914">1914</option>
+                      <option value="1913">1913</option>
+                      <option value="1912">1912</option>
+                      <option value="1911">1911</option>
+                      <option value="1910">1910</option>
+                      <option value="1909">1909</option>
+                      <option value="1908">1908</option>
+                      <option value="1907">1907</option>
+                      <option value="1906">1906</option>
+                      <option value="1905">1905</option>
+                      <option value="1904">1904</option>
+                      <option value="1903">1903</option>
+                      <option value="1902">1902</option>
+                      <option value="1901">1901</option>
+                      <option value="1900">1900</option>
+                  </select>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div style="float:left; font-size:10pt;">
+                  Genero &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="genero" class="genero" value="Masculino"> M  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="genero" class="genero" value="Femenino" > F <br>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="fecha_cita" style="float:left;">
+                <div style="with:100px; float:left;">
+                  <label for="name" id="name_label">Fecha de <br> la cita</label> 
+                </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="mes_cita">
+                    <option value="--">mm</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="dia_cita">
+                    <option value="--">dd</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="ano_cita">
+                    <option value="--">aaaa</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                  </select>
+                  </div>
+                  
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="hora_cita" style="float:left;">
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Hora de <br> la cita</label> 
+                  </div>
+                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                       <select id="hora_cita">
+                          <option value="--">h</option>
+                          <option value ='1'>1</option>  
+                          <option value ='2'>2</option>
+                          <option value ='3'>3</option>
+                          <option value ='4'>4</option>  
+                          <option value ='5'>5</option>
+                          <option value ='6'>6</option>
+                          <option value ='7'>7</option>  
+                          <option value ='8'>8</option>
+                          <option value ='9'>9</option>
+                          <option value ='10'>10</option>  
+                          <option value ='11'>11</option>
+                          <option value ='12'>12</option>
+                      </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="minutos_cita">
+                      <option value="--">m</option>
+                      <option value ='00'>00</option>
+                      <option value ='15'>15</option>  
+                      <option value ='30'>30</option>
+                      <option value ='45'>45</option>
+                  </select>
+                 </div>
+
+                 <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="seccion_hora">
+                      <option value="am">am</option>
+                      <option value="pm">pm</option>
+                  </select>
+                 </div>
+
+                </div>
+        </div>
+
+        <div class="derecha_form_agendar">
+            <label for="name" id="name_label">Informacion de la Cita</label> 
+            <br>
+            <br>
+            <div class="duracion_cita" style="margin: 0 0 10px 0;">
+                <div style="with:100px; float:left;">
+                  <label for="name" id="name_label">Duracion de <br> la cita</label> 
+                </div>
+                
+                <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="duracion_cita">
+                      <option value="--">mm</option>
+                      <option value ='15'>15</option>  
+                      <option value ='30'>30</option>
+                      <option value ='45'>45</option>
+                      <option value ='60'>60</option>
+                  </select>
+                </div>
+            </div>
+            <br>
+            <br>
+            <input placeholder="   Motivo de Consulta" type="text" name="motivo_consulta" id="motivo_consulta" size="40" value="" class="text-input" />  
+            <br>
+            <br>
+            <input placeholder="   Modo de pago" type="text" name="modo_pago" id="modo_pago" size="40" value="" class="text-input" /> 
+            <br>
+            <br>
+            <input placeholder="   Medio de pago" type="text" name="medio_pago" id="medio_pago" size="40" value="" class="text-input" /> 
+            <br>
+            <br>
+            <label for="name" id="name_label">Comentarios del Paciente</label>
+            <br> 
+            <textarea id="comentarios_paciente" cols="31" rows="6">
+
+            </textarea>
+
+        </div>
+        <br />  
+        <input type="submit" name="submit" class="button" id="submit_btn_agd" value="Agendar" /> 
+    </form> 
+  </div>
+
+</div>
+
+<img src="/assets/odontologo/disponibilidad/cargando.jpg" id="cargando" style="
+    width: 450px;
+    height:200px;
+    position: fixed;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    top : 50%;
+    z-index:200;
+    visibility:hidden;">
+
+<script type="text/javascript">
+  $(function () {
+    $('#comentarios_paciente').val('');
+
+    var ya_esta = false;
+    var id_auto = 0 ;
+
+    var correo = '';
+    var name =  '';
+    var apellido = '';
+    var celular =  '';
+
+    var mes =   '';
+    var dia = '';
+    var ano =  '';
+
+    var genero =  '';
+
+    var mes_cita = '';
+    var dia_cita = '';
+    var ano_cita = '';
+    var hora_cita = '';
+    var minutos_cita = '';
+    var seccion_hora = '';
+      
+    var duracion_cita = '';
+
+    var motivo_consulta =  '';
+    var modo_pago =  '';
+    var medio_pago =  '';
+
+    var comentarios_paciente =  '';
+
+
+     
+    /*
+    var id = '1';
+
+    Paciente = Backbone.Model.extend({});
+
+    window.paciente = new Paciente;
+    paciente.url = '/pacientes/'+id;
+    
+    paciente.fetch({
+      success: function(){
+        console.log(paciente);
+      },
+      error: function(){
+        //console.log('error');
+      }
+    });
+    */
+
+    var Horas = Backbone.Collection.extend({});
+
+    window.horas = new Horas;
+    horas.url = '/horas_disponibles';
+    var mis_horas = "";
+
+    horas.fetch({
+      success : function(){
+          mis_horas = horas.where({odontologo_id:parseInt(id_odontologo)});
+      }
+    });
+
+
+    /*Collection*/
+
+    $('#correo_age').on('typeahead:selected', autocompletar_form);
+
+      function autocompletar_form($e) {
+        console.log($e);
+          ya_esta = true;
+          var correo_auto = $('#correo_age').val();
+          //console.log(correo_auto);
+          //console.log(pacientes);
+
+          var encontrados = pacientes.where({correo:correo_auto});
+          //console.log(encontrados);
+          id_auto = encontrados[0].id;
+          //console.log(id_auto);
+
+          //autocompletar
+          $('#name').val(encontrados[0].get('nombre'));
+          $('#apellido_age').val(encontrados[0].get('apellido'));
+          $('#celular_age').val(encontrados[0].get('celular'));
+          var n=encontrados[0].get('fecha_nacimiento').split("/");
+          $('#mes_age').val(n[1]);
+          $('#dia_age').val(n[0]);
+          $('#ano_age').val(n[2]);
+          
+          if (encontrados[0].get('genero') == 'Masculino') {
+            $(".genero[value='Masculino']").attr('checked', true);
+          }else{
+            $(".genero[value='Femenino']").attr('checked', true);
+          }
+
+      }
+
+
+
+    var Pacientes = Backbone.Collection.extend({});
+    var pacientes = new Pacientes;
+    pacientes.url = "/pacientes";
+    pacientes.fetch({
+      success:function(){
+        
+        var correos = new Array();
+        
+        for (var i = 0; i < pacientes.models.length; i++) {
+          if (true) {
+
+          };
+          correos.push(pacientes.models[i].get('correo'));
+          //console.log(pacientes.models[i].get('correo'));
+        };
+        //console.log(correos);
+        
+        $('#correo_age').typeahead({
+          name: 'Correo',
+          local: correos
+        });
+
+      }
+    });
+    
+    pacientes.on('add',function(p){
+      console.log('entro uno nuevo');
+      pacientes.fetch({
+        success:function(){
+            pacientes.fetch({
+              success:function(){
+                pacientes.fetch({
+                  success:function(){
+                    var ultimo = _.last(pacientes.models);
+                          if (seccion_hora =="pm") {
+                            hora_cita = parseInt(hora_cita)+12;
+                            hora_cita = hora_cita * 60;
+                            hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+                          }else{
+                            hora_cita = hora_cita * 60;
+                            hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+                          }
+
+
+                            citas.create({
+                              ano: ano_cita,
+                              comentarios : comentarios_paciente,
+                              dia :  dia_cita,
+                              hora : hora_cita,
+                              mes : mes_cita ,
+                              medio_pago :medio_pago,
+                              modo_pago : modo_pago,
+                              motivo :motivo_consulta,
+                              duracion : duracion_cita,
+                              tipo_consulta : 'offline',
+                              estado:'confirmada',
+                              odontologo_id : id_odontologo,
+                              paciente_id : ultimo.get('id')
+                            },{ wait: true, success: function(){
+
+                              guardo_la_cita(); 
+                            }});
+                    }
+                });
+              }
+          });
+        }
+      });
+
+    });
+
+
+
+
+    var Citas = Backbone.Collection.extend({});
+    var citas = new Citas;
+    citas.url = "/appointments";
+
+
+
+    citas.fetch({
+      success:function(){
+        //console.log(citas);
+      }
+    });
+    var guardo_la_cita = function(){
+      alert('La cita fue agendada correctamente');
+      window.location.href="/odontologos/"+id_odontologo;
+    }
+    //citas.on('sync',function(p){
+      
+    //}); 
+
+
+    $('#submit_btn_agd').on('click',function(e){
+      e.preventDefault();
+
+      $('#cargando').css('visibility','visible');
+      $('#submit_btn_agd').attr('disabled','disabled');
+
+      correo = $('#correo_age').val();
+      name =  $('#name').val();
+      apellido =  $('#apellido_age').val();
+      celular =   $('#celular_age').val();
+
+      mes =   $('#mes_age').val();
+      dia =  $('#dia_age').val();
+      ano =  $('#ano_age').val();
+
+      genero =  $(".genero:checked").val();
+
+      mes_cita = $('#mes_cita').val();
+      dia_cita = $('#dia_cita').val();
+      ano_cita = $('#ano_cita').val();
+      hora_cita = $('#hora_cita').val();
+      minutos_cita = $('#minutos_cita').val();
+      seccion_hora = $('#seccion_hora').val();
+        
+      duracion_cita = $('#duracion_cita').val()
+
+      motivo_consulta =  $('#motivo_consulta').val();
+      modo_pago =  $('#modo_pago').val();
+      medio_pago =  $('#medio_pago').val();
+
+      comentarios_paciente =  $('#comentarios_paciente').val();
+
+      /*
+      console.log('correo '+ correo);
+      console.log('name ' +name);
+      console.log('apellido' +apellido);
+      console.log('celular ' +celular);
+
+      console.log('mes ' + mes);
+      console.log('dia ' + dia);
+      console.log('ano ' + ano);
+
+      console.log("genero "+ genero);
+
+      console.log('mes_cita ' + mes_cita);
+      console.log('dia_cita ' + dia_cita);
+      console.log('hora_cita ' + hora_cita);
+      
+      console.log('motivo_consulta ' + motivo_consulta);
+      console.log('modo_pago ' + modo_pago);
+      console.log('medio_pago ' + medio_pago);
+
+
+      console.log('comentarios_paciente ' + comentarios_paciente);
+      */
+      
+      if (!ya_esta) {
+         pacientes.create({
+          apellido:apellido,
+          nombre :name,
+          celular :celular,
+          telefono : '',
+          clave : '123456',
+          correo : correo,
+          como_se_entero : '',
+          genero : genero,
+          usuario : '',
+          fecha_nacimiento :  dia +'/'+mes +'/'+ano
+        });
+      }else{
+            if (seccion_hora =="pm") {
+                hora_cita = parseInt(hora_cita)+12;
+                hora_cita = hora_cita * 60;
+                hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+            }else{
+                hora_cita = hora_cita * 60;
+                hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+            }
+          citas.create({
+              ano: ano_cita,
+              comentarios : comentarios_paciente,
+              dia :  dia_cita,
+              hora : hora_cita,
+              mes : mes_cita,
+              medio_pago : medio_pago,
+              modo_pago :modo_pago,
+              motivo : motivo_consulta,
+              duracion : duracion_cita,
+              estado:'confirmada',
+              tipo_consulta : 'offline',
+              odontologo_id : id_odontologo,
+              paciente_id : id_auto
+          },{ wait: true, success: guardo_la_cita });
+
+          
+      }
+
+      
+        //reset campos
+      $('#correo_age').val('');
+      $('#name').val('');
+      $('#apellido_age').val('');
+      $('#celular_age').val('');
+
+      $('#mes_age').val('mm');
+      $('#dia_age').val('dd');
+      $('#ano_age').val('aa');
+
+      $(".genero:checked").val('');
+
+      $('#mes_cita').val('mm');
+      $('#dia_cita').val('dd');
+      $('#ano_cita').val('aaaa');
+      $('#hora_cita').val('h');
+      $('#minutos_cita').val('m');
+      $('#seccion_hora').val('am');
+      
+      $('#duracion_cita').val('mm')
+
+      $('#motivo_consulta').val('');
+      $('#modo_pago').val('');
+      $('#medio_pago').val('');
+
+      $('#comentarios_paciente').val('');
+
+      
+
+      ya_esta = false;
+      
+      //window.location.href="/odontologos/"+id_odontologo;
+
+    });
+
+    
+    /*
+    if (paciente_nuevo) {
+      citas.create({
+      ano:'2012',
+      comentarios : 'lorem',
+      dia : '12',
+      hora : '12',
+      mes: '12',
+      medio_pago :'tarjeta',
+      modo_pago : 'tarjeta',
+      motivo : 'muela',
+      odontologo_id : '4',
+      paciente_id : paciente_nuevo.get('id')
+    });  
+    };
+  */
+    
+    $('#dia_cita , #mes_cita , #hora_cita , #minutos_cita , #seccion_hora').on('blur',function(){
+      
+      if ($('#dia_cita').val()!='--' && $('#mes_cita').val()!='--' && $('#hora_cita').val()!='--' && $('#minutos_cita').val()!='--' && $('#seccion_hora').val()!='--') {
+
+          var esedia = _.map(mis_horas, function(hora){ if(hora.get('dia')== $('#dia_cita').val() && hora.get('mes')== $('#mes_cita').val()) return hora; });
+          esedia = _.without(esedia, undefined);
+          var hora_cita = $('#hora_cita').val();
+          if ($('#seccion_hora').val() =="pm") {
+                hora_cita = parseInt(hora_cita)+12;
+                hora_cita = hora_cita * 60;
+                hora_cita = parseInt(hora_cita) + parseInt($('#minutos_cita').val());
+            }else{
+                hora_cita = hora_cita * 60;
+                hora_cita = parseInt(hora_cita) + parseInt($('#minutos_cita').val());
+            }
+            
+            
+            //console.log(esedia);
+            //console.log(hora_cita);
+
+            var interseccion = _.map(esedia, function(hora_recorrido){ 
+              var hora =  parseInt(hora_recorrido.get('hora'));
+              var duracion =  parseInt(hora_recorrido.get('duracion'));
+              var limite = hora + duracion;
+              if(hora<= hora_cita && hora_cita<= limite ){
+               return hora_recorrido;
+              }
+             });
+            interseccion = _.without(interseccion, undefined);
+            console.log(interseccion);
+            if (interseccion.length > 0) {
+              alert("hubo una interseccion en horas");
+            }
+
+      }
+
+    });
+
+
+
+
+     $('body').css('background','#E6E6E6');
+     moment.lang('en', {
+        weekdays : [
+            "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"
+        ]
+    });
+     $('.nombre_dia').html(moment().format('dddd'));
+     $('.numero').html(moment().format('D'));
+      console.log(moment().format('D'));
+      console.log(moment().format('dddd'));
+
+
+
+  });
+</script>

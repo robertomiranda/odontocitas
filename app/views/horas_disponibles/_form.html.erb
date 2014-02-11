@@ -1,0 +1,33 @@
+<%= form_for(@horas_disponible) do |f| %>
+  <% if @horas_disponible.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@horas_disponible.errors.count, "error") %> prohibited this horas_disponible from being saved:</h2>
+
+      <ul>
+      <% @horas_disponible.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hora %><br />
+    <%= f.text_field :hora %>
+  </div>
+  <div class="field">
+    <%= f.label :mes %><br />
+    <%= f.text_field :mes %>
+  </div>
+  <div class="field">
+    <%= f.label :ano %><br />
+    <%= f.text_field :ano %>
+  </div>
+  <div class="field">
+    <%= f.label :odontologo_id %><br />
+    <%= f.text_field :odontologo_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

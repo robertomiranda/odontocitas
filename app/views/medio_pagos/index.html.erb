@@ -1,0 +1,25 @@
+<h1>Listing medio_pagos</h1>
+
+<table>
+  <tr>
+    <th>Id odontologo</th>
+    <th>Medio pago</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medio_pagos.each do |medio_pago| %>
+  <tr>
+    <td><%= medio_pago.odontologo_id %></td>
+    <td><%= medio_pago.medio_pago %></td>
+    <td><%= link_to 'Show', medio_pago %></td>
+    <td><%= link_to 'Edit', edit_medio_pago_path(medio_pago) %></td>
+    <td><%= link_to 'Destroy', medio_pago, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medio pago', new_medio_pago_path %>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Odontocitas</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= javascript_include_tag "application" %>
+</head>
+<body>
+
+	<div class="pantalla_negra"></div>
+	<div class="menu">
+		<div class="centrado">
+		<%= link_to  (image_tag "logo_odontocitas_azul.png" ,  :class => 'logo_header'),  root_url  , :class=> 'link_logo'%>
+
+		<% if current_user %>
+			
+			<% if current_user.is_a?(Paciente) %>
+			<em id="acciones_menu" style="position:relative;left: 600px;">
+				<%= link_to 'AGENDAR' , '/buscar_odontologo' %>
+				<%= link_to 'MI PERFIL', paciente_path(current_user)%>
+			<% end %>
+
+			<% if current_user.is_a?(Odontologo)%>
+				<em id="acciones_menu" style="position:relative;left: 700px;">
+				<%= link_to 'MI PERFIL', odontologo_path(current_user)	%>
+			<% end %>
+
+			<% if current_user.is_a?(Clinica)%>
+				<em id="acciones_menu" style="position:relative;left: 700px;">
+				<%= link_to 'MI PERFIL', clinica_path(current_user)	%>
+			<% end %>
+
+		  	<a href="<%= logout_path %>">SALIR</a>
+		  	</em>
+		<% else %>
+		
+		<div class="items_menu">
+			<ul>
+				<li class="i_registro registro">
+					 <!--<%= link_to "registro", new_paciente_path , :class=> 'registro_boton' %>-->
+					registro
+				</li>
+				<li class="i_entrar entrar">
+				    entrar
+				</li>
+			</ul>
+		</div>
+
+			<div class="formulario">
+				<%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_login' %>
+				<div class="content_form_login naranja">
+
+					<%= form_tag sessions_path do %>
+						<div class="conjunto_login">
+							&nbsp;&nbsp;Correo:
+			          		<%= text_field_tag :username, nil, :class=> 'campo_login' %>
+		          		</div>
+		          		<div class="conjunto_login">
+		          			&nbsp;&nbsp;&nbsp;Clave:
+		          			<%= password_field_tag :password, nil , :class=> 'campo_login segundo_campo_login'%>
+		          		</div>
+		          		
+		          		<p class="gris centrado_elemento olvidado_contra">
+		          			<a href="/recordar_clave">¿Olvidaste la contraseña?</a>
+		          		</p>
+		          		<%= submit_tag "Log In", :class=> 'submit' %>
+		        	<% end %>
+	        	</div>
+			</div>
+		<% end %>
+		</div>
+
+	</div>
+	<div id="shadow"></div>
+
+		<% if !current_user %>
+			<div class="form_registro">
+				<%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_registro' %>
+				<div class="content_form_registro naranja">
+				<%= form_tag(agregar_paciente_url , :method => :get , id: 'formulario_reg_paciente') do %>
+
+				  <div class="field">
+				    <%= label_tag 'nombre'  %> :
+				    <%= text_field_tag 'nombre' ,nil,:class=> 'registro_campo' , style:'' , class:'campo_requerido' %>
+				  </div>
+				  <div class="field">
+				    <%= label_tag 'apellido'  %> :
+				    <%= text_field_tag 'apellido' ,nil, :class=> 'registro_campo' , style:'', class:'campo_requerido'%>
+				  </div>
+				  <div class="field" style="height: 30px;position:relative;top:-15px; text-align:left; ">
+				    &nbsp;&nbsp;&nbsp;<%= label_tag 'genero'  %> :
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag 'F' %> <%= radio_button_tag 'genero' , 'Femenino' %> 
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    &nbsp;&nbsp;<%= label_tag 'M' %> <%= radio_button_tag 'genero' , 'Masculino' %>
+				  </div>
+				  <div class="field" style="height: 50px;position:relative; top:-5px;">
+				    <%= label_tag 'correo' %> :
+				    <%= text_field_tag 'correo' ,nil, :class=> 'registro_campo' , style:'', class:'campo_requerido'%>
+				    <p class="gris" id="notificacion_correo"></p>
+				  </div>
+				  <div class="fecha_nacimiento" style="margin: 0px 0 10px 0;">
+		                  <div style="float:left;">
+		                    <label for="name" id="name_label">Fecha de <br> nacimiento</label> 
+		                  </div>
+
+		                  <div class="styled_dropdown" style="width: 90px;height: 25px; float:left; margin:0 0 0 7px;">
+		                    <select id="mes" name="mes" style="width: 90px;" data-comp='--' class="dropdown_requerido">
+		                      <option value="--">mm</option>
+		                      <option value="1">Ene</option>
+		                      <option value="2">Feb</option>
+		                      <option value="3">Mar</option>
+		                      <option value="4">Abr</option>
+		                      <option value="5">May</option>
+		                      <option value="6">Jun</option>
+		                      <option value="7">Jul</option>
+		                      <option value="8">Ago</option>
+		                      <option value="9">Sep</option>
+		                      <option value="10">Oct</option>
+		                      <option value="11">Nov</option>
+		                      <option value="12">Dic</option>
+		                    </select>
+		                  </div>
+		                   
+		                  <div class="styled_dropdown" style="width: 90px;height: 25px; float:left; margin:0 0 0 30px;">
+		                  <select id="dia" name="dia" style="width: 90px;" data-comp='--' class="dropdown_requerido">
+		                    <option value="--">dd</option>
+		                    <option value="1">1</option>
+		                    <option value="2">2</option>
+		                    <option value="3">3</option>
+		                    <option value="4">4</option>
+		                    <option value="5">5</option>
+		                    <option value="6">6</option>
+		                    <option value="7">7</option>
+		                    <option value="8">8</option>
+		                    <option value="9">9</option>
+		                    <option value="10">10</option>
+		                    <option value="11">11</option>
+		                    <option value="12">12</option>
+		                    <option value="13">13</option>
+		                    <option value="14">14</option>
+		                    <option value="15">15</option>
+		                    <option value="16">16</option>
+		                    <option value="17">17</option>
+		                    <option value="18">18</option>
+		                    <option value="19">19</option>
+		                    <option value="20">20</option>
+		                    <option value="21">21</option>
+		                    <option value="22">22</option>
+		                    <option value="23">23</option>
+		                    <option value="24">24</option>
+		                    <option value="25">25</option>
+		                    <option value="26">26</option>
+		                    <option value="27">27</option>
+		                    <option value="28">28</option>
+		                    <option value="29">29</option>
+		                    <option value="30">30</option>
+		                    <option value="31">31</option>
+		                  </select>
+		                  </div>
+
+		                   <div class="styled_dropdown" style="width: 90px;height: 25px; float:left; margin:0 0 0 30px;">
+		                   <select id="ano" name="ano" style="width: 90px;" data-comp='--' class="dropdown_requerido">
+		                      <option value="--">aa</option>
+		                      <option value="2013">2013</option>
+		                      <option value="2012">2012</option>
+		                      <option value="2011">2011</option>
+		                      <option value="2010">2010</option>
+		                      <option value="2009">2009</option>
+		                      <option value="2008">2008</option>
+		                      <option value="2007">2007</option>
+		                      <option value="2006">2006</option>
+		                      <option value="2005">2005</option>
+		                      <option value="2004">2004</option>
+		                      <option value="2003">2003</option>
+		                      <option value="2002">2002</option>
+		                      <option value="2001">2001</option>
+		                      <option value="2000">2000</option>
+		                      <option value="1999">1999</option>
+		                      <option value="1998">1998</option>
+		                      <option value="1997">1997</option>
+		                      <option value="1996">1996</option>
+		                      <option value="1995">1995</option>
+		                      <option value="1994">1994</option>
+		                      <option value="1993">1993</option>
+		                      <option value="1992">1992</option>
+		                      <option value="1991">1991</option>
+		                      <option value="1990">1990</option>
+		                      <option value="1989">1989</option>
+		                      <option value="1988">1988</option>
+		                      <option value="1987">1987</option>
+		                      <option value="1986">1986</option>
+		                      <option value="1985">1985</option>
+		                      <option value="1984">1984</option>
+		                      <option value="1983">1983</option>
+		                      <option value="1982">1982</option>
+		                      <option value="1981">1981</option>
+		                      <option value="1980">1980</option>
+		                      <option value="1979">1979</option>
+		                      <option value="1978">1978</option>
+		                      <option value="1977">1977</option>
+		                      <option value="1976">1976</option>
+		                      <option value="1975">1975</option>
+		                      <option value="1974">1974</option>
+		                      <option value="1973">1973</option>
+		                      <option value="1972">1972</option>
+		                      <option value="1971">1971</option>
+		                      <option value="1970">1970</option>
+		                      <option value="1969">1969</option>
+		                      <option value="1968">1968</option>
+		                      <option value="1967">1967</option>
+		                      <option value="1966">1966</option>
+		                      <option value="1965">1965</option>
+		                      <option value="1964">1964</option>
+		                      <option value="1963">1963</option>
+		                      <option value="1962">1962</option>
+		                      <option value="1961">1961</option>
+		                      <option value="1960">1960</option>
+		                      <option value="1959">1959</option>
+		                      <option value="1958">1958</option>
+		                      <option value="1957">1957</option>
+		                      <option value="1956">1956</option>
+		                      <option value="1955">1955</option>
+		                      <option value="1954">1954</option>
+		                      <option value="1953">1953</option>
+		                      <option value="1952">1952</option>
+		                      <option value="1951">1951</option>
+		                      <option value="1950">1950</option>
+		                      <option value="1949">1949</option>
+		                      <option value="1948">1948</option>
+		                      <option value="1947">1947</option>
+		                      <option value="1946">1946</option>
+		                      <option value="1945">1945</option>
+		                      <option value="1944">1944</option>
+		                      <option value="1943">1943</option>
+		                      <option value="1942">1942</option>
+		                      <option value="1941">1941</option>
+		                      <option value="1940">1940</option>
+		                      <option value="1939">1939</option>
+		                      <option value="1938">1938</option>
+		                      <option value="1937">1937</option>
+		                      <option value="1936">1936</option>
+		                      <option value="1935">1935</option>
+		                      <option value="1934">1934</option>
+		                      <option value="1933">1933</option>
+		                      <option value="1932">1932</option>
+		                      <option value="1931">1931</option>
+		                      <option value="1930">1930</option>
+		                      <option value="1929">1929</option>
+		                      <option value="1928">1928</option>
+		                      <option value="1927">1927</option>
+		                      <option value="1926">1926</option>
+		                      <option value="1925">1925</option>
+		                      <option value="1924">1924</option>
+		                      <option value="1923">1923</option>
+		                      <option value="1922">1922</option>
+		                      <option value="1921">1921</option>
+		                      <option value="1920">1920</option>
+		                      <option value="1919">1919</option>
+		                      <option value="1918">1918</option>
+		                      <option value="1917">1917</option>
+		                      <option value="1916">1916</option>
+		                      <option value="1915">1915</option>
+		                      <option value="1914">1914</option>
+		                      <option value="1913">1913</option>
+		                      <option value="1912">1912</option>
+		                      <option value="1911">1911</option>
+		                      <option value="1910">1910</option>
+		                      <option value="1909">1909</option>
+		                      <option value="1908">1908</option>
+		                      <option value="1907">1907</option>
+		                      <option value="1906">1906</option>
+		                      <option value="1905">1905</option>
+		                      <option value="1904">1904</option>
+		                      <option value="1903">1903</option>
+		                      <option value="1902">1902</option>
+		                      <option value="1901">1901</option>
+		                      <option value="1900">1900</option>
+		                  </select>
+		                  </div>
+		                </div>
+		                <br><br>
+				  <div class="field">
+				    <%= label_tag 'clave' %> :
+				    <%= password_field_tag 'clave' ,nil, :class=> 'registro_campo' , class:'campo_requerido'%>
+				  </div>
+
+				<div class="field" >
+						    <p style="width:60px !important; font-size:10pt; float:left; margin: 0 4px 0 0;" >Confirmar clave  &nbsp;&nbsp;&nbsp; &nbsp;:</p> 
+						    <%= password_field_tag 'clave_confirmada' ,nil, :class=> 'registro_campo' , class:'campo_requerido'%>
+						    <p class="gris" id="claves_coincidencias">las contraseñas no coinciden intentelo de nuevo</p>
+				 </div>
+				    <div class="field " style="text-align:center; width:320px; margin:0 0 10px 70px;">
+						     ¿Cómo se enteró de nosotros? <br>
+						    <div class="styled_dropdown_home" style="width: 330px;height: 27px;margin:10px 0 0 0">
+						    <%= select_tag 'como_se_entero' , 
+						      "<option value ='Correo Electronico'>Correo Electronico</option><option value ='Internet'>Internet</option><option value ='Radio'>Radio</option><option value ='Television'>Television</option>".html_safe , :include_blank => true, style:'width: 330px;', "data-comp"=> '' , class: "dropdown_requerido" %>
+						  	</div>
+				  </div>
+				  <div class="field" style="text-align:center;height:80px; width:330px; margin:0 0 10px 70px;">
+				    Con el numero de tu celular podremos <br> confirmar tu cita <br>
+				    <div class="contenido_mensaje">
+					    <%= text_field_tag 'celular',nil, class: 'registro_campo_enviar_msj', style: 'width:270px; position:relative; left:-30px;'%>
+					    <div class="enviar_mensaje_btn">
+					    	<p>Enviar</p>
+					    </div>
+				    </div>
+				  </div>
+
+				   <p class="terminos_condiciones_paciente">
+				    Haciendo click en continuar, aceptas nuestros terminos y condiciones y uso
+				  </p>
+
+				  <p class="terminos_condiciones_paciente eres_odontologo" style ='cursor: pointer;'>
+				    ¿Eres Odontologo?
+				  </p>
+				  
+				  <div class="actions centrar_registro_campos">
+				    <%= submit_tag "Continuar",  :class => 'submit', id: 'registro_paciente' , style:'margin: 3px 0 0 45px;'  %>
+				  </div>
+				<% end %>
+
+				</div>
+			</div>
+			<% end %>
+	<%= yield %>
+
+	<div class="arbol_navegacion">
+		<div class="center_navegacion">
+			<div class="elem_beneficio_nav mayusculas">
+				<p class="titulo_navegacion ">
+					odontocitas
+				</p>
+				<p>
+					<%= link_to "Home", root_path %>
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					<%= link_to "Nosotros", nosotros_path %>
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					<%= link_to "términos y condiciones", terminos_condiciones_path %>
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					<%= link_to "Políticas de privacidad", politicas_privacidad_path %>
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					Preguntas frecuentes
+				</p>
+				
+			</div>
+
+			<div class="elem_beneficio_nav mitad_nav">
+
+				<p class="titulo_navegacion mayusculas">
+					Aplicar
+				</p>
+
+				<p class="parrafo_nav">
+					Si haces parte del grupo de odontólogos
+					que quieren mejorar la administracion 
+					de su consultorio y el manejo de citas y
+					pacientes de una forma eficiente, te 
+					invitamos a que seas parte de nuestra 
+					comunidad
+				</p>
+				
+				<a href="/odontologos/new">
+				<div class="boton_eres_odontologo">
+					
+				</div>
+				</a>
+
+			</div>
+
+			<div class="elem_beneficio_nav mayusculas">
+				<p class="titulo_navegacion">
+					contacto
+				</p>
+				<p>
+					<%= link_to "facebook", "https://www.facebook.com/odontocitas?fref=ts", target: "_blank" %>
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					twitter
+				</p>
+				<hr class="linea_arbol_nav">
+				<p>
+					contáctanos
+				</p>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<%= image_tag "logo_odontocitas_blanco.png" ,  :class => 'logo_footer' %>
+	</div>
+
+
+	<script type="text/javascript">
+		$(function(){
+
+			//abrir formulario de login
+			$('.entrar').on('click',function(){
+				$('.formulario').slideDown('slow');
+			});
+
+			//cerrar formulario de login
+			$('.cerrar_form_login').on('click',function(){
+				$('.formulario').slideUp('slow');
+			});
+
+
+			//abrir formulario de registro
+			
+
+			$('.registro').on('click', function() {
+				$('.pantalla_negra').fadeIn(1000);
+				$('.form_registro').animate({
+					top : '20px',
+				},1000);
+			});
+
+			//cerrar formulario de registro
+
+			$('.cerrar_form_registro').on('click', function() {
+				$('.pantalla_negra').fadeOut(1000);
+				$('.form_registro').animate({
+					top : '-1500px'
+				},1500);
+			});
+
+			$('.eres_odontologo').on('click',function () {
+				window.location.href="../odontologos/new";
+			});
+
+			$('body').on('click','.enviar_mensaje_btn',function(e){$.ajax({type: "POST",url: "/enviar_mensaje",data: {celular:$('#celular').val()}}).done(function(a) {$('body').data('return',a)});
+
+				$('.contenido_mensaje').html('<input class="campo_requerido" id="codigo_sms_confirmacion" placeholder="Digita el numero que fue enviado a tu celular" type="text">');
+			});
+
+			$('#registro_paciente').on('click',function(e){
+				e.preventDefault();
+				validar.revisar_campos_vacios();
+			});
+
+			var validar = {
+				alguno : false,
+				correo_validado : false,
+				contra_validada : false,
+				init : function() {
+
+					this.eventos();
+				},
+				eventos : function() {
+					$('#correo').on('blur',function() {
+						validar.IsEmail();
+					})
+				},
+				revisar_campos_vacios : function(){
+					
+					validar.alguno = false;
+					this.limpiar_campos();
+
+					$('.campo_requerido').each(function(index,elem){
+						elem = $(elem);
+						if (elem.val().trim() == '' ) {
+							elem.css({
+								border :'1px solid red'
+							})
+
+							validar.alguno = true;
+						}
+					});
+
+					$('.dropdown_requerido').each(function(index,elem){
+						elem = $(elem);
+						if (elem.val() == elem.data('comp') ) {
+							elem.parent().css({
+								border :'1px solid red'
+							})
+							validar.alguno = true;
+						}
+					});
+
+					if($("input[name=genero]:checked").length > 0) {
+   						//Is Valid
+					}else{
+						$("input[name=genero]").parent().css({
+							border : '1px solid red'
+						})
+
+						validar.alguno = true;
+					}
+
+
+					//validar contrasena
+					if (!validar.alguno) {
+						validar.validar_contra();
+					}
+				},
+				limpiar_campos : function  () {
+					$('.campo_requerido').css({
+								border :'none'
+							});
+
+					$('.dropdown_requerido').parent().css({
+								border :'none'
+							});
+
+					$("input[name=genero]").parent().css({
+								border :'none'
+							});
+				},
+				validar_contra : function() {
+					if($('#clave').val() != $('#clave_confirmada').val()){
+						$('#claves_coincidencias').show();
+					}else{
+						$('#claves_coincidencias').hide();
+						validar.contra_validada = true;
+						console.log('asdasd');
+						validar.enviar_form();
+					}
+				},
+
+				IsEmail : function () {
+					email = $('#correo').val().trim();
+  					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  					if(regex.test(email)){
+  						$('#notificacion_correo').html('');
+  						$.when(pacientes.fetch(),odontologos.fetch()).done(function(){
+                  			validar.validar_correo_unico();
+              			});
+  					}else{
+  						$('#notificacion_correo').html('Digita un correo valido');
+  					}
+				},
+				validar_correo_unico : function() {
+					var encontro_paciente = pacientes.where({correo: $('#correo').val().trim()});
+					var encontro_odontologo = odontologos.where({correo: $('#correo').val().trim()});
+
+					if (encontro_paciente.length > 0) {
+						$('#notificacion_correo').html('Este correo ya esta registrado, como paciente');
+					}else{
+						if (encontro_odontologo.length > 0) {
+							$('#notificacion_correo').html('Este correo ya esta registrado, como odontologo');
+						}else{
+							$('#notificacion_correo').html('');
+							validar.correo_validado = true;
+						}
+					}
+
+				},
+				enviar_form : function() {
+						if ($('#codigo_sms_confirmacion').length < 1 ){
+							$('.registro_campo_enviar_msj').css({
+									border : '1px solid red'
+							});
+						}else{
+							
+							if ($('#codigo_sms_confirmacion').val().trim() != '') {
+
+								if ($('#codigo_sms_confirmacion').val()==$('body').data('return')) {
+
+									$('#codigo_sms_confirmacion').css({
+										border : 'none'
+									});
+
+									if (validar.correo_validado && validar.contra_validada) {
+										$('#formulario_reg_paciente').submit();
+									}else{
+										console.log('esta monda');
+									}
+
+								}else{
+									$('#codigo_sms_confirmacion').css({
+										border : '1px solid red'
+									});
+								}
+
+							}else{
+
+								$('#codigo_sms_confirmacion').css({
+									border : '1px solid red'
+								});
+							}							
+						}
+
+				}
+			}
+
+			validar.init();
+			/*
+			//iconos menu
+
+			$('.i_beneficios').hover(function(){
+				$('.icon_ben_menu').attr('src','/assets/icono_menu_benficios_hover.png');
+			},function(){	
+				$('.icon_ben_menu').attr('src','/assets/icono_menu_benficios.png');
+			});
+
+			$('.i_funciona').hover(function(){
+				$('.icon_func_menu').attr('src','/assets/icono_menu_comofunciona_hover.png');
+			},function(){	
+				$('.icon_func_menu').attr('src','/assets/icono_menu_comofunciona.png');
+			});
+
+			$('.i_registro').hover(function(){
+				$('.icon_reg_menu').attr('src','/assets/icono_menu_registro_hover.png');
+			},function(){	
+				$('.icon_reg_menu').attr('src','/assets/icono_menu_registro.png');
+			});
+
+			$('.i_entrar').hover(function(){
+				$('.icon_ent_menu').attr('src','/assets/icono_menu_entrar_hover.png');
+			},function(){	
+				$('.icon_ent_menu').attr('src','/assets/icono_menu_entrar.png');
+			});
+			*/
+		});
+	</script>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-44120555-1', 'odontocitas.com');
+	  ga('send', 'pageview');
+
+	</script>
+</body>
+</html>

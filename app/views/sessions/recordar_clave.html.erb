@@ -1,0 +1,72 @@
+<div class="area_error_login">
+	<p id="mensaje">
+		Digita el correo con el que te registraste
+	</p>
+
+	<div class="login_form naranja">
+
+					<%= form_tag(restaurar_clave_path , method: :get , id:'restaurar_contra') do %>
+						<div class="conjunto_login">
+							&nbsp;&nbsp;Correo:
+							<input type="text" size="50" name="correo" id="correo_odonto">
+		          		</div>
+		          		<br>
+		          		<div id="notificacion_correo_odonto" style="color:#b3b3b3;">
+
+		          		</div>
+		          		<br>
+		          		<%= submit_tag "Restaurar Contraseña", :class=> 'submit' %>
+		          		<br>
+		          		<br>
+		        	<% end %>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+
+		$('.submit').on('click',function (e) {
+			e.preventDefault();
+			validar_envio_correo_clave.init();
+		});	
+
+		var validar_envio_correo_clave = {
+			init : function(){
+				
+                 validar_envio_correo_clave.IsEmail();
+			},
+			IsEmail : function () {
+					email = $('#correo_odonto').val().trim();
+  					var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  					if(regex.test(email)){
+  						$('#notificacion_correo_odonto').html('');
+  						$.when(pacientes.fetch(),odontologos.fetch()).done(function(){
+                  			validar_envio_correo_clave.validar_odonto_correo_unico();
+              			});
+  					}else{
+  						$('#notificacion_correo_odonto').html('Digita un correo valido');
+  					}
+			},
+			validar_odonto_correo_unico : function() {
+					var encontro_paciente = pacientes.where({correo: $('#correo_odonto').val().trim()});
+					var encontro_odontologo = odontologos.where({correo: $('#correo_odonto').val().trim()});
+
+					if (encontro_paciente.length > 0) {
+						$('#notificacion_correo_odonto').html('');
+						$('#restaurar_contra').submit();
+
+					}else{
+						if (encontro_odontologo.length > 0) {
+							$('#notificacion_correo_odonto').html('');
+							$('#restaurar_contra').submit();
+
+						}else{
+							$('#notificacion_correo_odonto').html('Este correo no esta registrado');
+							
+						}
+				}
+			}
+		}
+	});
+</script>

@@ -1,0 +1,45 @@
+<%= form_tag("/pacientes" , :method => :post) do %>
+
+  <div class="field">
+    &nbsp;&nbsp;<%= label_tag 'nombre'  %> :
+    <%= text_field_tag 'paciente[nombre]' ,nil,:class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;<%= label_tag 'apellido'  %> :
+    <%= text_field_tag 'paciente[apellido]' ,nil, :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;<%= label_tag 'genero'  %> :
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag 'F' %> <%= radio_button_tag 'paciente[genero]' , 'Femenino' %> 
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag 'M' %> <%= radio_button_tag :genero , 'Masculino' %>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag 'correo' %> :
+    <%= text_field_tag 'paciente[correo]' ,nil, :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag 'clave' %> :
+    <%= password_field_tag 'paciente[clave]' ,nil, :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;<%= label_tag 'usuario' %> :
+    <%= text_field_tag 'paciente[usuario]' ,nil, :class=> 'registro_campo'%>
+  </div>
+    <div class="field centrar_registro_campos">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¿Como se entero de nosotros? <br>
+    <%= select_tag 'paciente[como_se_entero]' , 
+      "<option value ='Correo Electronico'>Correo Electronico</option><option value ='Internet'>Internet</option><option value ='Radio'>Radio</option><option value ='Television'>Television</option>".html_safe , :include_blank => true , :id=> 'paciente_como_se_entero'%>
+  </div>
+  <div class="field centrar_registro_campos">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Con el numero de tu celular <br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;podremos confirmar tu cita <br>
+    <%= text_field_tag 'paciente[celular]',nil,:class=> 'registro_campo'%>
+  </div>
+
+   <p class="terminos_condiciones_paciente">
+    Haciendo click en continuar, aceptas nuestros terminos y condiciones y uso
+  </p>
+
+  <div class="actions centrar_registro_campos">
+    <%= submit_tag "Continuar",  :class => 'submit'   %>
+  </div>
+<% end %>

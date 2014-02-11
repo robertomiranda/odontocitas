@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require libs/fancybox/jquery.fancybox
+ *= require libs/jquery.fs.scroller
+ *= require_tree .
+ */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: helvetica;
+	font-size: 11pt;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+@font-face {
+	
+    font-family: 'Helvetica-Neue';
+    src: url('HelveticaLTStd-Roman.otf') format('opentype'), 
+    	 url('helveticaltstd-roman-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	     url('helveticaltstd-roman-webfont.woff') format('woff'), /* Modern Browsers */
+	     url('helveticaltstd-roman-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+	     url('helveticaltstd-roman-webfont.svg#svghelveticaltstd-roman-webfont') format('svg'); /* Legacy iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+
+input{
+	background-color: #F2F2F2 !important; 
+	border: none;
+	height: 25px;
+	font-family: helvetica;
+}
+
+	.tipper-positioner { left: -99999px; position: absolute; pointer-events: none; top: -99999px; }
+	.tipper-positioner .tipper-wrapper { position: relative; }
+	.tipper-positioner .tipper-content { background: #FCCC6B; border-radius: 3px; color: #666; display: block; font-family: sans-serif; font-size: 12px; margin: 0; padding: 8px 12px; white-space: nowrap; }
+	.tipper-positioner .tipper-caret { background: url(fs-tipper-icons.png) no-repeat; display: block; height: 11px; margin: 0; overflow: hidden; position: absolute; width: 5px; }
+	
+	.tipper-positioner.right { box-shadow: 1px 0 3px rgba(0, 0, 0, 0.25); }
+	.tipper-positioner.right .tipper-caret { background-position: left center; left: -5px; top: 0; }
+	
+	.tipper-positioner.left { box-shadow: -1px 0 3px rgba(0, 0, 0, 0.25); }
+	.tipper-positioner.left .tipper-caret { background-position: right center; right: -5px; top: 0; }
+	
+	.tipper-positioner.top .tipper-caret,
+	.tipper-positioner.bottom .tipper-caret { display: block; float: none; height: 5px; margin: 0 auto; width: 11px; }
+	
+	.tipper-positioner.top { box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25); }
+	.tipper-positioner.top .tipper-caret { background-position: center bottom; bottom: -5px; left: 0; }
+	
+	.tipper-positioner.bottom { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
+	.tipper-positioner.bottom .tipper-caret { background-position: center top; top: -5px; left: 0; }
+
+
+label{
+	font-size: 10pt;
+}

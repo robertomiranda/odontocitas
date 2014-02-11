@@ -1,0 +1,59 @@
+<%= form_for(@paciente) do |f| %>
+  <% if @paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+
+      <ul>
+      <% @paciente.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    &nbsp;&nbsp;<%= f.label :nombre  %> :
+    <%= f.text_field :nombre ,:class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;<%= f.label :apellido  %> :
+    <%= f.text_field :apellido , :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;<%= f.label :genero  %> :
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label 'F' %> <%= f.radio_button :genero , 'Femanino' %> 
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label 'M' %> <%= f.radio_button :genero , 'Masculino' %>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :correo %> :
+    <%= f.text_field :correo , :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label :clave %> :
+    <%= f.password_field :clave , :class=> 'registro_campo'%>
+  </div>
+  <div class="field">
+    &nbsp;&nbsp;&nbsp;<%= f.label :usuario %> :
+    <%= f.text_field :usuario , :class=> 'registro_campo'%>
+  </div>
+    <div class="field centrar_registro_campos">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¿Como se entero de nosotros? <br>
+    <%= f.select :como_se_entero ,[['---','---'],
+                                   ['Correo Electronico','Correo Electronico'],
+                                   ['Internet','Internet'],
+                                   ['Radio','Radio'],
+                                   [ 'Television','Television']] %>
+  </div>
+  <div class="field centrar_registro_campos">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Con el numero de tu celular <br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;podremos confirmar tu cita <br>
+    <%= f.text_field :celular  ,:class=> 'registro_campo'%>
+  </div>
+
+   <p class="terminos_condiciones_paciente">
+    Haciendo click en continuar, aceptas nuestros terminos y condiciones y uso
+  </p>
+
+  <div class="actions centrar_registro_campos">
+    <%= f.submit "Continuar" , :class => 'submit'   %>
+  </div>
+<% end %>

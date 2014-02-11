@@ -1,0 +1,25 @@
+<%= form_for(@prepagada) do |f| %>
+  <% if @prepagada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prepagada.errors.count, "error") %> prohibited this prepagada from being saved:</h2>
+
+      <ul>
+      <% @prepagada.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :odontologo_id %><br />
+    <%= f.number_field :odontologo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :prepagada %><br />
+    <%= f.text_field :prepagada %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,488 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">  
+
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario_over.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> 'activo_menu link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div>  
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: ' link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_superior_agendar">
+    <div class="dia_especifico">
+      <div class="flecha_izq_camb_dia"></div>
+      <div class="texto_dia_especifico"></div>
+      <div class="flecha_der_camb_dia"></div>
+    </div>
+    <div class="menu_dia_sem_mes">
+        <%= image_tag "agendar/boton_dia.png", class:'menu_dia'%>
+        <%= image_tag "agendar/boton_semana.png", class:'menu_sem'%>
+        <%= image_tag "agendar/boton_mes_over.png", class:'menu_mes'%>
+    </div>
+  </div>
+  <div class="contenedor_navegacion_home_odontologo">
+    <div id="mes_calendario">
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="form_cita">
+        <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_cita' %>
+          <form name ="cita">
+          <div class="form_cita_izquierda naranja">
+              <div class="titulo_form">
+                Información del Paciente
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'nombre'  %> :
+                <%= text_field_tag 'nombre_paciente' ,nil,:class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'correo' %> :
+                <%= text_field_tag 'correo_paciente' ,nil, :class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'celular'  %> :
+                <%= text_field_tag 'celular_paciente',nil,:class=> 'registro_campo'%>
+              </div>
+               &nbsp;&nbsp; <label for="name" id="name_label">Comentarios del Paciente</label>
+              <br> 
+              <textarea id="comentarios_paciente_cita" cols="37" rows="15" readonly>
+              </textarea>
+         </div>
+
+         <div class="form_cita_izquierda naranja" style="position:relative; top:-11px;">
+              <div class="titulo_form">
+                Información de la Cita
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Motivo Consulta'  %> :
+                <%= text_field_tag 'motivo_consulta' ,nil,:class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Modo Pago' %> :
+                <%= text_field_tag 'modo_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Medio Pago' %> :
+                <%= text_field_tag 'medio_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              
+              <div class="fecha_cita" style="float:left; margin: 5px 0 0 11px;">
+                <div style="with:100px; float:left;">
+                  <label for="name" id="name_label">Fecha de <br> la cita</label> 
+                </div>
+
+                  <div class="styled_dropdown" style="width: 100px;height: 25px; float:left; margin-left:7px;">
+                   <select id="mes_cita" disabled style="width :100px">
+                    <option value="--">mm</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="dia_cita" disabled>
+                    <option value="--">dd</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  </div>
+              </div>
+
+               <br>
+               <br>
+               <br>
+                <div class="hora_cita" style="float:left; margin-left:11px;" >
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Hora de <br> la cita</label> 
+                  </div>
+                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                       <select id="hora_cita" disabled>
+                          <option value="--">h</option>
+                          <option value ='12'>00</option>
+                          <option value ='1'>1</option>  
+                          <option value ='2'>2</option>
+                          <option value ='3'>3</option>
+                          <option value ='4'>4</option>  
+                          <option value ='5'>5</option>
+                          <option value ='6'>6</option>
+                          <option value ='7'>7</option>  
+                          <option value ='8'>8</option>
+                          <option value ='9'>9</option>
+                          <option value ='10'>10</option>  
+                          <option value ='11'>11</option>
+                      </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="minutos_cita" disabled>
+                      <option value="--">m</option>
+                      <option value ='00'>00</option>
+                      <option value ='15'>15</option>  
+                      <option value ='30'>30</option>
+                      <option value ='45'>45</option>
+                  </select>
+                 </div>
+
+                 <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="seccion_hora" disabled>
+                      <option value="am">am</option>
+                      <option value="pm">pm</option>
+                  </select>
+                 </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="duracion_cita" style="margin: 12px 0 10px 11px;">
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Duracion de <br> la cita</label> 
+                  </div>
+                  
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                     <select id="duracion_cita" disabled>
+                        <option value="--">mm</option>
+                        <option value ='15'>15</option>  
+                        <option value ='30'>30</option>
+                        <option value ='45'>45</option>
+                        <option value ='60'>60</option>
+                    </select>
+                  </div>
+              </div>
+         </div>
+
+         <div class="actions botonera_formulario">
+            <ul class="all_botones_formulario_cita">
+              <li>
+                <%= submit_tag "Reagendar Cita",  :class => 'submit_cita btn_reagendar'   %>
+                <%= submit_tag "Cancelar Cita",  :class => 'submit_cita btn_cancelar_cita '   %>
+                <%= submit_tag "Cita Incumplida",  :class => 'submit_cita btn_incumplida'   %>
+              </li>
+              <li>
+                <%= submit_tag "Cancelar",  :class => 'submit_cita btn_cancelar_reagendar'   %>
+                <%= submit_tag "Aceptar",  :class => 'submit_cita btn_aceptar_reagendar'   %>
+              </li>
+              <li>
+                <%= submit_tag "Continuar",  :class => 'submit_cita'   %>
+              </li>
+            </ul>
+          </div>
+        </form>
+
+       
+      </div>
+
+<script type="text/javascript">
+  $(function () { 
+
+    var mes = {
+      delta : 0,
+      init : function(){
+
+
+        citas_o.fetch({
+          success:function(){
+            console.log(citas_o);
+            mes.render();
+            mes.eventos();
+          }
+        });
+        
+      },
+      eventos : function(){
+            $(".flecha_izq_camb_dia").on('click',function(){
+              mes.delta =  mes.delta - 1;
+              mes.render();
+            });
+
+            $(".flecha_der_camb_dia").on('click',function(){
+              mes.delta =  mes.delta + 1;
+              mes.render();
+            });
+
+            //$('body').on('click','.nombre_paciente',function () 
+
+           $('body').on('click','.currentmonth',function(){
+              console.log($(this).data('fecha'));
+              //http://localhost:3000/odontologos/arangutan#fecha/28-6-2013
+              window.location.href="../odontologos/"+id_odontologo+"#fecha/"+$(this).data('fecha');
+            });
+
+            $('body').on('click','.currentday',function(){
+              console.log($(this).data('fecha'));
+              window.location.href="../odontologos/"+id_odontologo+"#fecha/"+$(this).data('fecha');
+            });
+      },
+      render : function (){
+        //Variables to be used later.  Place holders right now.
+        var padding ="";
+        var totalFeb ="";
+        var i = 1;
+        var testing="";
+        var year = "";
+
+         var current = new Date();
+         var month = current.getMonth()+this.delta;
+
+         if (month >= 12) {
+          aux = month;
+          j = 0;
+          while(aux >= 12){
+            aux = aux - 12;
+            j++;
+          }
+          month = aux;
+          //console.log(month);
+           year = current.getFullYear()+j;
+         }else{
+          if (month < 0) {
+            aux = month;
+            j =0;
+            while(aux <= 0){
+              aux = aux +12;
+              j++;
+            }
+            if (aux == 12) {aux = 0; j = j-1;}
+            month =aux;
+            year = current.getFullYear()-j;
+            //console.log(month);
+          }else{
+            //console.log(month);
+            year = current.getFullYear(); 
+          }
+         }
+         var day = current.getDate();
+
+         var tempMonth = month+1; //+1; //Used to match up the current month with the correct start date.
+         var prevMonth = month -1;
+
+         //Determing if Feb has 28 or 29 days in it.  
+         if (month == 1){
+          if ( (year%100!=0) && (year%4==0) || (year%400==0)){
+            totalFeb = 29;
+          }else{
+            totalFeb = 28;
+          }
+         }
+
+        //////////////////////////////////////////
+        // Setting up arrays for the name of  //
+        // the  months, days, and the number of //
+        // days in the month.     //
+        //////////////////////////////////////////
+
+         var monthNames = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov", "Dic"];
+         var dayNames = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes", "Sabado"];
+         var totalDays = ["31", ""+totalFeb+"","31","30","31","30","31","31","30","31","30","31"]
+
+        //////////////////////////////////////////
+        // Temp values to get the number of days//
+        // in current month, and previous month.//
+        // Also getting the day of the week.  //
+        //////////////////////////////////////////
+
+         var tempDate = new Date(tempMonth +' 1 ,'+year);
+         var tempweekday= tempDate.getDay();
+         var tempweekday2 = tempweekday;
+         var dayAmount = totalDays[month];
+        // var preAmount = totalDays[prevMonth] - tempweekday + 1;  
+         
+        //////////////////////////////////////////////////
+        // After getting the first day of the week for  //
+        // the month, padding the other days for that //
+        // week with the previous months days.  IE, if  //
+        // the first day of the week is on a Thursday,  //
+        // then this fills in Sun - Wed with the last //
+        // months dates, counting down from the last  //
+        // day on Wed, until Sunday.      //
+        //////////////////////////////////////////////////
+
+         while (tempweekday>0){
+          padding += "<td class='premonth'></td>";
+          //preAmount++;
+          tempweekday--;
+         }
+        //////////////////////////////////////////////////
+        // Filling in the calendar with the current   //
+        // month days in the correct location along.  //
+        //////////////////////////////////////////////////
+
+         while (i <= dayAmount){
+
+          //////////////////////////////////////////
+          // Determining when to start a new row  //
+          //////////////////////////////////////////
+
+          if (tempweekday2 > 6){
+            tempweekday2 = 0;
+            padding += "</tr><tr>";
+          }
+
+          //////////////////////////////////////////////////////////////////////////////////////////////////
+          // checking to see if i is equal to the current day, if so then we are making the color of  //
+          //that cell a different color using CSS.  Also adding a rollover effect to highlight the  //
+          //day the user rolls over. This loop creates the acutal calendar that is displayed.   //
+          //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+          /*
+          console.log('citas para '+ i +' '+ month +' '+year);
+          console.log(citas_o.where({odontologo_id:parseInt(id_odontologo),dia:i.toString(),mes:(month+1).toString(),ano:year.toString(),estado:'confirmada'}).length)
+          */
+          num_citas_hoy = citas_o.where({odontologo_id:parseInt(id_odontologo),dia:i.toString(),mes:(month+1).toString(),ano:year.toString(),estado:'confirmada'}).length + citas_o.where({odontologo_id:parseInt(id_odontologo),dia:i.toString(),mes:(month+1).toString(),ano:year.toString(),estado:'porconfirmar'}).length;
+          if (i == day){
+            if (this.delta == 0) {
+              //28-6-2013 dia-mes-ano
+              padding +="<td class='currentday' data-fecha="+i.toString()+'-'+(month+1).toString()+'-'+year.toString()+">"+
+                            "<p class='num_dia'>"+i+"</p>"+
+                              this.numero_citas(num_citas_hoy);
+                          //  "<div class='citas_dia'>"+
+                          //    10+"<img src='assets/odontologo/iconos_menu/icono_perfil.png'>"+
+                           // "</div>"+
+                        +"</td>";
+            }else{
+              padding +="<td class='currentmonth' data-fecha="+i.toString()+'-'+(month+1).toString()+'-'+year.toString()+">"+
+                            "<p class='num_dia'>"+i+"</p>"+
+                            this.numero_citas(num_citas_hoy);
+                          //  "<div class='citas_dia'>"+
+                          //    10+"<img src='assets/odontologo/iconos_menu/icono_perfil.png'>"+
+                           // "</div>"+
+                        +"</td>"; 
+            }
+            
+          }else{
+            padding +="<td class='currentmonth' data-fecha="+i.toString()+'-'+(month+1).toString()+'-'+year.toString()+">"+
+                            "<p class='num_dia'>"+i+"</p>"+
+                            this.numero_citas(num_citas_hoy);
+                           // "<div class='citas_dia'>"+
+                           //   10+"<img src='assets/odontologo/iconos_menu/icono_perfil.png'>"+
+                            //"</div>"+
+                        +"</td>";
+          }
+          tempweekday2++;
+          i++;
+         }
+
+
+         /////////////////////////////////////////
+         // Ouptputing the calendar onto the  //
+         // site.  Also, putting in the month //
+         // name and days of the week.    //
+         /////////////////////////////////////////
+
+
+         var calendarTable = "<table class='calendar_mes'>" //"<table class='calendar'> <tr class='currentmonth'><th colspan='7'>"+monthNames[month]+" "+ year +"</th></tr>";
+         calendarTable +="<tr class='weekdays'>  <td>Domingo</td>  <td>Lunes</td> <td>Martes</td> <td>Miercoles</td> <td>Jueves</td> <td>Viernes</td> <td>Sabado</td> </tr>";
+         calendarTable += "<tr>";
+         calendarTable += padding;
+         calendarTable += "</tr></table>";
+
+         $("#mes_calendario").html(calendarTable);
+         $('.dia_especifico .texto_dia_especifico').html(monthNames[month]+" - "+ year);
+
+
+          for (var i = $('#mes_calendario tr').last().children('td').length; i < 8; i++) {
+           $('#mes_calendario tr').last().append("<td class='premonth'></td>");
+        };
+
+        },
+        numero_citas: function(num_citas_hoy){
+          if (num_citas_hoy == 0) {
+            return '';
+          }else{
+            return "<div class='citas_dia'>"+num_citas_hoy+"<img src='assets/odontologo/iconos_menu/icono_perfil.png'></div>";
+          }
+        }
+
+    }
+
+
+      $('.menu_dia').on('click',function(){
+          window.location.href="../odontologos/"+id_odontologo;
+      }); 
+
+      $('.menu_sem').on('click',function(){
+          window.location.href="../semana";
+      }); 
+
+        mes.init();
+
+  });
+</script>

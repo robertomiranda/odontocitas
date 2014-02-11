@@ -1,0 +1,53 @@
+<h1>Listing clinicas</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Clave</th>
+    <th>Perfil</th>
+    <th>Foto perfil</th>
+    <th>Img promocion</th>
+    <th>Ciudad</th>
+    <th>Direccion</th>
+    <th>Imagen1</th>
+    <th>Imagen2</th>
+    <th>Imagen3</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Zona</th>
+    <th>Telefono</th>
+    <th>Odontologos</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clinicas.each do |clinica| %>
+  <tr>
+    <td><%= clinica.nombre %></td>
+    <td><%= clinica.correo %></td>
+    <td><%= clinica.clave %></td>
+    <td><%= clinica.perfil %></td>
+    <td><%= image_tag clinica.foto_perfil %></td>
+    <td><%= clinica.img_promocion %></td>
+    <td><%= clinica.ciudad %></td>
+    <td><%= clinica.direccion %></td>
+    <td><%= clinica.imagen1 %></td>
+    <td><%= clinica.imagen2 %></td>
+    <td><%= clinica.imagen3 %></td>
+    <td><%= clinica.lat %></td>
+    <td><%= clinica.long %></td>
+    <td><%= clinica.zona %></td>
+    <td><%= clinica.telefono %></td>
+    <td><%= clinica.clinicaxodontologos %></td>
+    <td><%= link_to 'Show', clinica %></td>
+    <td><%= link_to 'Edit', edit_clinica_path(clinica) %></td>
+    <td><%= link_to 'Destroy', clinica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clinica', new_clinica_path %>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @consultorio.nombre %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @consultorio.direccion %>
+</p>
+
+<p>
+  <b>Ciudad:</b>
+  <%= @consultorio.ciudad %>
+</p>
+
+<p>
+  <b>Zona:</b>
+  <%= @consultorio.zona %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @consultorio.lat %>
+</p>
+
+<p>
+  <b>Long:</b>
+  <%= @consultorio.long %>
+</p>
+
+<p>
+  <b>Id odontologo:</b>
+  <%= @consultorio.odontologo.nombre %> <%= @consultorio.odontologo.apellido %>
+</p>
+
+<p>
+  <b>Imagen1:</b>
+  <%= @consultorio.imagen1 %>
+</p>
+
+<p>
+  <b>Imagen2:</b>
+  <%= @consultorio.imagen2 %>
+</p>
+
+<p>
+  <b>Imagen3:</b>
+  <%= @consultorio.imagen3 %>
+</p>
+
+
+<%= link_to 'Edit', edit_consultorio_path(@consultorio) %> |
+<%= link_to 'Back', consultorios_path %>

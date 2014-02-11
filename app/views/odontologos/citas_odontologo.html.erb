@@ -1,0 +1,895 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">  
+          DR . <%= current_user.apellido.partition(" ")[0] %>.
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> 'link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas_over.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: ' activo_menu link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: ' link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_superior_agendar">
+    <div class="dia_especifico">
+
+    </div>
+    <div class="menu_dia_sem_mes">
+        <%= image_tag "pestana_historial.png", class:'pestana_historial'%>
+    </div>
+  </div>
+  <div class="contenedor_navegacion_home_odontologo">
+    <div class="contenedor_overflow">
+          <table class="tabla_estilos_datos">
+            <thead>
+              <tr>
+                <th style="width:60px;">
+                    COD. CITA
+                </th>
+                <th style="width:200px;">
+                  <p class="espacio_top">
+                    NOMBRE PACIENTE
+                  </p>
+                </th>
+                <th style="width:70px;">COD. <br> PACIENTE</th>
+                <th style="width:70px;">FECHA <br> CITA</th>
+                <th style="width:70px;">
+                  <p class="espacio_top">
+                    HORA
+                  </p>
+                </th>
+                <th style="width:100px;">
+                  <p class="espacio_top">
+                    ESTADO
+                  </p>
+                </th >
+                <th style="width:150px;">
+                  <p class="espacio_top">
+                    ACCIONES
+                  </p>
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <div style=" width: 790px;height: 420px; overflow: auto;">
+            <table class="tabla_estilos_datos" style="width: 780px;">
+              <tbody id="tabla_citas_odontologo">
+                <!--Aca va el template listando citas-->
+              </tbody>
+
+            </table>
+          </div>
+          
+    </div>
+  </div>
+
+</div>
+
+
+<div class="form_cita">
+        <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_cita' %>
+          <form name ="cita">
+          <div class="form_cita_izquierda naranja">
+              <div class="titulo_form">
+                Información del Paciente
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'nombre'  %> :
+                <%= text_field_tag 'nombre_paciente' ,nil,:class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'correo' %> :
+                <%= text_field_tag 'correo_paciente' ,nil, :class=> 'registro_campo'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'celular'  %> :
+                <%= text_field_tag 'celular_paciente',nil,:class=> 'registro_campo'%>
+              </div>
+               &nbsp;&nbsp; <label for="name" id="name_label">Comentarios del Paciente</label>
+              <br> 
+              <textarea id="comentarios_paciente_cita" cols="37" rows="15" readonly>
+              </textarea>
+         </div>
+
+         <div class="form_cita_izquierda naranja" style="position:relative; top:-11px;">
+              <div class="titulo_form">
+                Información de la Cita
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;<%= label_tag 'Motivo Consulta'  %> :
+                <%= text_field_tag 'motivo_consulta' ,nil,:class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Modo Pago' %> :
+                <%= text_field_tag 'modo_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              <div class="field">
+                &nbsp;&nbsp;&nbsp;<%= label_tag 'Medio Pago' %> :
+                <%= text_field_tag 'medio_pago' ,nil, :class=> 'campo_cita'%>
+              </div>
+              
+              <div class="fecha_cita" style="float:left; margin: 5px 0 0 11px;">
+                <div style="with:100px; float:left;">
+                  <label for="name" id="name_label">Fecha de <br> la cita</label> 
+                </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="mes_cita" disabled>
+                    <option value="--">mm</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                  </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                  <select id="dia_cita" disabled>
+                    <option value="--">dd</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  </div>
+              </div>
+
+               <br>
+               <br>
+               <br>
+                <div class="hora_cita" style="float:left; margin-left:11px;" >
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Hora de <br> la cita</label> 
+                  </div>
+                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                       <select id="hora_cita" disabled>
+                          <option value="--">h</option>
+                          <option value ='12'>00</option>
+                          <option value ='1'>1</option>  
+                          <option value ='2'>2</option>
+                          <option value ='3'>3</option>
+                          <option value ='4'>4</option>  
+                          <option value ='5'>5</option>
+                          <option value ='6'>6</option>
+                          <option value ='7'>7</option>  
+                          <option value ='8'>8</option>
+                          <option value ='9'>9</option>
+                          <option value ='10'>10</option>  
+                          <option value ='11'>11</option>
+                      </select>
+                  </div>
+
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="minutos_cita" disabled>
+                      <option value="--">m</option>
+                      <option value ='00'>00</option>
+                      <option value ='15'>15</option>  
+                      <option value ='30'>30</option>
+                      <option value ='45'>45</option>
+                  </select>
+                 </div>
+
+                 <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                   <select id="seccion_hora" disabled>
+                      <option value="am">am</option>
+                      <option value="pm">pm</option>
+                  </select>
+                 </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="duracion_cita" style="margin: 12px 0 10px 11px;">
+                  <div style="with:100px; float:left;">
+                    <label for="name" id="name_label">Duracion de <br> la cita</label> 
+                  </div>
+                  
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                     <select id="duracion_cita" disabled>
+                        <option value="--">mm</option>
+                        <option value ='15'>15</option>  
+                        <option value ='30'>30</option>
+                        <option value ='45'>45</option>
+                        <option value ='60'>60</option>
+                    </select>
+                  </div>
+              </div>
+         </div>
+
+         <div class="actions botonera_formulario">
+            <ul class="all_botones_formulario_cita">
+              <li>
+                <%= submit_tag "Reagendar Cita",  :class => 'submit_cita btn_reagendar'   %>
+                <%= submit_tag "Cancelar Cita",  :class => 'submit_cita btn_cancelar '   %>
+                <%= submit_tag "Cita Incumplida",  :class => 'submit_cita btn_incumplida'   %>
+              </li>
+              <li>
+                <%= submit_tag "Cancelar",  :class => 'submit_cita btn_cancelar_reagendar'   %>
+                <%= submit_tag "Aceptar",  :class => 'submit_cita btn_aceptar_reagendar'   %>
+              </li>
+              <li>
+                <%= submit_tag "Continuar",  :class => 'submit_cita'   %>
+              </li>
+            </ul>
+          </div>
+        </form>
+
+       
+      </div>
+
+
+<script id="template_citas" type="text/x-handlebars-template">
+  
+    {{#each lista_render_template}}
+         <tr class="elemento">
+            <td class="cod_cita activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:62px;">{{cod_cita}}</td>
+            <td class="nombre_pac activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:200px;">{{nombre_paciente}}</td>
+            <td class="cod_paciente activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:70px;">{{cod_paciente}}</td>
+            <td class="fecha_cita activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:70px;">{{fecha_cita}}</td>
+            <td class="hora_cita activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:70px;">{{hora_humanos hora_cita}}</td>
+            <td class="estado activar_desplegar_mostrar_cita" id_cita="{{cod_cita}}" style="width:100px;">{{estado_cita}}</td>
+            <td style="width:142px;" >
+                {{acciones_segun_estado estado_cita cod_paciente cod_cita hora_cita}}
+            </td>
+          </tr>
+      {{/each}}
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+     var misCitas,citas_dia;
+      Citas = Backbone.Collection.extend({
+        url :'/appointments',
+        comparator : function(c){
+            var hora_minutos=parseFloat(c.get('hora'))/60;
+            var n= String(hora_minutos).split(".");
+            var minutos;
+            if(n[1]){
+                
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+            }else{
+                minutos = '00';
+            }
+            var date = new Date( c.get("ano"),  c.get("mes"),  c.get("dia"),  n[0], minutos, '0', '0');
+            return date.getTime();
+        }
+      });
+      
+      
+      Pacientes = Backbone.Collection.extend({
+        url : '/pacientes'
+      });
+
+    var pacientes = new Pacientes;
+    var citas = new Citas;
+
+
+    //window.paciente_view = new PacientesView;
+    //console.log(paciente_view.render());
+    Cita = Backbone.Model.extend({urlRoot : '/appointments'});
+
+      var citasxodontologo = {
+        misCitas : '',
+        init: function  (misCitas) {
+          this.misCitas = misCitas;
+          this.citasUpacientes();
+          this.eventos();
+          this.desactivar_inputs();
+          
+        },
+        init_sin_eventos : function(misCitas){
+          this.misCitas = misCitas;
+          this.citasUpacientes();
+          this.desactivar_inputs();
+        },
+        eventos:function () {
+
+           $('body').on('click','.activar_desplegar_mostrar_cita',function () {
+              citasxodontologo.obtener_cita($(this).attr('id_cita'));
+              console.log($(this).attr('id_cita'));
+              $('.form_cita').attr('id_cita',$(this).attr('id_cita'));
+              $('.pantalla_negra').fadeIn(1000);
+              $('.form_cita').animate({
+                top : '50%',
+              },1000);
+          });
+
+
+
+            $('.cerrar_form_cita').on('click', function() {
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_cita').animate({
+                top : '-1500px'
+              },1500);
+
+              $('.all_botones_formulario_cita').animate({
+                left:'0px'
+              },1000);
+
+
+             citasxodontologo.desactivar_inputs();
+
+            });
+
+            $('.btn_reagendar').on('click',function(e){
+              e.preventDefault();
+              //activar datos cita
+              
+
+              $('.all_botones_formulario_cita').animate({
+                left:'-600px'
+              },1000);
+              
+              citasxodontologo.activar_inputs();
+
+            });
+
+            $('.btn_cancelar_reagendar').on('click',function(e) {
+              e.preventDefault();
+              //desactivar datos cita
+
+              citasxodontologo.obtener_cita($('.form_cita').attr('id_cita'));
+              
+              citasxodontologo.desactivar_inputs();
+              
+              $('.all_botones_formulario_cita').animate({
+                left:'0px'
+              },1000);
+            });
+
+            $('.btn_aceptar_reagendar').on('click',function(e){
+              e.preventDefault();
+
+              $('.all_botones_formulario_cita').animate({
+                left:'0px'
+              },1000);
+
+              citasxodontologo.desactivar_inputs();
+
+              citasxodontologo.reagendarCita($('.form_cita').attr('id_cita'));
+            });
+
+            $('.btn_cancelar').on('click',function(e) {
+              e.preventDefault();
+              var r=confirm("¿Seguro quieres cancelar la cita?");
+              if (r==true){
+                citasxodontologo.cancelarCita($('.form_cita').attr('id_cita'));
+              }
+            });
+
+
+            $('body').on('click','.cancelar_cita_btn',function () {
+              var r=confirm("¿Seguro quieres cancelar la cita?");
+              if (r==true){
+                console.log('se quiere cancelar la cita ', $(this).attr('id_cita'));
+                citasxodontologo.cancelarCita($(this).attr('id_cita'));
+              }
+                
+            });
+
+            
+
+            $('body').on('click','.confirmar_cita',function () {
+              citasxodontologo.confirmar_cita($(this).attr('id_cita'), $(this));
+            });
+
+            
+            $('body').on('click','.asistio_btn',function () {
+              citasxodontologo.no_asistio($(this).attr('id_cita'), $(this));
+            });
+
+            $('body').on('click','.cambiar_estado_cita',function () {
+              citasxodontologo.cambiar_estado_cita($(this).attr('id_cita'), $(this));
+            });
+
+        },
+        cancelarCita :  function (id_cita) {
+              var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+              c = _.without(c, undefined)[0];
+              console.log(c);
+              c.save({'estado':'cancelada'},{
+                  success:function(){
+                      $('.pantalla_negra').fadeOut(1000);
+                      $('.form_cita').animate({
+                        top : '-1500px'
+                      },1500);
+
+                      citas.fetch({
+                        success : function(){
+                          citasxodontologo.init_sin_eventos(citas.where({odontologo_id: parseInt(id_odontologo)})); 
+                        }
+                         
+                      });
+                     
+                    }
+                });
+
+        },
+        activar_inputs :function  () {
+              $('#medio_pago').removeAttr("disabled"); 
+              $('#motivo_consulta').removeAttr("disabled"); 
+              $('#modo_pago').removeAttr("disabled"); 
+              $('#mes_cita').removeAttr("disabled"); 
+              $('#dia_cita').removeAttr("disabled"); 
+              $('#duracion_cita').removeAttr("disabled"); 
+              $('#hora_cita').removeAttr("disabled"); 
+              $('#minutos_cita').removeAttr("disabled"); 
+              $('#seccion_hora').removeAttr("disabled"); 
+              $('#comentarios_paciente_cita').removeAttr("readonly"); 
+        },
+        desactivar_inputs : function () {
+            $('#medio_pago').attr('disabled', 'disabled');
+            $('#motivo_consulta').attr('disabled', 'disabled');
+            $('#modo_pago').attr('disabled', 'disabled');
+            $('#minutos_cita').attr('disabled', 'disabled');
+            $('#seccion_hora').attr('disabled', 'disabled');
+            $('#nombre_paciente').attr('disabled', 'disabled');
+            $('#correo_paciente').attr('disabled', 'disabled');
+            $('#celular_paciente').attr('disabled', 'disabled');
+            $('#comentarios_paciente_cita').attr('readonly', 'readonly');
+            $('#mes_cita').attr('disabled', 'disabled');
+            $('#dia_cita').attr('disabled', 'disabled');
+            $('#duracion_cita').attr('disabled', 'disabled');
+            $('#hora_cita').attr('disabled', 'disabled');
+            $('#minutos_cita').attr('disabled', 'disabled');
+            $('#seccion_hora').attr('disabled', 'disabled');
+        },
+        citasUpacientes:function() {
+          var arreglo = new Array();
+          console.log(this.misCitas);
+          for (var i = 0; i < this.misCitas.length; i++) {
+             var p = pacientes.where({id:this.misCitas[i].get('paciente_id')})[0];
+             //console.log(p);
+             var obj ={
+                cod_cita : this.misCitas[i].id,
+                nombre_paciente : p.get('nombre')+' '+p.get('apellido'),
+                cod_paciente :p.id,
+                fecha_cita : this.misCitas[i].get('dia')+'/'+this.misCitas[i].get('mes')+'/'+this.misCitas[i].get('ano'),
+                hora_cita : this.misCitas[i].get('hora'),
+                estado_cita : this.misCitas[i].get('estado')
+             }
+             arreglo.push(obj);
+          };
+          console.log(arreglo);
+
+          //render handlebar
+          var source   = $("#template_citas").html();
+          var context = Handlebars.compile(source);
+          //var html_1 = context({tabla_citas_para_hoy : pacientes_mios});
+          //console.log(html_1);
+          $('#tabla_citas_odontologo').html(context({lista_render_template : arreglo}));
+        },
+         obtener_cita :function(id_cita){
+          //console.log(misCitas);
+
+          var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+          c = _.without(c, undefined)[0];
+
+          var p = pacientes.where({id:c.get('paciente_id')})[0];
+
+          //console.log(cita[0]);
+          //console.log(p);
+          this.llenarFormularioCita(c,p);
+          this.permisos_segun_estado(c);
+        },
+        llenarFormularioCita: function(cita,paci){
+          
+          $('#medio_pago').val(cita.get('medio_pago'));
+          $('#motivo_consulta').val(cita.get('motivo'));
+          $('#modo_pago').val(cita.get('modo_pago'));
+          $('#mes_cita').val(cita.get('mes'));
+          $('#dia_cita').val(cita.get('dia'));
+          $('#duracion_cita').val(cita.get('duracion'));
+          $('#comentarios_paciente_cita').val(cita.get('comentarios'));
+          //console.log(this.hora_humanos(cita.get('hora')).split(" "));
+
+          var hora_h = this.hora_humanos(cita.get('hora')).split(" ");
+          var hora_h1 =  hora_h[0].split(":");
+          $('#hora_cita').val(hora_h1[0]);
+          $('#minutos_cita').val(hora_h1[1]);
+          $('#seccion_hora').val(hora_h[1]);
+          
+          $('#nombre_paciente').val(paci.get('nombre')+' '+paci.get('apellido'));
+          $('#correo_paciente').val(paci.get('correo'));
+          $('#celular_paciente').val(paci.get('celular'));
+          
+        },
+        hora_humanos:function(hora_minutos){
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              return n[0];
+        },
+        reagendarCita :function (id_cita) {
+          var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+              c = _.without(c, undefined)[0];
+              //if( c.get('tipo_consulta') == "offline"){
+                
+                console.log(c);
+
+                var hora_cita = $('#hora_cita').val();
+                var minutos_cita = $('#minutos_cita').val();
+                var seccion = $('#seccion_hora').val();
+                console.log('hora cita '+hora_cita);
+                console.log('minutos cita '+minutos_cita);
+                console.log('seccion hora' + seccion);
+                if ( seccion=="pm") {
+                      hora_cita = parseInt(hora_cita)+12;
+                      hora_cita = parseInt(hora_cita) * 60;
+                      hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+                  }else{
+                      hora_cita = parseInt(hora_cita) * 60;
+                      hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
+                  }
+
+
+                console.log(citas);
+
+                citas.create({
+                  ano: c.get('ano'),
+                  comentarios: $('#comentarios_paciente_cita').val(),
+                  dia: $('#dia_cita').val(),
+                  duracion: $('#duracion_cita').val(),
+                  estado: 'confirmada',
+                  hora: hora_cita,
+                  medio_pago: $('#medio_pago').val(),
+                  mes: $('#mes_cita').val(),
+                  modo_pago: $('#modo_pago').val(),
+                  motivo: $('#motivo_consulta').val(),
+                  odontologo_id: c.get('odontologo_id'),
+                  paciente_id: c.get('paciente_id'),
+                  tipo_consulta: c.get('tipo_consulta'),
+                });
+                console.log(citas);
+
+                c.save({'estado':'reagandada'},{
+                  success:function(){
+                    alert('se actualizo correctamente');
+                      $('.pantalla_negra').fadeOut(1000);
+                      $('.form_cita').animate({
+                        top : '-1500px'
+                      },1500);
+                      
+                      citas.fetch({
+                        success : function(){
+                          citasxodontologo.init_sin_eventos(citas.where({odontologo_id: parseInt(id_odontologo)})); 
+                        }
+                      });
+
+
+                    }
+                });
+
+        },
+        permisos_segun_estado:function(cita){
+          if(cita.get('estado') == 'cancelada'){
+            $('.btn_reagendar').hide();
+            $('.btn_cancelar').hide();
+            $('.btn_incumplida').hide();
+          }
+          if(cita.get('estado') == 'confirmada'){
+            $('.btn_reagendar').show();
+            $('.btn_cancelar').show();
+            $('.btn_incumplida').show();
+          }
+          if(cita.get('estado') == 'reagandada'){
+            $('.btn_reagendar').hide();
+            $('.btn_cancelar').hide();
+            $('.btn_incumplida').hide();
+          }
+
+        },
+        confirmar_cita : function(id_cita, $elem){
+              var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+              c = _.without(c, undefined)[0];
+
+              c.save({'estado':'confirmada'},{
+                  success:function(){
+                      $elem.attr('src','/assets/odontologo/icono_confirmar_over.png');
+                      $elem.parent().prev().html('confirmada');
+                      $elem.removeClass('confirmar_cita');
+                      //calendario_dia.init();
+                      //por ahora ya que no esta sirviendo apropiadamente se llama dos veces :S
+                      //location.reload(); 
+                    }
+              });
+        },
+        no_asistio : function(id_cita, $elem){
+          var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+          c = _.without(c, undefined)[0];
+          //console.log(c);
+          //mes
+          if (c.get('mes')==moment().format('M') && moment().format('D')==c.get('dia') && moment().format('YYYY')==c.get('ano') ) {
+            
+            var r=confirm("¿Esta seguro de que no asistio el paciente?");
+
+            if (r==true){
+              if (parseInt(c.get('hora')) < this.obtener_hora_now_formato()) {
+                c.save({'estado':'noasistio'},{
+                    success:function(){
+                        $elem.attr('src','/assets/odontologo/icono_confirmar_over.png');
+                        $elem.parent().prev().html('noasistio');
+                        $elem.parent().html(
+                                      '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/asistio_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;');
+                        //calendario_dia.init();
+                        //por ahora ya que no esta sirviendo apropiadamente se llama dos veces :S
+                        //location.reload(); 
+                      }
+                });
+              }
+            }else{
+              
+            }
+
+              
+
+
+          }else{
+            alert('no ha pasado el dia de esta cita, si quieres la puedes cancelar');
+          }
+          /*
+          console.log(moment().format('M'));
+          console.log(c.get('mes'));
+          console.log(moment().format('D'));
+          console.log(c.get('dia'));
+          console.log(moment().format('YYYY'));
+          console.log(c.get('ano'));*/
+          
+          
+        },
+        cambiar_estado_cita : function (id_cita, $elem){
+
+          var c = _.map(this.misCitas, function(c){ if (c.get('id')==id_cita ) {return c}; });
+          c = _.without(c, undefined)[0];
+
+          if ($elem.data('asistio') == 'si') {
+            var r=confirm("¿Esta seguro de que el paciente no asistio?");
+            if (r==true){
+                c.save({'estado':'noasistio'},{
+                    success:function(){
+                        $elem.attr('src','/assets/odontologo/icono_confirmar_over.png');
+                        $elem.parent().prev().html('noasistio');
+                        $elem.parent().html(
+                                      '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/asistio_inactivo.png" data-asistio="no" class ="cambiar_estado_cita"  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;');
+                        //calendario_dia.init();
+                        //por ahora ya que no esta sirviendo apropiadamente se llama dos veces :S
+                        //location.reload(); 
+                      }
+                });
+            }else{}
+
+          }else{
+            var r=confirm("¿Esta seguro de que paciente asistio?");
+            if (r==true){
+              c.save({'estado':'asistio'},{
+                    success:function(){
+                        $elem.attr('src','/assets/odontologo/icono_confirmar_over.png');
+                        $elem.parent().prev().html('asistio');
+                        $elem.parent().html(
+                                      '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;'+
+                                       '<img src="assets/historial_citas/icono_asistio_activo.png" data-asistio="si" class ="cambiar_estado_cita"  id_cita='+c.id+'>&nbsp;&nbsp;&nbsp;');
+                        //calendario_dia.init();
+                        //por ahora ya que no esta sirviendo apropiadamente se llama dos veces :S
+                        //location.reload(); 
+                      }
+                });
+            }else{}
+
+          }
+        },
+        obtener_hora_now_formato : function(){
+          return parseInt(moment().format('H'))*60+parseInt(moment().format('m'));
+        }
+
+     }
+    
+
+
+     $.when(pacientes.fetch(),citas.fetch()).done(function(){
+          citasxodontologo.init(citas.where({odontologo_id: parseInt(id_odontologo)}));
+          console.log(citasxodontologo);
+
+      });
+     
+
+      Handlebars.registerHelper('hora_humanos' ,function ( hora_minutos) {
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              
+        return new Handlebars.SafeString(
+           n[0]
+        );
+      });
+
+      Handlebars.registerHelper('acciones_segun_estado' ,function ( estado, cod_paciente, cod_cita ) {
+              var imagenes_mostrar;
+              if (estado == "confirmada") {
+                  imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_cancelar_activo.png" class ="cancelar_cita_btn" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_confirmar_over.png" class ="" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_asistio_activo.png" class ="asistio_btn" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;';
+              }
+
+              if (estado == "cancelada") {
+                  imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/asistio_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;';
+              }
+
+              if (estado == "reagandada") {
+                  imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/asistio_inactivo.png" class ="" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;';
+              }
+
+              if (estado == "porconfirmar") {
+                  imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_cancelar_activo.png" class ="cancelar_cita_btn" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_confirmar.png" class ="confirmar_cita" id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_asistio_activo.png" class ="" id_cita='+cod_cita+' >&nbsp;&nbsp;&nbsp;';
+              }
+              if (estado == "noasistio") {
+                imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/asistio_inactivo.png" data-asistio="no" class ="cambiar_estado_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;';
+              }
+              if (estado == "asistio") {
+                imagenes_mostrar = '<img src="assets/historial_citas/icono_editar_activo.png" class ="activar_desplegar_mostrar_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/cancelar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/confirmar_inactivo.png" class =""  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;'+
+                                     '<img src="assets/historial_citas/icono_asistio_activo.png" data-asistio="si" class ="cambiar_estado_cita"  id_cita='+cod_cita+'>&nbsp;&nbsp;&nbsp;';
+              }
+              
+        return new Handlebars.SafeString(
+           imagenes_mostrar
+        );
+      });
+
+  })
+</script>

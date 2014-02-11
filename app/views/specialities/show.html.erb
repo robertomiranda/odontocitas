@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id odontologo:</b>
+  <%= @speciality.odontologo_id %>
+</p>
+
+<p>
+  <b>Especialidad:</b>
+  <%= @speciality.especialidad %>
+</p>
+
+
+<%= link_to 'Edit', edit_speciality_path(@speciality) %> |
+<%= link_to 'Back', specialities_path %>

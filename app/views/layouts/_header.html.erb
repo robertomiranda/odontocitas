@@ -1,0 +1,23 @@
+<div class="menu">
+	
+	<div class="centrado">
+	<%= image_tag "logo_azul.png" ,  :class => 'logo_header' %>
+	<ul>
+		<li>home</li>
+		<li>nosotros</li>
+		<li>oferta</li>
+		<li>eventos</li>
+		<li class="redondo">registro</li>
+		<li class="redondo entrar">entrar</li>
+	</ul>
+		<div class="formulario">
+			<%= form_tag do %>
+          		<%= text_field_tag :username, nil, placeholder: "username" %>
+          		<%= password_field_tag :password, nil,  placeholder: "password" %>
+          		<%= submit_tag "Log In" %>
+        	<% end %>
+		</div>
+	</div>
+
+</div>
+<div id="shadow"></div>

@@ -1,0 +1,41 @@
+<h1>Listing horas_disponibles</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Hora Cita</th>
+    <th>Dia</th>
+    <th>Mes</th>
+    <th>Ano</th>
+    <th>Duracion</th>
+    <th>Odontologo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @horas_disponibles.each do |horas_disponible| %>
+  <tr>
+    <td><%= horas_disponible.id %></td>
+    <td class="cambiar"><%= horas_disponible.hora_arreglada %></td>
+    <td><%= horas_disponible.dia %></td>
+    <td><%= horas_disponible.mes %></td>
+    <td><%= horas_disponible.ano %></td>
+    <td><%= horas_disponible.duracion %></td>
+    <td><%= horas_disponible.odontologo_id %></td>
+    <td><%= link_to 'Show', horas_disponible %></td>
+    <td><%= link_to 'Edit', edit_horas_disponible_path(horas_disponible) %></td>
+    <td><%= link_to 'Destroy', horas_disponible, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Horas disponible', new_horas_disponible_path %>
+
+<script type="text/javascript">
+  $(function(){
+
+  }); 
+</script>

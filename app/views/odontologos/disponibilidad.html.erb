@@ -1,0 +1,1948 @@
+<div class="wrapper_home_odontologos">
+  <p class="saludo">Buenos Dias</p>
+  <div class="menu_lateral">
+      <div class="nombre_odontologo">
+        <p class="n_apellido">
+          DR . <%= current_user.apellido.partition(" ")[0] %>.
+        </p>
+      </div>
+
+      <div class="lista_navegacion_home_odontologos">
+        <div class="item_navegacion_home_odonto calendario_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_calendario.png", :class=>'imagen_icono_menu_lateral '%>
+          <%= link_to 'Calendario', odontologo_path(current_user) , :class=> ' link_item_registrado ' %>
+        </div>
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_agendar.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Agendar', agendar_url , class: 'link_item_registrado link_agendar' %>
+        </div> 
+        <div class="item_navegacion_home_odonto disponibilidad_menu">
+          <%= image_tag "odontologo/iconos_menu/icono_disponibilidad_over.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Disponibilidad', disponibilidad_url , class: ' activo_menu link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_finanzas_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Finanzas
+        </div> 
+        <div class="item_navegacion_home_odonto" style="color:#e6e6e6 !important;">
+          <%= image_tag "odontologo/iconos_menu/icono_reportes_off.png", :class=>'imagen_icono_menu_lateral'%>
+          Reportes
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_paciente.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Pacientes', pacientes_odontologo_url , class: ' link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_historialdecitas.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Historial de citas', citas_odontologo_url , class: 'link_item_registrado' %>
+        </div> 
+        <div class="item_navegacion_home_odonto">
+          <%= image_tag "odontologo/iconos_menu/icono_perfil.png", :class=>'imagen_icono_menu_lateral'%>
+          <%= link_to 'Perfil', perfil_odontologo_url , class: ' link_item_registrado' %>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_superior_agendar">
+    <div class="dia_especifico">
+      <div class="flecha_izq_camb_dia"></div>
+      <div class="texto_dia_especifico">
+      </div>
+      <div class="flecha_der_camb_dia"></div>
+    </div>
+    <div class="menu_disponibilidad">
+      <%= image_tag "odontologo/disponibilidad/boton_agregar_disponibilidad.png", class:'agregar_disponibilidad'%>
+      <%= image_tag "odontologo/disponibilidad/boton_eliminar_disponibilidad.png", class:'eliminar_disponibilidad'%>
+      <%= image_tag "odontologo/disponibilidad/pestana_disponibilidad.png", class:''%>
+    </div>
+  </div>
+  <div class="contenedor_navegacion_home_odontologo">
+    <ul class="dias_semana">
+      <li id="dia1_sem"></li>
+      <li id="dia2_sem"></li>
+      <li id="dia3_sem"></li>
+      <li id="dia4_sem"></li>
+      <li id="dia5_sem"></li>
+      <li id="dia6_sem"></li>
+      <li id="dia7_sem"></li>
+    </ul>
+    <div class="semanero">
+      <ul class="horas_semana">
+        <li>6:00 am</li>
+        <li>7:00 am</li>
+        <li>8:00 am</li>
+        <li>9:00 am</li>
+        <li>10:00 am</li>
+        <li>11:00 am</li>
+        <li>12:00 pm</li>
+        <li>1:00 pm</li>
+        <li>2:00 pm</li>
+        <li>3:00 pm</li>
+        <li>4:00 pm</li>
+        <li>5:00 pm</li>
+        <li>6:00 pm</li>
+        <li>7:00 pm</li>
+        <li>8:00 pm</li>
+        <li>9:00 pm</li>
+        <li>10:00 pm</li>
+        <li>11:00 pm</li>
+        <li>12:00 am</li>
+        <li>1:00 am</li>
+        <li>2:00 am</li>
+        <li>3:00 am</li>
+        <li>4:00 am</li>
+        <li>5:00 am</li>
+      </ul>
+      <div class="semanario">
+        <div class="dias">
+          <div class="hora_seman 6_dia1">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia1">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia1">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia2">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia2">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia2">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia3">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia3">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia3">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia4">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia4">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia4">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia5">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia5">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia5">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia6">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia6">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia6">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+        <div class="dias">
+          <div class="hora_seman 6_dia7">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 7_dia7">
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+            <div class="quince_minu_hora "></div>
+          </div>
+          <div class="hora_seman 8_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 9_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 10_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 11_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 12_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 13_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 14_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 15_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 16_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 17_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 18_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 19_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 20_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 21_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 22_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 23_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 24_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 1_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 2_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 3_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 4_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+          <div class="hora_seman 5_dia7">
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+            <div class="quince_minu_hora"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+      <div class="form_disponibilidad">
+          <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_disponibilidad' %>
+          <div class="centrar_disponibilidad">
+            <div class="titulo_disponibilidad_formularios">
+              Agregar Disponibilidad
+            </div>
+            <%= form_tag("/horas_disponibles" , :method => :post , remote: true, id: 'agregar_disponibilidad') do %>
+                <div class="field">
+                  <%= label_tag 'Tiempo de cada cita'  %> :
+                  15<%= radio_button_tag 'tiempo_cita', "15", false, :class => "tiempo_cita tiempo15" %>
+                  30<%= radio_button_tag 'tiempo_cita', "30", false, :class => "tiempo_cita tiempo30" %>
+                  45<%= radio_button_tag 'tiempo_cita', "45", false, :class => "tiempo_cita tiempo45" %>
+                  60<%= radio_button_tag 'tiempo_cita', "60", false, :class => "tiempo_cita tiempo60" %>
+                </div>
+
+                <div class="field">
+                    <%= label_tag 'Fecha Inicio' %> :
+                    <input type="text" name="fecha_inicio" id="mini_calendario_inicio" >
+                </div>
+                <div class="field">
+                   <label for="Hora" style="float:left;">Hora</label>
+                <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                    <%= select_tag 'hora_inicio' , 
+                      "<option value ='1'>1</option>
+                      <option value ='2'>2</option>
+                      <option value ='3'>3</option>
+                      <option value ='4'>4</option>
+                      <option value ='5'>5</option>
+                      <option value ='6'>6</option>
+                      <option value ='7'>7</option>
+                      <option value ='8'>8</option>
+                      <option value ='9'>9</option>
+                      <option value ='10'>10</option>
+                      <option value ='11'>11</option>
+                      <option value ='12'>12</option>".html_safe %>
+                  </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                   <%= select_tag 'minutos_inicio' ,
+                              "<option value ='0'>00</option>
+                              <option value ='15'>15</option>
+                              <option value ='30'>30</option>
+                              <option value ='45'>45</option>".html_safe %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                  <%= select_tag 'am_pm_inicio' , 
+                    "<option value ='am'>am</option>
+                    <option value ='pm'>pm</option>".html_safe %>
+                   </div>
+                   <div style="float:left; margin: 5px 10px 0 15px;">
+                    <%= image_tag 'odontologo/disponibilidad/flecha.png' %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                     <%= select_tag 'hora_final' , 
+                    "<option value ='1'>1</option>
+                    <option value ='2'>2</option>
+                    <option value ='3'>3</option>
+                    <option value ='4'>4</option>
+                    <option value ='5'>5</option>
+                    <option value ='6'>6</option>
+                    <option value ='7'>7</option>
+                    <option value ='8'>8</option>
+                    <option value ='9'>9</option>
+                    <option value ='10'>10</option>
+                    <option value ='11'>11</option>
+                    <option value ='12'>12</option>".html_safe %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                   <%= select_tag 'minutos_final' ,
+                      "<option value ='0'>00</option>
+                    <option value ='15'>15</option>
+                    <option value ='30'>30</option>
+                    <option value ='45'>45</option>".html_safe %>
+                  </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                    <%= select_tag 'am_pm_final' , 
+                      "<option value ='am'>am</option>
+                      <option value ='pm'>pm</option>".html_safe %>
+                   </div>
+                </div>
+                <br><br>
+                <!--
+                <div class="field">
+                  <%= label_tag 'Se repite'  %> :
+                  <%= radio_button_tag 'se_repite', "no", false, :class => "se_repite_en_la_semana" %><%= label_tag 'No Se repite'  %> 
+                  <%= radio_button_tag 'se_repite', "si", false, :class => "se_repite_en_la_semana" %><%= label_tag 'Semanalmente'  %> :
+                </div>
+                -->
+                <div class="se_repite_contenido">
+                    <div class="field" style="margin: 5px 0 20px 0;">
+                      <%= label_tag 'Selecciona los dias que se repite'  %> :
+                      <br>
+                      L <%= check_box_tag 'dias[]', '1' %> 
+                      M <%= check_box_tag 'dias[]', '2' %>
+                      M <%= check_box_tag 'dias[]', '3' %> 
+                      J <%= check_box_tag 'dias[]', '4' %> 
+                      V <%= check_box_tag 'dias[]', '5' %> 
+                      S <%= check_box_tag 'dias[]', '6' %> 
+                      D <%= check_box_tag 'dias[]', '0' %> 
+                      <p style="color:#808080; font-size:8pt;">Si se deja vacio toma todos los dias</p>
+                    </div>
+
+                    <div class="field">
+                        <%= label_tag 'Fecha Final'  %> :
+                        <input type="text" name="fecha_final" id="mini_calendario_final">
+                    </div>
+                </div>
+                  
+                  <%= hidden_field_tag  'odontologo_id', current_user.id,:class=> 'registro_campo'%>
+
+
+                <div class="actions centrar_registro_campos">
+                    <%= submit_tag "Guardar",  :class => 'submit'%>
+                  </div>
+
+
+              <% end %>
+            </div>
+      </div>
+
+
+      <div class="form_quitar_disponibilidad">
+          <%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_quitar_disponibilidad' %>
+          <div class="centrar_disponibilidad">
+            <div class="titulo_disponibilidad_formularios">
+              Eliminar Disponibilidad
+            </div>
+            <%= form_tag("/quitar_horas_disponibles" , :method => :get , remote: true) do %>
+                <div class="field">
+                    <%= label_tag 'Fecha Inicio' %> :
+                    <input type="text" name="fecha_inicio" id="mini_calendario_inicio_eliminar" >
+                </div>
+                <div class="field">
+                   <label for="Hora" style="float:left;">Hora</label>
+                <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                    <%= select_tag 'hora_inicio' , 
+                      "<option value ='1'>1</option>
+                      <option value ='2'>2</option>
+                      <option value ='3'>3</option>
+                      <option value ='4'>4</option>
+                      <option value ='5'>5</option>
+                      <option value ='6'>6</option>
+                      <option value ='7'>7</option>
+                      <option value ='8'>8</option>
+                      <option value ='9'>9</option>
+                      <option value ='10'>10</option>
+                      <option value ='11'>11</option>
+                      <option value ='12'>12</option>".html_safe %>
+                  </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                   <%= select_tag 'minutos_inicio' ,
+                              "<option value ='0'>00</option>
+                              <option value ='15'>15</option>
+                              <option value ='30'>30</option>
+                              <option value ='45'>45</option>".html_safe %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                  <%= select_tag 'am_pm_inicio' , 
+                    "<option value ='am'>am</option>
+                    <option value ='pm'>pm</option>".html_safe %>
+                   </div>
+                   <div style="float:left; margin: 5px 10px 0 15px;">
+                    <%= image_tag 'odontologo/disponibilidad/flecha.png' %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                     <%= select_tag 'hora_final' , 
+                    "<option value ='1'>1</option>
+                    <option value ='2'>2</option>
+                    <option value ='3'>3</option>
+                    <option value ='4'>4</option>
+                    <option value ='5'>5</option>
+                    <option value ='6'>6</option>
+                    <option value ='7'>7</option>
+                    <option value ='8'>8</option>
+                    <option value ='9'>9</option>
+                    <option value ='10'>10</option>
+                    <option value ='11'>11</option>
+                    <option value ='12'>12</option>".html_safe %>
+                   </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                   <%= select_tag 'minutos_final' ,
+                      "<option value ='0'>00</option>
+                    <option value ='15'>15</option>
+                    <option value ='30'>30</option>
+                    <option value ='45'>45</option>".html_safe %>
+                  </div>
+                  <div class="styled_dropdown" style="width: 50px;height: 25px; float:left; margin-left:7px;">
+                    <%= select_tag 'am_pm_final' , 
+                      "<option value ='am'>am</option>
+                      <option value ='pm'>pm</option>".html_safe %>
+                   </div>
+                </div>
+                <br><br>
+                <!--
+                <div class="field">
+                  <%= label_tag 'Se repite'  %> :
+                  <%= radio_button_tag 'se_repite', "no", false, :class => "se_repite_en_la_semana" %><%= label_tag 'No Se repite'  %> 
+                  <%= radio_button_tag 'se_repite', "si", false, :class => "se_repite_en_la_semana" %><%= label_tag 'Semanalmente'  %> :
+                </div>
+                -->
+                <div class="se_repite_contenido">
+                    <div class="field" style="margin: 5px 0 15px 0;">
+                      <%= label_tag 'Selecciona los dias que se repite'  %> :
+                      <br>
+                      L <%= check_box_tag 'dias[]', '1' %> 
+                      M <%= check_box_tag 'dias[]', '2' %>
+                      M <%= check_box_tag 'dias[]', '3' %> 
+                      J <%= check_box_tag 'dias[]', '4' %> 
+                      V <%= check_box_tag 'dias[]', '5' %> 
+                      S <%= check_box_tag 'dias[]', '6' %> 
+                      D <%= check_box_tag 'dias[]', '0' %> 
+                      <p style="color:#808080; font-size:8pt;">Si se deja vacio toma todos los dias</p>
+                    </div>
+
+                    <div class="field">
+                        <%= label_tag 'Fecha Final'  %> :
+                        <input type="text" name="fecha_final" id="mini_calendario_final_eliminar">
+                    </div>
+                </div>
+                  
+                  <%= hidden_field_tag  'odontologo_id', current_user.id,:class=> 'registro_campo'%>
+
+
+                <div class="actions centrar_registro_campos">
+                    <%= submit_tag "Guardar",  :class => 'submit'%>
+                  </div>
+
+
+              <% end %>
+            </div>
+      </div>
+
+<img src="/assets/odontologo/disponibilidad/cargando.jpg" id="cargando" style="
+    width: 450px;
+    height:200px;
+    position: fixed;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    top : 50%;
+    z-index:200;
+    visibility:hidden;">
+
+
+<script type="text/javascript">
+  $(function () {
+
+
+     $('body').css('background','#E6E6E6');
+
+     moment.lang('en', {
+        weekdays : [
+            "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"
+        ],
+        weekdaysShort : ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+        months : [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+        "Agosto", "Septiembre", "Obtubre", "Noviembre", "Diciembre"
+        ],
+         monthsShort : [
+            "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+            "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+        ]
+    });
+
+     /*Variables*/
+
+    var mis_horas;
+
+     var semana = {
+        $dia1 : '',
+        delta : 0,
+        init : function() {
+
+          horas_disponibles.fetch({
+            success : function(){
+                mis_horas = horas_disponibles.where({odontologo_id:parseInt(id_odontologo)}); 
+                console.log(mis_horas);
+                semana.delta =0;
+                $dia :'';
+                //this.$dia1 = $('#dia1_sem');
+
+                //$("input").prop('disabled', true);
+                semana.eventos();
+                semana.saludo();
+                semana.cambio_semana(0);
+            }
+          })
+
+          //misCitas = citas.where({odontologo_id: 4, estado :'confirmada'});
+          
+
+
+        },
+        eventos :function () {
+
+          $('.agregar_disponibilidad').on('click',function(){
+            $('.pantalla_negra').fadeIn(1000);
+              $('.form_disponibilidad').animate({
+                top : '50%',
+              },1000);
+          });
+          
+
+          $('.cerrar_form_disponibilidad').on('click', function() {
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_disponibilidad').animate({
+                top : '-1500px'
+              },1500);
+          });
+          
+          //poner los calendarios
+
+          $('#mini_calendario_inicio').datepicker({
+            inline: true,
+            firstDay: 1,
+            showOtherMonths: true,
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Dicimbre" ] ,
+            minDate: 0, // no permitir fechas antes de hoy
+            onSelect : function(date) {
+                /*//alert(date);
+
+                var fecha = $( "#mini_calendario" ).datepicker( "getDate" );
+                //console.log(fecha.getDate());
+                calendario_dia.calcular_distacia(fecha.getDate());
+                calendario_dia.cambio_dia(fecha);
+                //console.log('dia '+fecha.getDate()):
+                calendario_dia.citasPorFecha(fecha.getFullYear(),parseInt(fecha.getMonth())+1,fecha.getDate());*/
+            }
+          });
+
+          $('#mini_calendario_final').datepicker({
+            inline: true,
+            firstDay: 1,
+            showOtherMonths: true,
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Dicimbre" ] ,
+            minDate: 0, // no permitir fechas antes de hoy
+            onSelect : function(date) {
+                /*//alert(date);
+
+                var fecha = $( "#mini_calendario" ).datepicker( "getDate" );
+                //console.log(fecha.getDate());
+                calendario_dia.calcular_distacia(fecha.getDate());
+                calendario_dia.cambio_dia(fecha);
+                //console.log('dia '+fecha.getDate()):
+                calendario_dia.citasPorFecha(fecha.getFullYear(),parseInt(fecha.getMonth())+1,fecha.getDate());*/
+            }
+          });
+
+
+          $('#mini_calendario_inicio_eliminar').datepicker({
+            inline: true,
+            firstDay: 1,
+            showOtherMonths: true,
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Dicimbre" ] ,
+            minDate: 0, // no permitir fechas antes de hoy
+            onSelect : function(date) {
+                /*//alert(date);
+
+                var fecha = $( "#mini_calendario" ).datepicker( "getDate" );
+                //console.log(fecha.getDate());
+                calendario_dia.calcular_distacia(fecha.getDate());
+                calendario_dia.cambio_dia(fecha);
+                //console.log('dia '+fecha.getDate()):
+                calendario_dia.citasPorFecha(fecha.getFullYear(),parseInt(fecha.getMonth())+1,fecha.getDate());*/
+            }
+          });
+
+
+           $('#mini_calendario_final_eliminar').datepicker({
+            inline: true,
+            firstDay: 1,
+            showOtherMonths: true,
+            dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Dicimbre" ] ,
+            minDate: 0, // no permitir fechas antes de hoy
+            onSelect : function(date) {
+                /*//alert(date);
+
+                var fecha = $( "#mini_calendario" ).datepicker( "getDate" );
+                //console.log(fecha.getDate());
+                calendario_dia.calcular_distacia(fecha.getDate());
+                calendario_dia.cambio_dia(fecha);
+                //console.log('dia '+fecha.getDate()):
+                calendario_dia.citasPorFecha(fecha.getFullYear(),parseInt(fecha.getMonth())+1,fecha.getDate());*/
+            }
+          });
+
+          
+
+          //form_quitar_disponibilidad
+
+          $('.eliminar_disponibilidad').on('click',function(){
+             $('.pantalla_negra').fadeIn(1000);
+              $('.form_quitar_disponibilidad').animate({
+                top : '50%',
+              },1000);
+          });
+
+          $('.cerrar_form_quitar_disponibilidad').on('click', function() {
+              $('.pantalla_negra').fadeOut(1000);
+              $('.form_quitar_disponibilidad').animate({
+                top : '-1500px'
+              },1500);
+          });
+          
+          $('.form_disponibilidad').bind("ajax:success", function(evt, data, status, xhr){
+              console.log('llego');
+              $('#cargando').css('visibility','hidden');
+              $('.submit').removeAttr( 'disabled');
+              //console.log(data);
+              $('.cerrar_form_disponibilidad').trigger('click');
+              semana.init();
+          });
+
+          $('.form_disponibilidad').bind("ajax:beforeSend", function(evt, data, status, xhr){
+              console.log('se envio');
+              $('#cargando').css('visibility','visible');
+              $('.submit').attr('disabled','disabled');
+          });
+
+          $('.form_quitar_disponibilidad').bind("ajax:success", function(evt, data, status, xhr){
+             console.log('llego');
+             $('#cargando').css('visibility','hidden');
+             $('.submit').removeAttr('disabled');
+             console.log(data);
+             $('.cerrar_form_quitar_disponibilidad').trigger('click');
+             semana.init();
+
+          });
+
+          $('.form_quitar_disponibilidad').bind("ajax:beforeSend", function(evt, data, status, xhr){
+            $('#cargando').css('visibility','visible');
+              console.log('se envio');
+              $('.submit').attr('disabled','disabled');
+              
+          });
+
+          $('#agregar_disponibilidad').submit(function() {
+            //semana.validar_crucesHorasDisponibles();
+            //return false;
+          });
+
+        },
+        saludo : function(){
+             var saludo_horas = moment().format('HH');
+
+              if(saludo_horas>=0 && saludo_horas<=11){
+                $('.saludo').html('Buenos Dias');
+              }
+
+              if(saludo_horas>=12 && saludo_horas<=18){
+                $('.saludo').html('Buenas Tardes');
+              }
+
+              if(saludo_horas>=19 && saludo_horas<=23){
+                $('.saludo').html('Buenas Noches');
+              }
+
+        },
+        cambio_semana : function(ava) {
+          this.limpiar_semana();
+          this.$dia1 = $('#dia1_sem');
+          this.delta = this.delta + ava;
+          this.cambio_textos_semana(this.delta);
+        },
+        cambio_textos_semana : function(ava) {
+            
+          var semana = moment().add('days',ava);
+          var dia1_nom = semana.format('ddd');
+          var dia1_num = semana.format('D');
+          var mes_inic = semana.format('MMM');
+          this.$dia1.html(dia1_nom+' '+dia1_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),1);
+
+          var dia2_nom = semana.add('days',1).format('ddd');
+          var dia2_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia2_nom+' '+dia2_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),2);
+
+          var dia3_nom = semana.add('days',1).format('ddd');
+          var dia3_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia3_nom+' '+dia3_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),3);
+
+          var dia4_nom = semana.add('days',1).format('ddd');
+          var dia4_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia4_nom+' '+dia4_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),4);
+
+          var dia5_nom = semana.add('days',1).format('ddd');
+          var dia5_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia5_nom+' '+dia5_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),5);
+
+          var dia6_nom = semana.add('days',1).format('ddd');
+          var dia6_num = semana.format('D');
+          this.$dia1 = this.$dia1.next();
+          this.$dia1.html(dia6_nom+' '+dia6_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),6);
+
+          var dia7_nom = semana.add('days',1).format('ddd');
+          var dia7_num = semana.format('D');
+          var mes_fin = semana.format('MMM');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia7_nom+' '+dia7_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),7);
+
+
+
+          if (mes_inic != mes_fin) {
+              var notificaion_dia = dia1_num+' '+mes_inic+' - '+dia7_num+' '+mes_fin+' - '+semana.format('YYYY');
+          }else{
+              var notificaion_dia = dia1_num+' - '+dia7_num+' '+mes_fin+' - '+semana.format('YYYY');
+          }
+          $('.texto_dia_especifico').html(notificaion_dia);
+          
+        },
+        dibujar_citas_dia : function(citas,dia_sem) {
+
+            for (var i = 0; i < citas.length; i++) {
+                    var hora = citas[i].get('hora');
+                    var duracion = citas[i].get('duracion');
+                    var n;
+                    //console.log('esta es el id del paciente '+citas[i].get('paciente_id'));
+                    //var p = pacientes.where({id:citas[i].get('paciente_id')});
+                    //console.log(p);
+                    hora=parseFloat(hora)/60;
+                    console.log(duracion);
+                    n= String(hora).split(".");
+                                 console.log(n);
+                                    if(n[1]){
+                                      var minutos;
+                                      switch(n[1]){
+                                        case '25':
+                                          var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).children();
+                                          $(minutos_hora[1]).addClass('activo_seleccion_inic');
+                                          $(minutos_hora[1]).html(duracion);
+                                          //this.generar_tooltips(minutos_hora[1],citas[i],p[0]);
+
+                                          if (duracion <= 30) {
+                                              duracion = duracion - 15;
+                                          }
+                                          
+                                          var pos = 2;
+                                            while(duracion != 0){
+                                              if (pos > 4) {
+                                                  pos = 0;
+                                                  var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).next().children();
+                                                  $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                                  //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                                  duracion = duracion - 15;
+                                                  pos++;
+                                              }else{
+                                                  $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                                  //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                                  duracion = duracion - 15;
+                                                  pos++;
+                                              }
+                                            }
+
+                                        break;
+                                        case '5' :
+                                          var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).children();
+                                          $(minutos_hora[2]).addClass('activo_seleccion_inic');
+                                          $(minutos_hora[2]).html(duracion);
+                                          //this.generar_tooltips(minutos_hora[2],citas[i],p[0]);
+
+                                           if (duracion == 15) {
+                                              duracion = duracion - 15;
+                                          }
+                                          var pos = 3;
+                                            while(duracion != 0){
+                                              if (pos > 4) {
+                                                  var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).next().children();
+                                                  pos = 0;
+                                                  while(duracion != 0){
+                                                    $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                                    //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                                    duracion = duracion - 15;
+                                                    pos++;
+                                                  }
+
+                                              }else{
+                                                  $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                                  //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                                  duracion = duracion - 15;
+                                                  pos++;
+                                              }
+                                            }
+
+
+                                        break;
+                                        case '75' :
+                                          var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).children();
+                                          $(minutos_hora[3]).addClass('activo_seleccion_inic');
+                                          $(minutos_hora[3]).html(duracion);
+                                          //this.generar_tooltips(minutos_hora[3],citas[i],p[0]);
+
+                                          var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).next().children();
+
+                                          
+                                          duracion = duracion - 15;
+
+                                          var pos = 0;
+                                            while(duracion != 0){
+                                                  $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                                  //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                                  duracion = duracion - 15;
+                                                  pos++;
+                                            }
+
+                                        break;
+                                        }
+                                  }else{
+                                    var minutos_hora = $('.'+n[0]+'_dia'+dia_sem).children();
+                                     $(minutos_hora[0]).addClass('activo_seleccion_inic');
+                                     $(minutos_hora[0]).html(duracion);
+                                     //this.generar_tooltips(minutos_hora[0],citas[i],p[0]);
+                                     var pos = 1;
+                                     duracion = duracion - 15;
+                                          while(duracion != 0){
+                                            $(minutos_hora[pos]).addClass('activo_seleccion_mid');
+                                            //this.generar_tooltips(minutos_hora[pos],citas[i],p[0]);
+                                            duracion = duracion - 15;
+                                            pos++;
+                                          }
+                                  }
+
+            };
+
+
+        },
+        horasPorFecha : function(ano,mes,dia,diaDsemana){
+
+
+            var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')==ano && c.get('mes')==parseInt(mes) && c.get('dia')==parseInt(dia)) {return c}; });
+            horas_dia = _.without(horas_dia, undefined);
+            semana.dibujar_citas_dia(horas_dia,diaDsemana);
+            
+            console.log('dia '+dia);
+            console.log('mes '+mes);
+            console.log('ano'+ano);
+            console.log('aca estan las citas del dia '+diaDsemana);
+            console.log(horas_dia);
+        },
+        generar_tooltips :function (element,cita,paci) {
+          $(element).attr('paciente',paci.get('nombre')+' '+paci.get('apellido'));
+          $(element).attr('duracion',cita.get('duracion'));
+          $(element).attr('medio_pago',cita.get('medio_pago'));
+          $(element).attr('motivo',cita.get('motivo'));
+          $(element).attr('id_cita',cita.id);
+        },
+        limpiar_semana : function () {
+          //$('.quince_minu_hora').tipper("destroy");
+          $('.quince_minu_hora').html('').removeClass('activo_seleccion_mid').removeClass('activo_seleccion_inic').removeAttr('duracion').removeAttr('medio_pago').removeAttr('id_cita');
+        },
+        hora_humanos:function(hora_minutos){
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              return n[0];
+        },
+        validar_crucesHorasDisponibles : function(){
+          //var d = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+          var arr = $('#mini_calendario_inicio').val().split('/');
+          var m_ini = moment(new Date(arr[2], parseInt(arr[0])-1, arr[1], 0, 0, 0));
+          var arr1 = $('#mini_calendario_final').val().split('/');
+          var m_fin = moment(new Date(arr1[2], parseInt(arr1[0])-1, arr1[1], 0, 0, 0));
+
+          if (m_ini.isSame(m_fin)) {
+            console.log(m_ini.format('YYYY'),m_ini.format('M'),m_ini.format('D'));
+            var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')== m_ini.format('YYYY') && c.get('mes')==parseInt(m_ini.format('M')) && c.get('dia')==parseInt(m_ini.format('D'))) {return c}; });
+            horas_dia = _.without(horas_dia, undefined);
+
+            var aumento = parseInt($('input[name$="tiempo_cita"]:checked').val());
+            var aumento1 = 0;
+            var hora_inicio = semana.hora_sistema($('select#hora_inicio').val(),$('select#minutos_inicio').val(),$('select#am_pm_inicio').val());
+            var hora_fin = semana.hora_sistema($('select#hora_final').val(),$('select#minutos_final').val(),$('select#am_pm_final').val());
+            console.log('LOOOOOOOPPPPP-'+hora_inicio+'-'+hora_fin);
+
+            if (aumento == 45 ) {
+              aumento1 = 45;
+            };
+
+            if (aumento == 60 && $('select#minutos_final').val() != $('select#minutos_inicio').val()) {
+              aumento1 = 60;
+            };
+
+            for (var j = hora_inicio; j+aumento1 < hora_fin; j+=aumento ) {
+              for (var i = 0; i < horas_dia.length; i++) {
+                console.log(j.toString()+' - '+horas_dia[i].get('hora')+' aumento '+horas_dia[i].get('duracion'));
+                if (j.toString() == horas_dia[i].get('hora')) {
+                  
+                  console.log('primer caso');
+                  /*console.log(j.toString()+' - '+horas_dia[i].get('hora')+' aumento '+horas_dia[i].get('duracion'));
+                  */
+                  //break;
+                }
+                /*
+                console.log(2);
+                console.log(j);
+                console.log(parseInt(horas_dia[i].get('hora')) +'<'+parseInt(j+aumento)+'<'+parseInt(parseInt(horas_dia[i].get('hora')) +parseInt(horas_dia[i].get('duracion'))));
+                */
+                if (parseInt(horas_dia[i].get('hora')) < j+aumento  && j+aumento < parseInt(horas_dia[i].get('hora')) +parseInt(horas_dia[i].get('duracion')) ) {
+                  
+                  console.log('segundo caso');
+                 /* console.log(parseInt(horas_dia[i].get('hora')));
+                  console.log(j+aumento);
+                  console.log(parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion')));
+                  */
+                  //break;
+                }
+                /*
+                console.log(3);
+                console.log(j);
+                console.log(j +'<'+parseInt(parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion')))+'<'+parseInt(j+aumento));
+                */
+                if (j < parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion')) && parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion')) < j+aumento) {
+                  console.log('tercer caso');
+                  //break;
+                }
+                //console.log(parseInt(j+aumento) +' == '+ parseInt( parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion'))) );
+                if (j+aumento == parseInt(horas_dia[i].get('hora'))+parseInt(horas_dia[i].get('duracion')) ) {
+                  console.log('cuarto caso');
+                  //break;
+                }
+
+                
+              };
+
+            };
+
+            
+            
+          }else{
+            //console.log(mis_horas);
+            console.log(m_ini.format('YYYY'),m_ini.format('M'),m_ini.format('D'));
+            var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')== m_ini.format('YYYY') && c.get('mes')==parseInt(m_ini.format('M')) && c.get('dia')==parseInt(m_ini.format('D'))) {return c}; });
+            horas_dia = _.without(horas_dia, undefined);
+            console.log(horas_dia);
+            for (var i = 0; m_ini.isBefore(m_fin); i++) {
+              m_ini.add('days',1);
+              console.log(m_ini.format('YYYY'),m_ini.format('M'),m_ini.format('D'));
+              var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')== m_ini.format('YYYY') && c.get('mes')==parseInt(m_ini.format('M')) && c.get('dia')==parseInt(m_ini.format('D'))) {return c}; });
+              horas_dia = _.without(horas_dia, undefined);
+              console.log(horas_dia);
+            };
+          }
+          /*
+          console.log( $('select#hora_inicio').val());
+          console.log( $('select#minutos_inicio').val());
+          console.log(moment());
+          console.log(m_ini);
+          console.log(m_fin);
+          */
+        },
+        hora_sistema : function(hora,minutos,am_pm){
+
+          if (am_pm == "am" && hora == '12') {
+            hora = parseInt(hora)+12;
+          }
+          if (am_pm == "pm" && hora != '12') {
+            hora = parseInt(hora)+12;
+          }
+          var tiempo = parseInt(hora)*60 + parseInt(minutos);
+          return tiempo;
+        }
+
+     }
+  
+
+    semana.init();    
+     $('.flecha_der_camb_dia').on('click',function() {
+                semana.cambio_semana(7);
+      });
+
+      $('.flecha_izq_camb_dia').on('click',function() {
+          if (semana.delta  != 0 ) {
+                semana.cambio_semana(-7);
+          }
+      });
+        
+      $('.menu_dia').on('click',function(){
+          window.location.href="../odontologos/"+id_odontologo;
+      }); 
+
+
+  })
+</script>

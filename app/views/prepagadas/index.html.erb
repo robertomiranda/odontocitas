@@ -1,0 +1,25 @@
+<h1>Listing prepagadas</h1>
+
+<table>
+  <tr>
+    <th>Id odontologo</th>
+    <th>Prepagada</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prepagadas.each do |prepagada| %>
+  <tr>
+    <td><%= prepagada.odontologo_id %></td>
+    <td><%= prepagada.prepagada %></td>
+    <td><%= link_to 'Show', prepagada %></td>
+    <td><%= link_to 'Edit', edit_prepagada_path(prepagada) %></td>
+    <td><%= link_to 'Destroy', prepagada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prepagada', new_prepagada_path %>

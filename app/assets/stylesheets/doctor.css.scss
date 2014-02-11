@@ -1,0 +1,632 @@
+
+// Place all the styles related to the doctor controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$naranja : #F37021;
+
+.wrapper_perfil_v_odonto{
+	width: 980px;
+	margin: 60px auto;
+
+	.pestana_odonto{
+		width: 100%;
+		height: 24px;
+		text-align: right;
+	}
+
+	.area_superior{
+		width: 100%;
+		height: 550px;
+
+		.izquierda{
+			width: 210px;
+			height: 100%;
+			float: left;
+
+			margin: 0 15px 0 0;
+			background: white;
+
+			.imagen_perfil{
+				width: 210px;
+				height: 250px;
+				margin: 0 0 10px 0;
+			}
+
+			.area_nombre{
+				width: 200px;
+				height: 44px;
+				margin: 5px 0 10px 5px;
+				background: url('odontologo/espacio_nombre_odontologo.png');
+				p{
+					position: relative;
+					color: white;
+				}
+			}
+
+			.redes_sociales{
+				width: 100%;
+				height: 30px;
+				margin: 10px 0 30px 0;
+				img{
+					margin: 0 9px 0 10px;
+				}
+			}
+
+			.datos_perfil{
+				width: 190px;
+				margin: auto auto 30px auto;
+				tr{
+					margin: 20px;
+				}
+
+				tr td{
+					font-size: 9pt;
+					font-family: 'Helvetica-Neue';
+					color: #808080;
+				}
+
+				tr .dato_p{
+					width: 130px;
+					margin: 0 0 0 20px;
+					position: relative;
+					top: -5px;
+
+					a{
+						text-decoration: none;
+						color: #808080; 
+					}
+				}
+
+				.mas_espacio{
+
+					img{
+						position: relative;
+						top: 5px;
+					}
+
+					.dato_p{
+						position: relative;
+						top: 0px;
+					}
+				}
+			}
+
+			.fotos_consultorio{
+				text-align: center;
+
+				img{
+					width: 60px;
+					height: 60px;
+					cursor: pointer;
+				}
+			}
+
+		}
+
+		.derecha{
+			width: 715px;
+			height: 510px;
+			float: left;
+			background: white;
+			padding: 20px;
+
+			.titulo{
+				margin: 15px 0 0px 0;
+				font-size: 25pt;
+				font-family: 'Helvetica-Neue';
+				color: #666;
+				position: relative;
+				top: -10px;
+				text-transform: none;
+			}
+
+			hr{
+				width: 100%;
+			}
+			.arriba{
+				margin: 15px 0 0 0;
+				width: 100%;
+				height: 120px;
+
+
+				.btn_agendar_publico{
+					position: relative;
+					left: 300px;
+					top: 40px;
+				}
+			}
+
+			.inferior{
+				width: 100%;
+				height: 300px;
+				margin: 15px 0 0 0;
+
+				#mapa_publico{
+					width: 300px;
+					height: 300px;
+					color: white;
+					float: left;
+				}
+
+				.parrafo1{
+					width: 180px;
+					height: 100%;
+					float: left;
+					margin: 0 7px 0 28px;
+					font-family: helvetica;
+
+					.titulo{
+						font-size: 13pt;
+						margin: 0 0 5px 0;
+						color: #254861;
+						font-family: 'Helvetica-Neue';
+					}
+					.listar_elementos{
+						list-style: disc;
+						margin: 0 0 20px 0; 
+						position: relative;
+						left: 17px;
+						font-size: 11pt;
+						li{
+							color: #808080;
+							font-family: 'Helvetica-Neue';
+							font-size: 11pt;
+
+						}
+					}
+				}
+
+				.parrafo2{
+					width: 200px;
+					height: 100%;
+					float: left;
+					font-family: 'Helvetica-Neue';
+
+					.titulo{
+						font-size: 13pt;
+						margin: 0 0 5px 0;
+						color: #254861;
+						font-family: 'Helvetica-Neue';
+					}
+					.listar_elemento{
+						color: #808080;
+						font-family: 'Helvetica-Neue';
+						margin: 0 0 20px 0; 
+						font-size: 11pt;
+					}
+				}
+			}
+		}
+	}
+
+	.separador{
+		width: 100%;
+		height: 30px;
+		text-align: center;
+		img{
+			margin: 7px 0 0 0;
+		}
+	}
+
+	.area_mitad{
+		width: 100%;
+		height: 400px;
+		background: white;
+		text-align: center;
+
+		p{
+			margin: auto;
+			color: $naranja;
+			font-family: 'Helvetica-Neue';
+			font-size: 14pt;
+			position: relative;
+			top: 20px;
+		}
+		.arriba{
+				width: 100%;
+				height: 30px;
+				margin: 0px 0 0px 0;
+				position: relative;
+				top: 20px;
+
+				.identificador_semana{
+					width: 250px;
+					height: 100%;
+					margin: 10px auto;
+
+
+					.btn_izquierda{
+						width: 10px;
+						height: 100%;
+						float: left;
+						text-align: right;
+						cursor: pointer;
+						img{
+							margin: 9px 0 0 0;
+						}
+					}
+					.semana_visualizacion{
+						width: 230px;
+						height: 23px;
+						text-align: center;
+						font-size: 13pt;
+						color: $naranja;
+						float: left;
+						padding:  7px 0 0 0;
+					}
+					.btn_derecha{
+						width: 10px;
+						height: 100%;
+						float: left;
+						text-align: left;
+						cursor: pointer;
+						img{
+							margin: 9px 0 0 0;
+						}
+					}
+				}
+		}
+
+		.abajo{
+				width: 100%;
+				height: 290px;
+				position: relative;
+				top: 30px;
+
+				.semana{
+					width: 950px;
+					height: 280px;
+					margin: auto;
+					.titulo_dias_semana{
+						li{
+							padding: 0;
+							color: #ccc;
+							text-align: center;
+							width: 115px;
+							margin: 0 19px 0 0 ;
+							display: inline-block;
+						}
+					}
+					.horas_disponibles{
+						width: 100%;
+						height: 262px;
+						margin: 5px 0 0 0;
+						overflow: auto;
+						.horas_disponibles_dia{
+							text-align: center;
+							
+							width: 119px;
+							float: left;
+							margin: 0 18px 0 0 ;
+							
+							li{
+								height: 20px;
+								padding: 3px 0 0 0;
+								-webkit-border-radius: 5px;
+								-moz-border-radius: 5px;
+								border-radius: 5px;
+								cursor: pointer;
+								color: #777;
+							}
+
+							a{
+								font-size: 11pt;
+								text-decoration: none;
+							}
+
+							a:nth-child(odd){
+								
+								li{
+									background: #e3e3e3;
+								}
+							}
+						}
+					}
+				}
+		}
+	}
+
+	.area_abajo{
+		width: 100%;
+		height: 500px;
+		margin: 10px 0 0 0;
+
+		.izquierda{
+			width: 480px;
+			height: 100%;
+			background: white;
+			float: left;
+			margin: 0 10px 0 0 ;
+
+			.columna{
+				width: 200px;
+				height: 350px;
+				float: left;
+				margin: 75px 0px 0 60px;
+
+				.titulo{
+						font-size: 13pt;
+						margin: 0 0 10px 0;
+						color: #254861;
+						font-family: 'Helvetica-Neue';
+					}
+				.listar_elementos{
+					list-style-type: disc;
+					margin: 0 0 30px 0; 
+					color: #808080;
+					font-size: 11pt;
+					
+					li{
+						position: relative;
+						left: 17px;
+						color: #808080;
+						font-family: 'Helvetica-Neue';
+						font-size: 11pt;
+					}
+				}
+			}		
+		}
+
+		.derecha{
+			width: 480px;
+			height: 100%;
+			background: white;
+			float: left;
+			margin: 0 0 0 10px;
+
+			.arriba{
+				width: 100%;
+				height: 240px;
+
+				.comentario{
+					position: relative;
+					top: 60px;
+					margin: auto;
+					width: 380px;
+					font-family: 'Helvetica-Neue';
+					font-size: 13pt;
+					color: #254861;
+					.abre_comilla{
+						width: 27px;
+						height: 100%;
+						float: left;
+
+						img{
+							position: relative;
+							top: -10px;
+						}
+					}
+					.texto{
+						margin: 0 3px 0 8px;
+						width: 310px;
+						height: 100%;
+						float: left;
+						font-family: 'Helvetica-Neue';
+					}
+					.cierra_comilla{
+						width: 27px;
+						height: 100%;
+						float: left;
+					}
+				}
+				.autor{
+					color: #254861;
+					margin: auto;
+					width: 380px;
+					font-family: 'Helvetica-Neue';
+					font-size: 8pt;
+					position: relative;
+					top: 70px;
+					left: -50px;
+					text-align: right;
+				}
+			}
+
+		}
+	}
+
+
+	.derecha_agendar{
+			width: 715px;
+			height: 510px;
+			float: left;
+			position: relative;
+			background: white;
+			padding: 20px;
+			overflow: hidden !important;
+
+
+			.div_mov {
+				width: 715px;
+				height: 510px;
+			    position: absolute;
+				z-index: 1;
+			    opacity: 0;
+			    -webkit-transition: all linear 0.3s;
+			    -moz-transition: all linear 0.3s;
+			    -o-transition: all linear 0.3s;
+			    -ms-transition: all linear 0.3s;
+			    transition: all linear 0.3s;
+			}
+
+			.izquierda{
+				width: 330px;
+				height: 100%;
+				float: left;
+				color: $naranja;
+				margin: 0 0 0 30px;
+			}
+
+			.derecha_a{
+				width: 350px;
+				height: 100%;
+				float: left;
+				color: $naranja;
+
+				#comentario_agendar_online{
+					resize: none;
+				}
+
+				#submit_btn_agd{
+					color: #fff;
+				    font-size: 13pt;
+				    width: 200px;
+				    height: 35px;
+				    border: none;
+				    margin: 70px 0 0 70px;
+				    padding: 0;
+				    background: $naranja !important;
+				    cursor: pointer;
+				}	
+			}
+
+			.terminos_condiciones_paciente_a{
+				width: 240px;
+				color: #B3B3B3;
+				font-size: 8pt;
+				text-align: center;
+				position: relative;
+				left: 60px;
+				margin-bottom: 10px;
+			}
+
+			.titulo_exitosamente{
+				width: 100%;
+				height: 27px;
+				font-size: 20pt;
+				color: #a3a3a3;
+				font-family: 'Helvetica-Neue';
+				text-align: center;
+			}
+
+			.area_contenido_confirmar{
+				margin: 40px 0 0 0;
+				width: 100%;
+				height: 400px;
+
+				.izq_confirmar{
+					width: 250px;
+					height: 100%;
+					background: #F2F2F2;
+					float: left;
+					color: #666;
+
+					.titulo_espe{
+						color: $naranja;
+						font-family: helvetica;
+						margin: 0 0 2px 35px;
+					}
+
+					.espacio_confirm{
+						margin: 0 0 30px 35px;
+					}
+
+				}	
+
+				.der_confirmar{
+					width: 450px;
+					height: 100%;
+					background: white;
+					float: left;
+					margin: 0 0 0 15px;
+
+					.arriba_izq_confirmar{
+						width: 100%;
+						height: 300px;
+						background: red;
+
+						#izquierda_izq_confirmar{
+							width: 300px;
+							height: 100%;
+							float: left;
+							background: white;
+							color: white;
+						}	
+
+						.derecha_izq_confirmar{
+							width: 130px;
+							height: 100%;
+							padding: 0 0 0 20px;
+							float: left;
+							background: white;
+							color: $naranja;
+							font-size: 10pt;
+
+							p{	
+								margin: 20px 0 0 0;
+								font-size: 9pt;
+								color: #666;
+								cursor: progress;
+
+
+								img{
+									position: relative;
+									top: 10px;
+								}
+							}
+
+							p + p {
+								margin: 40px 0 0 0;
+							}
+						}
+					}
+
+					.arriba_der_confirmar{
+						width: 100%;
+						height: 100px;
+
+						p{
+							margin: 0 0 0 10px;
+							font-size: 10pt;
+							color: #666;
+						}
+
+						a{
+							color: $naranja;
+						}
+					}
+				}
+			}
+	}
+}
+
+.puntuacion{
+			width: 202px;
+			height: 100%;
+			float: left;
+			position:relative;
+			top: 20px;
+			left: 20px;
+			.puntualidad{
+				width: 100%;
+				height: 30px;
+				color: #fccc6b;
+				font-family: 'Helvetica-Neue';
+
+				img{
+					float: right;
+					}
+				}
+
+				.servicio{
+					width: 100%;
+					height: 30px;
+					color: #f79d68;
+					font-family: 'Helvetica-Neue';
+					img{
+							float: right;
+					}
+				}
+
+				.calidad{
+					width: 100%;
+					height: 30px;
+					color: #f37021;
+					font-family: 'Helvetica-Neue';
+					img{
+						float: right;
+					}
+				}
+	}

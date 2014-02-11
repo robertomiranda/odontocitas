@@ -1,0 +1,53 @@
+<style type="text/css">
+    tr + th{
+        border:2px solid black;
+    }
+
+</style>
+
+<h1>Listing consultorios</h1>
+
+<table border="1">
+  <tr>
+    <th>Odontologo</th>
+    <th>Nombre</th>
+    <th>Direccion</th>
+    <th>Ciudad</th>
+    <th>Zona</th>
+    <th>Lat</th>
+    <th>Long</th>
+    <th>Imagen1</th>
+    <th>Imagen2</th>
+    <th>Imagen3</th>
+    <th>Telefono</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @consultorios.each do |consultorio| %>
+  <tr>
+    <td style="font-weight:bold ;"><%= consultorio.odontologo.nombre %> <%= consultorio.odontologo.apellido %></td>
+    <td><%= consultorio.nombre %></td>
+    <td><%= consultorio.direccion %></td>
+    <td><%= consultorio.ciudad %></td>
+    <td><%= consultorio.zona %></td>
+    <td><%= consultorio.lat %></td>
+    <td><%= consultorio.long %></td>
+    <td><%= consultorio.imagen1 %></td>
+    <td><%= consultorio.imagen2 %></td>
+    <td><%= consultorio.imagen3 %></td>
+    <td><%= consultorio.telefono %></td>
+    <td><%= link_to 'Show', consultorio %></td>
+    <td><%= link_to 'Edit', edit_consultorio_path(consultorio) %></td>
+    <td><%= link_to 'Destroy', consultorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Consultorio', new_consultorio_path %>
+
+

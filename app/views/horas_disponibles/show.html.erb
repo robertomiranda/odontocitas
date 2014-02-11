@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hora:</b>
+  <%= @horas_disponible.hora %>
+</p>
+
+<p>
+  <b>Mes:</b>
+  <%= @horas_disponible.mes %>
+</p>
+
+<p>
+  <b>Ano:</b>
+  <%= @horas_disponible.ano %>
+</p>
+
+<p>
+  <b>Odontologo:</b>
+  <%= @horas_disponible.odontologo_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_horas_disponible_path(@horas_disponible) %> |
+<%= link_to 'Back', horas_disponibles_path %>

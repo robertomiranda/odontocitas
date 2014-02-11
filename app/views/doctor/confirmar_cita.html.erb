@@ -1,0 +1,363 @@
+<div class="wrapper_perfil_v_odonto">
+	<div class="pestana_odonto">
+		<%= image_tag 'agendar_online/pestana_detalles_de_la_cita.png', class: '' %>
+		<%= image_tag 'agendar_online/pestana_ingresar.png', class: '' %>
+		<%= image_tag 'agendar_online/pestana_confirmar_cita_over.png', id: 'confirmar_cita_img' %>
+		<%= image_tag 'agendar_online/pestana_cita_lista.png', id: 'cita_lista_img' %>
+	</div>
+	<div class="area_superior">
+		<div class="izquierda">
+			<%= image_tag @odontologo.image_url, class: 'imagen_perfil' %>
+            <div class="area_nombre">
+                <p class="n_apellido">  
+                 DR . <%= @odontologo.apellido.partition(" ")[0] %>.
+                </p>
+            </div>
+	      	<div class="redes_sociales">
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_facebook.png'), @odontologo.facebook , class: 'facebook' , target: '_blanck' %>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_twitter.png'), @odontologo.twitter , class: 'twitter' , target: '_blanck'%>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_linkedin.png'), @odontologo.linkedin , class: 'linkedin' , target: '_blanck'%>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_youtube.png'), @odontologo.youtube , class: 'youtube' , target: '_blanck'%>
+	      	</div>
+	      	<table class="datos_perfil">
+	      		<tr>
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_lugar.png' %></td>
+					<td class="dato_p">
+						<% if @odontologo.consultorios.any? %>
+							<%= @odontologo.consultorios[0].direccion %>
+						<% end %>
+					</td>
+				<tr>
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_telefono.png' %></td>
+					<td class="dato_p">
+						<% if @odontologo.consultorios.any? %>
+							<%= @odontologo.consultorios[0].telefono %>
+						<% end %>
+					</td>
+				</tr>
+				<tr class="mas_espacio">
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_web.png' %></td>
+					<td class="dato_p"><a href="<%= @odontologo.web %>" target= "_blanck">sitio web</a></td>
+				</tr>
+	      	</table>
+	      	
+		</div>
+
+		<div class="derecha_agendar">
+			<div class="contenedor">
+				<div class="contenedor-1 div_mov">
+					<div class="izquierda">
+						<div class="field" style="margin: 0 0 20px 0;">
+							Fecha de la cita <br>
+							<%= text_field_tag 'fecha_cita' , "#{@hora_de_la_cita.dia.to_s}-#{@hora_de_la_cita.mes.to_s}-#{@hora_de_la_cita.ano.to_s}", disabled: true , size:40 ,style:'margin: 15px 0 0 0'%>
+						</div>
+
+						<div class="field" style="margin: 0 0 20px 0;">
+							Hora de la cita  <br>
+							<%= text_field_tag 'hora_cita' , "#{@hora_de_la_cita.hora_arreglada.to_s}", disabled: true , size:40 ,style:'margin: 15px 0 0 0'%>
+						</div>
+
+						<div class="field" style="margin: 0 0 20px 0;">
+							Motivo de la consulta  <br>
+							<%= text_field_tag 'motivo_consulta' , @motivo_cita  , size:40 ,style:'margin: 15px 0 0 0' , disabled: true%>
+						</div>
+
+						<div class="field" style="margin: 0 0 20px 0;">
+							Dirección del consultorio  <br>
+							<%= text_field_tag 'direccion' , "#{@odontologo.consultorios[0].direccion.to_s}", disabled: true , size:40 ,style:'margin: 15px 0 0 0'%>
+						</div>
+						
+
+						<div class="field" style="margin: 0 0 20px 0;">
+							EPS  <br>
+							<%= text_field_tag 'eps' , "En Desarrollo", disabled: true, size:40 ,style:'margin: 15px 0 0 0'%>
+						</div>
+						
+
+						<div class="field" style="margin: 0 0 20px 0;">
+							Prepagada <br>
+							<%= text_field_tag 'prepagada' , "En Desarrollo", disabled: true , size:40 ,style:'margin: 15px 0 0 0'%>
+						</div>
+
+					</div>
+
+					<div class="derecha_a">
+						Comentario para el odontólogo 
+						<br>
+						<br>
+						<textarea id="comentario_agendar_online" cols="41" rows="15"><%= @comentario_p %></textarea>
+            <%= hidden_field_tag  'id_cita',@hora_de_la_cita.id %>
+            <%= hidden_field_tag  'id_odontologo',@hora_de_la_cita.odontologo_id %>
+            <%= hidden_field_tag  'hora_cita_p',@hora_de_la_cita.hora %>
+            <%= hidden_field_tag  'duracion_cita',@hora_de_la_cita.duracion %>
+						<input type="submit" name="submit" class="button" id="submit_btn_agd" value="Continuar" /> 
+					</div>
+				</div>
+
+				<div class="contenedor-2 div_mov">
+					<div class="titulo_exitosamente">
+            ¡Tu cita ha sido agendada exitosamente!
+          </div>
+          <div class="area_contenido_confirmar">
+            <div class="izq_confirmar">
+              <p class="titulo_espe" style="margin: 10px 0 2px 35px;">
+                Nombre del paciente
+              </p>
+              <p class="espacio_confirm">
+                <%= "#{current_user.nombre} #{current_user.apellido}" %>.
+              </p>
+              <p class="titulo_espe">
+                Fecha de la cita
+              </p>
+              <p class="espacio_confirm">
+                <%= "#{@hora_de_la_cita.dia.to_s}-#{@hora_de_la_cita.mes.to_s}-#{@hora_de_la_cita.ano.to_s}" %>
+              </p>
+              <p class="titulo_espe">
+                Hora de la cita
+              </p>
+              <p class="espacio_confirm">
+                <%= "#{@hora_de_la_cita.hora_arreglada.to_s}" %>
+              </p>
+              <p class="titulo_espe">
+                Prepagada
+              </p>
+              <p class="espacio_confirm"> 
+                Ninguna
+              </p>
+              <p class="titulo_espe">
+                EPS
+              </p>
+              <p class="espacio_confirm">
+                Ninguna
+              </p>
+              <p class="titulo_espe">
+                Motivo de la consulta
+              </p>
+              <p class="espacio_confirm motivo_lista">
+                
+              </p>
+            </div>
+
+            <div class="der_confirmar">
+              <div class="arriba_izq_confirmar">
+                <div id="izquierda_izq_confirmar">
+                  <% if @odontologo.consultorios.any? %>
+                    <%= @odontologo.consultorios[0].lat %> ~ <%= @odontologo.consultorios[0].long %>
+                  <% end %>
+                </div>
+                <div class="derecha_izq_confirmar">
+                  Sincroniza tu cita con:
+                  <br>
+                 
+                  <p>  <%= image_tag 'agendar_online/icono_outlook.png' %> &nbsp;&nbsp;&nbsp;&nbsp;Outlook</p>
+                  
+                  <p> <%= image_tag 'agendar_online/icono_ical.png' %> &nbsp;&nbsp;&nbsp;&nbsp;iCal</p>
+                  
+                  <p> <%= image_tag 'agendar_online/icono_gmail.png' %> &nbsp;&nbsp;&nbsp;&nbsp;Gmail</p>
+
+                </div>
+              </div>
+
+              <div class="arriba_der_confirmar">
+                <a href="<%= paciente_path(current_user) %>" class="ir_perfil">
+                  <%= submit_tag "Finalizar", :class=> 'submit', style:'margin: 30px 0 10px 80px;' %>
+                </a>
+                
+                <p>Si necesitas cancelar o reagendar tu cita has clic <a href="<%= paciente_path(current_user) %>" id="ir_perfil">aquí</a> </p>
+              </div>
+            </div>
+
+          </div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+
+<script type="text/javascript">
+
+	$(function(){
+    $('.fancybox').fancybox();
+    
+
+    //mapa
+      function initialize(lat,longi) {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          draggable: false, 
+        zoomControl: false, 
+        scrollwheel: false, 
+        disableDoubleClickZoom: true
+        };
+        map = new google.maps.Map(document.getElementById("izquierda_izq_confirmar"),mapOptions);
+        marker = new google.maps.Marker({
+          map: map,
+          position: map.getCenter()
+        });
+
+         google.maps.event.addListener(map, 'center_changed', function() {
+          //console.log(map.getCenter());
+          marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          console.log(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+          //marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          console.log(map.getCenter());
+          //marker.setPosition(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+
+        });
+      }
+    //movimiento
+		var css_a_meter = {
+            '-webkit-transform':' translateX(0px)',
+	        '-moz-transform': 'translateX(0px)',
+	        '-o-transform': 'translateX(0px)',
+	        '-ms-transform': 'translateX(0px)',
+	        'transform': 'translateX(0px)',
+	        'z-index': '100',
+            '-ms-filter':"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)",
+            'filter': 'alpha(opacity=100)',
+            'opacity': 1,
+            '-webkit-transition': 'all ease-out 0.3s 0.1s',
+            '-moz-transition':' all ease-out 0.3s 0.1s',
+            '-o-transition': 'all ease-otu 0.3s 0.1s',
+            '-ms-transition': 'all ease-out 0.3s 0.1s',
+            'transition': 'all ease-out 0.3s 0.1s'
+            };
+            
+          var css_reset_1 = {
+              'z-index': 1,
+              'opacity': 0,
+              '-webkit-transform': 'translateX(-250px)',
+	          '-moz-transform': 'translateX(-250px)',
+	          '-o-transform': 'translateX(-250px)',
+	          '-ms-transform': 'translateX(-250px)',
+	          'transform': 'translateX(-250px)'
+            };
+
+          var css_reset_2 = {
+              'z-index': 1,
+              'opacity': 0,
+              '-webkit-transform': 'translateX(250px)',
+	          '-moz-transform': 'translateX(250px)',
+	          '-o-transform': 'translateX(250px)',
+	          '-ms-transform': 'translateX(250px)',
+	          'transform': 'translateX(250px)'
+            };
+
+          $('.contenedor-1').css(css_a_meter);
+          $('.contenedor-2').css(css_reset_2);
+          $('.contenedor-3').css(css_reset_1);
+          $('.contenedor-4').css(css_reset_2);
+
+
+          var agendar_online = {
+            id_paciente : '',
+          	init : function(){
+              var arr = $('#izquierda_izq_confirmar').html().trim().split('~');
+              google.maps.event.addDomListener(window, 'load', initialize(arr[0],arr[1]));
+
+          		
+              this.id_paciente=getCookie("login").substring(6);
+              console.log(this.id_paciente);
+
+              $.when( citas_o.fetch(), horas_disponibles.fetch() ).done(function(){
+                agendar_online.eventos();
+              });
+
+
+              $()
+          	},
+          	eventos : function(){
+          		$('#submit_btn_agd').on('click',function(e){
+                $('#confirmar_cita_img').attr('src','/assets/agendar_online/pestana_confirmar_cita.png ');
+                $('#cita_lista_img').attr('src','/assets/agendar_online/pestana_cita_lista_over.png ');
+
+              
+          			e.preventDefault();
+                
+
+                  console.log('ano:'+$('#fecha_cita').val().split('-')[2] );
+                  console.log('comentarios:'+$('#comentario_agendar_online').val()  );
+                  console.log('dia: '+$('#fecha_cita').val().split('-')[0]  );
+                  console.log('motivo: '+$('#motivo_consulta').val()  );
+                  console.log('duracion: ' +$('#duracion_cita').val() );
+                  console.log('hora:' +$('#hora_cita_p').val() );
+                  console.log('mes: '+$('#fecha_cita').val().split('-')[1] );
+                  console.log('odontologo_id: '+$('#id_odontologo').val() );
+                  console.log('paciente_id: '+parseInt(agendar_online.id_paciente) );
+
+
+                  console.log(horas_disponibles.get(parseInt( $('#id_cita').val() )));
+
+                   
+                  
+                  horas_disponibles.get(parseInt( $('#id_cita').val())).destroy();
+                
+                citas_o.create({
+                  ano: $('#fecha_cita').val().split('-')[2],
+                  comentarios: $('#comentario_agendar_online').val(),
+                  dia: $('#fecha_cita').val().split('-')[0] ,
+                  duracion: $('#duracion_cita').val(),
+                  estado: "porconfirmar",
+                  hora: $('#hora_cita_p').val(),
+                  medio_pago: "en-desarrollo",
+                  mes: $('#fecha_cita').val().split('-')[1],
+                  modo_pago: "en-desarrollo",
+                  motivo: $('#motivo_consulta').val() ,
+                  odontologo_id: parseInt($('#id_odontologo').val()),
+                  paciente_id: parseInt(agendar_online.id_paciente),
+                  tipo_consulta: "online"
+
+                });
+                
+          			$('.contenedor-1').css(css_reset_1);
+          			$('.contenedor-2').css(css_a_meter);
+                $('.motivo_lista').html($('#motivo_consulta').val());
+
+                //console.log($('#confirmar_cita_img').attr('src'));
+
+                $('.ir_perfil').each(function(index,elem){});
+                
+          		});
+          	}
+          }
+
+      
+
+          agendar_online.init();
+	
+	});
+	  	
+</script>

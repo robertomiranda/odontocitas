@@ -1,0 +1,25 @@
+<%= form_for(@medio_pago) do |f| %>
+  <% if @medio_pago.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medio_pago.errors.count, "error") %> prohibited this medio_pago from being saved:</h2>
+
+      <ul>
+      <% @medio_pago.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :odontologo_id %><br />
+    <%= f.number_field :odontologo_id %>
+  </div>
+  <div class="field">
+    <%= f.label :medio_pago %><br />
+    <%= f.text_field :medio_pago %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,63 @@
+<h1>Listing odontologos</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Autorizado</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Correo</th>
+    <th>Especialidad</th>
+    <th>Clave</th>
+    <th>Celular</th>
+    <th>Telefono</th>
+    <th>Direccion</th>
+    <th>Usuario</th>
+    <th>Imagen</th>
+    <th>Fecha Nacimiento</th>
+    <th>Cita</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @odontologos.each do |odontologo| %>
+  <tr>
+    <td><%= odontologo.id %></td>
+    <td><%= odontologo.autorizado %></td>
+    <td><%= odontologo.nombre %></td>
+    <td><%= odontologo.apellido %></td>
+    <td><%= odontologo.correo %></td>
+    <td><%= odontologo.especialidad %></td>
+    <td><%= odontologo.clave %></td>
+    <td><%= odontologo.celular %></td>
+    <td><%= odontologo.telefono %></td>
+    <td><%= odontologo.direccion %></td>
+    <td><%= odontologo.usuario %></td>
+    <td><%= odontologo.image_url %></td>
+    <td><%= odontologo.fecha_nacimiento %></td>
+    <td><%= odontologo.appointments.length%></td>
+    <td><%= odontologo.appointments %></td>
+    <td><%= link_to 'Show', odontologo %></td>
+    <td><%= link_to 'Edit', edit_odontologo_path(odontologo) %></td>
+    <td><%= link_to 'Destroy', odontologo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Horas Disponibles', odontologo_horas_disponibles_path(odontologo) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Odontologo', new_odontologo_path %>
+
+
+<!--
+<div id="odontologos"></div>
+
+<script type="text/javascript">
+  $(function() {
+    // Blog is the app name
+    window.router = new Odontocitas.Routers.OdontologosRouter({odontologos: <%= @odontologos.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>-->

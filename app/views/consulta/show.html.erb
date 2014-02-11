@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id odontologo:</b>
+  <%= @consultum.odontologo_id %>
+</p>
+
+<p>
+  <b>Consulta aceptada:</b>
+  <%= @consultum.consulta_aceptada %>
+</p>
+
+
+<%= link_to 'Edit', edit_consultum_path(@consultum) %> |
+<%= link_to 'Back', consulta_path %>

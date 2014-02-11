@@ -1,0 +1,1054 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$azul_crema: #6FCFF0;
+$azul_claro: #00A5E2;
+$azul_verde : #1281A1;
+$naranja : #F37021;
+$letra_menu : #CCCCCC;
+
+$tam_centrado : 980px;
+
+/*Valores Para tomar*/
+
+.naranja{
+    color: $naranja;
+}
+
+.gris{
+    color: #999999;
+}
+
+.azul_oscuro{
+    color: $azul_verde;
+}
+.mayusculas{
+    text-transform: uppercase;
+}
+
+.pantalla_negra{
+    width: 100%;
+    height: 100%;
+    background: rgba(170,170,170,0.8);
+    position: fixed;
+    z-index: 103;
+    display: none;
+}
+.menu {
+    width:100%;
+    position:relative;
+    height:55px;
+    background:white;
+    z-index: 3;
+}
+
+.formulario{
+    width: 269px;
+    height: 163px;
+    background: url('fondo_login.png');
+    position: relative;
+    display: none;
+    left: 700px;
+    z-index: 103;
+}
+
+.titulo_form{
+    color: $azul_verde;
+    margin: 0 0 10px 0;
+    font-size: 14pt;
+    text-align: center;
+    font-family: helvetica;
+}
+
+.form_registro{
+    width: 500px;
+    height: 620px;
+    background: white;
+    position: fixed;
+    top: -1500px;
+    left: 50%;
+    /*margin-top: -250px;*/
+    margin-left: -275px;
+    z-index: 9999999;
+
+    .field{
+        width: 400px;
+        height: 50px;
+        text-align: right;
+
+
+        input[type=text]{
+            width: 330px;
+        }
+        input[type=password]{
+            width: 330px;
+        }
+        input[type=radio]{
+            position: relative;
+            top: 7px;
+        }
+
+        .gris{
+            color: #B3B3B3 !important;
+            font-size: 9pt;
+            text-align: center;
+        }
+
+        #claves_coincidencias{
+            display: none;
+        }
+    }
+}
+
+.content_form_registro{
+    width: 420px;
+    margin: 20px auto 0 auto;
+}
+
+.cerrar_form_registro{
+    float: right;
+    position: relative;
+    top:10px;
+    left: -10px;
+    cursor: pointer;
+}
+
+.cerrar_form_buscar_odonto{
+    float: right;
+    position: relative;
+    top:20px;
+    left: -20px;
+    cursor: pointer;
+}
+
+
+.cerrar_form_login{
+    float: right;
+    position: relative;
+    top: 20px;
+    left: -8px;
+    cursor: pointer;
+}
+
+.olvidado_contra{
+    font-size: 7pt;
+    position: relative;
+    left: -30px;
+}
+
+.titulo_form_login{
+    text-align: center;
+    font-size: 12pt;
+}
+
+.content_form_login{
+    position: relative;
+    top: 40px;
+}
+
+.campo_login{
+    width: 185px;
+}
+
+.segundo_campo_login{
+    position: relative;
+    left:3px;
+}
+
+
+.conjunto_login{
+    margin:  0 0 7px 0;
+}
+
+.registro_boton{
+    text-decoration: none;
+    background:transparent;
+    color: $letra_menu !important;
+}
+
+.registro_boton:hover{
+    background:transparent;
+    color: $azul_claro !important;
+}
+
+#shadow {
+    border-radius:500%;
+    width:100%;
+    background:#fff;
+    height:4px;
+    box-shadow: 0px 2px 10px black;
+    margin-top:-6px;
+    position: relative;
+    z-index: 2;
+}
+
+.imagen_home{
+	width: 100%;
+	height: 600px;
+	background: url('fondo_home.jpg');
+	position: relative;
+	z-index: 1;
+}
+
+.img_home_centrado{
+    width: 980px;
+    height: 100%;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+}
+
+.HomeImage{
+	width: 100%;
+	height: 100%;
+}
+
+.logo_header{
+    margin: 13px  0 0 20px;
+}
+
+.link_logo:hover{
+    background: transparent;
+}
+
+.centrado{
+    width: $tam_centrado;
+    height: 100%;
+    margin: auto;
+    z-index: 3;
+
+    a{
+        text-decoration: none;
+        color: #cccccc;
+    }
+
+    a + a{
+        margin:  0 0 0 10px;
+    }
+    a:hover{
+        color: #00a5e2 !important;
+    }
+
+    #acciones_menu{
+        width: 209px;
+        height: 17px;
+        position: relative;
+        
+        top: -10px;
+        text-align: right;
+    }
+}
+
+.items_menu{
+    width: 430px;
+    float: right;
+    margin: 15px 0 0 0;
+
+    ul{
+        text-align: right;
+        margin: 0 0 10px 0;
+
+        li{
+            margin: 0 12px 0 12px;
+            display: inline;
+            font-size: 10pt;
+            font-family: 'Helvetica-Neue';
+            color: $letra_menu;
+            cursor: hand;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+    }
+
+    ul li:hover{
+        color: $azul_claro;
+    }
+}
+
+
+.iconos_menu{
+    margin: 0px 50px 0 0;
+}
+
+
+.redondo{
+    padding: 4px 4px 4px 4px; 
+    border: 1px solid $letra_menu;
+}
+
+
+
+.flecha_abajo_home{
+    margin: auto;
+    position: relative;
+    top: 341px;
+    left: 440px;
+    overflow: auto;
+}
+
+.logo_content{
+    position: relative;
+    top: 80px;
+    left: 90px;
+}
+
+.texto_home{
+    width: 590px;
+    height: 120px;
+    /*background: rgba(255,255,255,0.8);*/
+    position: relative;
+    top: 270px;
+    z-index: 2;
+}
+
+.texto_home_afuera{
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background: rgba(255,255,255,0.8);
+    top: 348px;
+}
+
+.texto_home p {
+    text-align: right;
+    position: relative;
+    top: 25px;
+    left: -10px;
+    font-family: 'Helvetica-Neue';
+    font-size: 18pt;
+    color: $azul_claro;
+    line-height:120%;
+}
+
+.btn_agendar{
+    width: 234px;
+    height: 44px;
+    background-image: url('btn_agendar1.png');
+    position: relative;
+    top: 272px;
+    left: 300px;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.btn_agendar p{
+    text-align: center;
+    position: relative;
+    top: 12px;
+    font-family: 'Helvetica-Neue';
+    font-size: 16pt;
+}
+
+.formulario_buscar{
+    width : 500px;
+    height :600px;
+    background: url('patron_home_agendar.jpg');
+    position: relative;
+    top: -240px;
+    left: 510px;
+    float: right;
+    z-index: 3;
+
+/*
+    -webkit-box-shadow: -5px 0px 8px  rgba(50, 50, 50, 0.43);
+    -moz-box-shadow:    -5px 0px 8px  rgba(50, 50, 50, 0.43);
+    box-shadow:         -5px 0px 8px  rgba(50, 50, 50, 0.43);
+*/
+
+    -moz-box-shadow:     0 0 10px #000000;
+   -webkit-box-shadow:  0 0 10px #000000;
+   box-shadow:          0 0 10px #000000;
+
+}
+
+.buscador_centrado{
+    width: 330px;
+    margin: 80px auto;
+}
+
+.btn_buscar{
+    width: 280px;
+    height: 44px;
+    background: url("pide_cita.png");
+    cursor: hand;
+    cursor: pointer;
+}
+
+.btn_buscar p{
+    font-size: 14pt;
+    color: white !important;
+    position: relative;
+    left: 15px;
+    top: 6px;
+}
+
+.buscador_centrado p{
+    color: #F37021;
+    font-family: 'Helvetica-Neue';
+    font-size: 22pt;
+    line-height:120%;
+    margin-bottom: 30px;
+}
+
+.flecha_buscar{
+    float: left;
+}
+.entrada_datos{
+    width: 270px;
+    float: left;
+}
+
+.entrada_buscar{
+    width: 330px;
+    height: 40px;
+    margin: 20px 20px 20px 0px;
+}
+
+
+
+
+.beneficios{
+    width: 100%;
+    height: 350px;
+    padding-top: 20px;
+    /*
+    -webkit-box-shadow: 0 8px 6px -6px lightgrey ;
+       -moz-box-shadow: 0 8px 6px -6px lightgrey ;
+            box-shadow: 0 8px 6px -6px lightgrey ;
+
+    position: relative;
+    z-index: 100;
+    */
+}
+
+.icon_beneficios{
+    margin: 20px 0 20px 0;
+}
+
+.titulo{
+    color:#B3B3B3;
+    font-family: helvetica;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+.texto_beneficios{
+    color:#808080;
+    font-family: helvetica;
+    text-align: justify;
+}
+
+.texto{
+    margin:auto;
+    width: 100px;
+    height: 10px;
+}
+
+.texto1{
+    margin:auto;
+    width: 170px;
+    height: 10px;
+    text-align: center;
+}
+
+.sombra_beneficios{
+    width: 567px;
+    height: 59px;
+    background: url('sombra_beneficios.png');
+    margin: auto;
+}
+
+.center_beneficios{
+    width: $tam_centrado;
+    height: 250px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: -20px;
+}
+
+
+
+.elem_beneficio{
+    width: 290px;
+    height: 200px;
+    margin: 20px 10px 20px 10px;
+    float: left;
+}
+
+.ultimo{
+    position: relative;
+    top: -95px;
+}
+
+.quotes{
+    width: 100%;
+    height: 150px;
+    background: #E6E6E6;
+    -moz-box-shadow:    inset 0 0 10px lightgrey;
+    -webkit-box-shadow: inset 0 0 10px lightgrey;
+    box-shadow:         inset 0 0 10px lightgrey;
+}
+
+.contenedor_quotes{
+    font-family: helvetica;
+    width: $tam_centrado;
+    height: 90px;
+    margin: auto;
+    font-size: 16pt;
+    color:#808080;
+    position: relative;
+    top: 40px;
+    line-height:130%;
+}
+
+.autor{
+    font-size: 11pt;
+    position: relative;
+    top: 20px;
+    float: right;
+    font-family: 'Helvetica-Neue';
+}
+
+.comillas{
+    width: 50px;
+    height: 50px;
+    background: green;
+}
+.como_funciona{
+    width: 100%;
+    height: 550px;
+    background: white;
+    padding: 20px 0 0 0 ;
+}
+
+.como_funciona_centrado{
+    width: $tam_centrado;
+    height: 400px;
+    margin: 70px auto;
+
+}
+
+.izq_funcion{
+    float: left;
+    width: 430px;
+    height: 300px;
+}
+
+.iconos_funciona{
+    width: 430px;
+    height: 60px;
+    text-align: center;
+    margin: 0 0 30px 0;
+    background: url('home/flechas.png') no-repeat -30px -10px;
+}
+.area_icon_funciona{
+    width: 50px;
+    margin: 0 35px 0 35px;
+    float: left;
+    text-align: center;
+    text-transform: uppercase;
+    color: #B3B3B3;
+    cursor: pointer;
+    cursor: hand;
+    font-family: helvetica;
+}
+
+.icon_funciona{
+    width: 57px;
+    height: 35px;
+    margin-bottom: 7px;
+}
+
+.texto_funciona{
+    width: 390px;
+    height: 200px;
+    margin: 15px 0 0 0;
+    color: #808080;
+    font-family: helvetica;
+    line-height: 140%;
+    font-size: 12pt;
+}
+
+.der_funcion{
+    float: right;
+    width: 550px;
+    height: 300px;
+}
+
+
+.arbol_navegacion{
+    width: 100%;
+    height: 400px;
+    background: #254861;
+}
+
+.center_navegacion{
+    width: 980px;
+    height: 170px;
+    margin: auto;
+    position: relative;
+    top: 25px;
+}
+
+.elem_beneficio_nav{
+    width: 270px;
+    height: 170px;
+    margin: 20px 0px 20px 0px;
+    float: left;
+    color: $azul_crema;
+    font-size: 10pt;
+}
+
+.elem_beneficio_nav p{
+    margin: 15px 0 15px 0;
+    font-family: 'Helvetica-Neue';
+}
+
+
+.elem_beneficio_nav p:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.parrafo_nav{
+    line-height:180%;
+    font-family: 'Helvetica-Neue';
+}
+
+.titulo_navegacion{
+    font-size: 11pt;
+    margin: 0 0 30px 0 !important;
+    font-family: 'Helvetica-Neue';
+}
+
+.boton_eres_odontologo{
+    width: 273px;
+    height: 64px;
+    background:url('home/eres_odontologo.png');
+    background-position: 0px 0px;
+    cursor: pointer;
+}
+
+.boton_eres_odontologo:hover{
+    background-position: 0px -74px;
+}
+
+.footer{
+    width: 100%;
+    height: 90px;
+    background: #1281A1;  
+    text-align: center; 
+}
+
+.logo_footer{ 
+    margin: 15px 0 0 0 ;
+    width: 200px;
+    height: 50px;
+}
+
+.mitad{
+    margin: 20px 35px 20px 35px;
+}
+
+.mitad_nav{
+    margin: 20px 75px 20px 75px;
+}
+
+.submit{
+    color: #fff;
+    font-size: 13pt;
+    width: 200px;
+    height: 35px;
+    border: none;
+    margin: 3px 0 0 35px;
+    padding: 0;
+    background: $naranja !important;
+    cursor: pointer;
+}
+
+.centrado_elemento{
+    margin: auto;
+    text-align: center;
+}
+
+/*
+.linea_arbol_nav{
+    height: 0.5px;
+    color: #1281A1;
+}
+*/
+        
+hr.linea_arbol_nav {
+    border: 0;
+    height: 1px;
+    background: rgba(18,129,161,1);
+    /*
+    background-image: -webkit-linear-gradient(left, rgba(18,129,161,0), rgba(18,129,161,0.75), rgba(18,129,161,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(18,129,161,0), rgba(18,129,161,0.75), rgba(18,129,161,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(18,129,161,0), rgba(18,129,161,0.75), rgba(18,129,161,0)); 
+    background-image:      -o-linear-gradient(left, rgba(18,129,161,0), rgba(18,129,161,0.75), rgba(18,129,161,0)); */
+}
+
+/*buscador de odontologos*/
+.styled_dropdown_home select{
+    background: transparent;
+     width: 300px;
+    font-size: 14px;
+    border: 1px solid #F2F2F2;
+     height: 27px;
+    -webkit-appearance: none;
+    color: #999999;
+    resize: none;
+}
+
+.styled_dropdown_home{
+   overflow: hidden;
+   background: url(flecha_buscar.png) no-repeat 100% #F2F2F2;
+   margin: 20px 0 20px 0;
+}
+
+.styled_dropdown_home_disable select{
+    background: transparent;
+     width: 300px;
+    font-size: 14px;
+    border: 1px solid #F2F2F2;
+     height: 27px;
+    -webkit-appearance: none;
+    color: #999999;
+    resize: none;
+}
+
+.styled_dropdown_home_disable{
+   overflow: hidden;
+   background: url(flecha_buscar_gris.png) no-repeat 100% #F2F2F2;
+   margin: 20px 0 20px 0;
+}
+
+
+.wrapper_buscador_odontologos{
+    width: 980px;
+    margin: 60px auto;
+
+    .pestana_odonto{
+        width: 100%;
+        height: 24px;
+        text-align: right;
+    }
+
+    .area_de_busqueda{
+        width: 100%;
+        height: 550px;
+        background: white;
+
+        .izquierda{
+            width: 330px;
+            height: 440px;
+            float: left;
+            margin: 70px 30px 0 60px;
+
+            .titulo{
+                text-transform: none;
+                color: $azul_verde;
+                font-size: 23pt;
+                font-family: 'Helvetica-Neue';
+                line-height: 100%;
+                margin: 0 0 40px 0;
+            }
+
+            .submit_cita{
+                color: #fff;
+                font-size: 13pt;
+                width: 200px;
+                height: 35px;
+                border: none;
+                margin: 5px 0 0 50px;
+                padding: 0;
+                background: $naranja !important;
+                cursor: pointer;
+            }
+        }
+
+        #derecha{
+            width: 510px;
+            height: 480px;
+            float: left;
+            background: white;
+            margin: 35px 30px 0 20px;
+        }
+    }
+
+    .separacion{
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        margin: 15px 0 15px 0;
+    }
+
+    .area_buscar_por_nombre{
+        width: 100%;
+        height: 55px;
+        background: white;
+        padding: 15px 0 0 0;
+        margin: 0 0 30px 0;
+        .buscador_nombre{
+            width: 279px;
+            margin: auto;
+
+            img{
+                position: relative;
+                top: 7px;
+            }
+        }
+    }
+
+    .lista_odontologos{
+        width: 100%;
+
+        .area_odontologo{
+            width: 100%;
+            height: 300px;
+            margin: 0 0 25px 0;
+
+            .izquierda{
+                width: 270px;
+                height :100%;
+                margin: 0 10px 0 0;
+                float: left;
+                background: white;
+
+                .arriba{
+                    width: 270px;
+                    height: 37px;
+
+                    .nombre_doctor{    
+                        width: 270px;
+                        height: 37px;
+                        background: url(buscar_odontologo/espacio_nombre_odontologo.jpeg) no-repeat;
+
+                        p{
+                            color: white;
+                            font-family: 'Helvetica-Neue';
+                            margin: 0 0 0 0px;
+                            position: relative;
+                            top: 13px;
+                            font-size: 10pt;
+                            left: 20px;
+                        }
+                    }
+                    
+                }
+
+                .mitad_listar{
+                    width: 270px;
+                    height: 200px;
+                    margin: 10px 0 0 0;
+
+                    .izquierda{
+                        width: 130px;
+                        height: 100%;
+                        float: left;
+                        margin: 0 10px 0 10px;
+                        position: relative;
+                        top: 5px;
+
+                        .imagen_lista{
+                            width: 130px;
+                            height: 195px;
+                        }
+                    }
+
+                    .derecha{
+                        width: 120px;
+                        height: 100%;
+                        float: left;
+                        padding: 10px 0 0 0;
+
+                        .titulo_o{
+                            font-size: 9pt;
+                            font-family: 'Helvetica-Neue';
+                            color: #4d4d4d;
+                        }
+
+                        .direccion{
+                            font-size: 8pt;
+                            font-family: 'Helvetica-Neue';
+                            color: #666;
+                            margin: 10px 0 0 0;
+                            line-height: 18px;
+                        }
+
+                        .titulo_especialidades{
+                            font-size: 9pt;
+                            font-family: 'Helvetica-Neue';
+                            color: #4d4d4d;
+                            margin: 13px 0 0 0;
+                        }
+
+                        .especialidades{
+                            font-size: 8pt;
+                            font-family: 'Helvetica-Neue';
+                            color: #666;
+                            margin: 4px 0 0 0;
+                            line-height: 18px;
+                        }
+                    }
+                }
+
+                .abajo{
+                    width: 250px;
+                    height: 30px;
+
+                    .submit_cita{
+                        position: relative;
+                        left: 65px;
+                        width: 100px;
+                        height: 25px;
+                    }
+                }
+            }
+
+            .derecha{
+                width: 700px;
+                height :100%;
+                float: left;
+                background: white;
+
+                .arriba{
+                    width: 650px;
+                    height: 25px;
+                    margin: 20px auto 10px auto;
+                    color: $naranja;
+                    font-size: 14pt;
+                    font-family: 'Helvetica-Neue';
+
+                    .prev{
+                        font-size: 11pt;
+                        float: right;
+                        margin: 0 20px 0 0;
+                        cursor: pointer;
+                    }
+
+                    .next{
+                        font-size: 11pt;
+                        float: right;
+                        cursor: pointer;
+                    }
+                }
+
+                .abajo{
+                    .semana{
+                    width: 680px;
+                    height: 200px;
+                    margin: auto;
+                    .titulo_dias_semana{
+                        li{
+                            padding: 0;
+                            color: #ccc;
+                            text-align: center;
+                            width: 80px;
+                            margin: 0 15px 0 0 ;
+                            display: inline-block;
+                            font-size: 10pt;
+                        }
+                    }
+                    .horas_disponibles{
+                        width: 100%;
+                        height: 200px;
+                        margin: 5px 0 0 0;
+                        overflow: auto;
+                        .horas_disponibles_dia{
+                            text-align: center;
+                            
+                            width: 80px;
+                            float: left;
+                            margin: 0 18px 0 0 ;
+                            
+                            li{
+                                height: 20px;
+                                padding: 3px 0 0 0;
+                                -webkit-border-radius: 5px;
+                                -moz-border-radius: 5px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                color: #777;
+                            }
+
+                            a{
+                                font-size: 10pt;
+                                text-decoration: none;
+                            }
+
+                            a:nth-child(odd){
+                                
+                                li{
+                                    background: #e3e3e3;
+                                }
+                            }
+                        }
+                    }
+                }
+                }
+            }
+        }
+    }
+
+}
+
+//barra superior
+
+#sign_out{
+    background:url('home/salir.png');
+    background-position: 0px 0px;
+    width: 145px;
+    height: 35px;
+    display: inline-block;
+}
+
+#sign_out:hover{
+    background-position: 0px -45px;
+}
+
+//enviar mensaje
+
+.contenido_mensaje{
+    height: 40px;
+    margin: 10px 0 0 0;
+
+    .registro_campo_enviar_msj{
+        width: 200px;
+        height: 25px;
+        margin: 5px  0 5px 0;
+    }
+
+    .enviar_mensaje_btn{
+        width: 60px;
+        height: 28px;
+        background: $naranja;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        top: -33px;
+        left: 270px;
+
+        p{
+            color: white;
+            font-family: helvetica;
+            position: relative;
+            top: 5px;
+        }
+    }    
+}
+
+
+/*Error message*/
+
+.error_message_form{
+    color: #808080;
+    font-size: 9pt;
+}

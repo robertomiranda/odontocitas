@@ -1,0 +1,520 @@
+// Place all the styles related to the pacientes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$azul_claro: #00A5E2;
+$azul_verde : #1281A1;
+$naranja : #F37021;
+$letra_menu : #CCCCCC;
+
+.content_registro_form{
+	margin: 0 0 0 50px;
+}
+
+.registro_campo{
+	width: 250px;
+	height: 20px;
+	margin: 5px  0 5px 0;
+}
+
+.centrar_registro_campos{
+	margin: 0 0 0 80px;
+}
+
+.titulo_registro{
+	text-align: center;
+	margin: 20px 0 20px 0;
+	font-size: 12pt;
+}
+
+#paciente_clave{
+	position: relative;
+	left: 3px;
+}
+
+#paciente_como_se_entero{
+	width: 250px;
+	position: relative;
+	left: 5px;
+}
+
+#paciente_celular{
+	position: relative;
+	left: 6px;
+	border: none;
+}
+
+
+.url_odontologo{
+	position: relative;
+	left: 70px;
+	background: transparent;
+	text-decoration: none;
+}
+
+.submit1{
+	color: #fff;
+    font-size: 13pt;
+    width: 200px;
+    height: 35px;
+    border: none;
+    margin: 3px 0 0 35px;
+    padding: 0;
+    background: $naranja;
+    cursor: pointer;
+    position: relative;
+    left: 70px;
+}
+
+.url_odontologo:hover{
+    background:transparent;
+    color: $azul_claro !important;
+}
+
+.terminos_condiciones{
+	width: 240px;
+	color: #B3B3B3;
+	font-size: 8pt;
+	text-align: center;
+	position: relative;
+	left: 80px;
+	margin-bottom: 10px;
+}
+
+.terminos_condiciones_paciente{
+	width: 240px;
+	color: #B3B3B3;
+	font-size: 8pt;
+	text-align: center;
+	position: relative;
+	left: 90px;
+	margin-bottom: 10px;
+}
+
+/*Formulario de pacientes en odontologos*/
+.form_paciente{
+    width: 800px;
+    height: 550px;
+    background: white;
+    position: fixed;
+    left: 50%;
+    top: -1500px;
+    margin-top: -250px;
+    margin-left: -400px;
+    z-index: 103;
+}
+
+.form_cita_izquierda_paciente{
+	margin: 20px 0 0 40px;
+	width: 360px;
+	height: 215px;
+	float: left;
+}
+
+.form_abajo_paciente{
+	margin: 20px 0 0 10px;
+	width: 780px;
+	height: 240px;
+	float: left;
+	position: relative;
+	overflow: auto;
+}
+
+.form_abajo_paciente table{
+	margin: auto;
+}
+
+.activar_desplegar_mostrar_paciente{
+	cursor: pointer;
+}
+.titulo_form_paciente{
+	color: $azul_verde;
+    margin: 20px 0 10px 0;
+    font-size: 14pt;
+    text-align: center;
+    font-family: 'Helvetica-Neue';
+}
+
+.lista_pacientes_asociados{
+	width: 210px;
+	text-align: right;
+	max-height: 110px;
+	overflow: auto;
+	min-width: 30px;
+}
+
+.paciente_asociado_li{
+	width: 193px;
+	height: 23px;
+	padding: 7px 0 0 7px;
+	background: #E6E6E6;
+	display: block;
+	text-align: left;
+	color: #666666 !important;
+	border-bottom: 2px solid white !important;
+}
+
+.agregar_paciendo_asociado_odonto{
+	width: 193px;
+	height: 23px;
+	padding: 7px 0 0 7px;
+	background: #E6E6E6;
+	color: $naranja;
+	text-align: center;
+	position: relative;
+	top: -10px;
+}
+
+.agregar_paciendo_asociado_odonto img{
+	position: relative;
+	top: 2px;
+}
+
+.saludo_p{
+	width: 960px;
+	height: 50px;
+	font-family: 'Helvetica-Neue';
+	font-size: 40pt;
+	margin: 10px auto;
+	color: #bbb;
+}
+
+.pestana_p{
+	width: 960px;
+	height: 24px;
+	text-align: right;
+	margin: auto;
+}
+.arriba_p{
+	width: 960px;
+	height: 540px;
+	margin: auto;
+
+	.izquierda_p{
+		width: 200px;
+		height: 100%;
+		background: white;
+		float: left;
+
+		.submenu_paciente{
+			width: 180px;
+			height: 100px;
+			margin: 10px auto;
+			border-bottom: 1px solid #e3e3e3;
+
+			p{
+				font-size: 13pt;
+				color:#00a5e2; 
+				cursor: pointer;
+			}
+
+			.activo_p{
+				color: $naranja;
+			}
+
+			img{
+				position: relative;
+				top: 10px;
+				margin: 0 20px 0 0;
+			}
+
+			p + p {
+				margin: 10px 0 0 0;
+			}
+		}
+
+		.area_sincornizar_p{
+			width: 180px;
+			height: 150px;
+			margin: 10px auto;
+			border-bottom: 1px solid #e3e3e3;
+			text-align: center;
+
+			p{
+				color:#00a5e2; 
+			}
+
+			table{
+				text-align: left;
+				margin: auto;
+
+				tr{
+					cursor: progress;
+				}
+
+				td{
+					width: 40px;
+				}
+				img{
+					position: relative;
+					top: 10px;
+				}
+				td + td {
+					margin: 0 0 0 30px  ;
+				}
+			}
+		}
+	}
+
+	.derecha_p{
+		width: 705px;
+		height: 500px;
+		background: white;
+		float: left;
+		margin: 0 0 0 15px;
+		padding: 20px;
+
+		.titulo_p{
+			font-size: 25pt;
+			font-family: 'Helvetica-Neue';
+			color: #666;
+			p{
+				margin: 10px 0 0 0;
+				float: right;
+				font-size: 12pt;
+				font-family: 'Helvetica-Neue';
+				color: $naranja;
+
+				em{
+					cursor: pointer;
+				}
+				em + em{
+					margin: 0 0 0 20px;
+				}
+			}
+		}
+
+		.acciones{
+			width: 100%;
+			height: 60px;
+			text-align: right;
+			p{
+				position: relative;
+				top: 10px;
+				float: left;
+				font-size: 15pt;
+				color: #666;
+			}
+
+			img{
+				cursor: pointer;
+			}
+		}
+
+		.contenido_arriba_p{
+			width: 100%;
+			height: 400px;
+
+			    .perfil_odontologo_area{
+			    	width: 150px;
+			    	height: 400px;
+			    	float: left;
+			    	padding: 20px 0 0 0;
+
+			    }
+      			.informacion_perfil_odontologo_area{
+      				width: 260px;
+      				height: 100%;
+      				float: left;
+      				padding-left: 20px;
+
+      				.titulo_perfil_p{
+      					font-size: 12pt;
+      					color: #254861;
+      					font-family: helvetica;
+      					margin: 10px 0 5px 0;
+      				}
+      			}
+      			.mapa_perfil_odontologo_area{
+      				width: 270px;
+      				height: 100%;
+      				float: left;
+      				color: white;
+
+      				#mapa_cita_paciente{
+      					width: 100%;
+      					height: 250px;
+      					background: white;
+      				}
+
+      				table{
+      					font-size: 10pt;
+      					color: #666;
+      					margin: 15px 0 0 40px;
+
+      					td{
+      						width: 50px;
+
+      						img{
+      							position: relative;
+      							top: 7px;
+      						}
+      					}
+
+      					td + td{
+      						width: 140px;
+      						margin: 0 0 0 30px;
+      					}
+      				}
+      			}
+		}
+	}
+}
+
+.separador_p{
+	width: 960px;
+	margin: auto;
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+
+.mitad_p{
+	width: 920px;
+	margin: auto;
+	height: 360px;
+	background: white;
+	padding: 20px;
+
+	.der_m_p{
+		width: 180px;
+		height: 280px;
+		float: left;
+		text-align: center;
+		padding: 80px 0 0 0;
+	}
+
+    .izq_m_p{
+    	width: 740px;
+		height: 100%;
+		float: left;
+		overflow: auto;
+
+
+		.lista_doctores_p{
+			width: 1280px;
+			height: 330px;
+
+			.carta_doctor{
+				width: 240px;
+				height: 330px;
+				float: left;
+				padding: 5px;
+			}
+
+			.carta_doctor + .carta_doctor {
+				border-left: 1px solid grey;
+			}
+		}
+    }
+}
+
+.nombre_doctor{
+		width: 127px;
+		height: 31px;
+		background: url('pacientes/espacio_nombre.png') no-repeat;
+		color: white;
+		text-transform: uppercase;
+
+		p{
+			position: relative;
+			top: 10px;
+			left: 5px;
+			font-size: 10pt;
+		}
+	}
+
+.abajo_p{
+	width: 960px;
+	margin: 0 auto 70px auto;
+	height: 360px;
+
+	.izquierda_a_p{
+		width: 430px;
+		height: 320px;
+		float: left;
+		background: white;
+		margin: 0 20px 0 0;
+		padding: 20px;
+		text-align: center;
+
+		#lista_pacientes_asoaciados{
+			width: 433px;
+			height: 270px;
+			overflow: auto;
+			text-align: left;
+
+			li{
+				width: 414px;
+				height: 15px;
+				padding: 2px 0 2px 7px;
+				cursor: pointer;
+				font-size: 10pt;
+			}
+
+			li:nth-child(2n){
+				background:#e3e3e3;
+				
+			}
+		}
+	}
+
+    .derecha_a_p{
+    	width: 430px;
+		height: 320px;
+		float: left;
+		background: white;
+		padding: 20px;
+		text-align: center;
+
+		.buscar_cita{
+			width: 100%;
+			height: 27px;
+			margin: 10px 0 20px 0;
+			#buscar_odonto_paciente_perfil{
+				text-align: center;
+			}
+		}
+
+		#lista_odontologos_p_especialidad{
+			width: 100%;
+			height: 200px;
+			overflow: auto;
+
+			li{
+				width: 420px;
+				height: 199px;
+				border-top: 1px solid #999999;
+
+				.derecha_odontologo{
+					width: 130px;
+					height: 100%;
+					float: left;
+				}
+				.izquierda_odontologo{
+					width: 280px;
+					height: 125px;
+					float: left;
+					padding: 30px 0 0 0;
+					text-align: left;
+					overflow: hidden;
+
+					hr{
+						background: #efefef ;
+					}
+
+					.motivo_cita{
+						font-size: 10pt;
+					}
+
+					.direccion_o{
+
+						img{
+							position: relative;
+							top: 7px;
+						}
+					}
+				}
+			}
+		}
+    }
+}

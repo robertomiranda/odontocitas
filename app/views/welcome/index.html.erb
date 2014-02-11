@@ -1,0 +1,255 @@
+<div class="imagen_home">
+	<div class="texto_home_afuera"></div>
+	<div class="img_home_centrado">
+
+		<%= image_tag "logo_odontocitas_blanco.png" , :class =>' logo_content' %>
+		<div class="texto_home">
+			<p>
+				Agenda tus citas odontológicas por internet <br>
+				de una forma fácil, conﬁable y sin costo alguno!
+			</p>
+		</div>
+		<div class="btn_agendar">
+			<p>agendar</p>
+		</div>
+		<%= image_tag "boton_abajo_home.png" ,  :class => 'flecha_abajo_home'%>
+		<div class="formulario_buscar">
+			<%= image_tag "icono_cerrar.png" ,  :class => 'cerrar_form_buscar_odonto' %>
+
+			<div class="buscador_centrado">
+
+				<p>
+					Tu odontólogo <br>
+					a solo unos clics 
+				</p>
+
+				<%= form_tag("/buscar_odontologo" , :method => :get) do %>
+					<div class="styled_dropdown_home" style="width: 300px;height: 27px; margin:30px 0 30px 0;">
+	                  <select id="ciudad" name="ciudad">
+	                    <option value="--">Ciudad</option>
+	                    <option value="bogota">Bogotá</option>
+	                    <option value="medellin">Medellin</option>
+	                    <option value="bucaramanga">Bucaramanga</option>
+	                 </select>
+		            </div>
+					<div class="styled_dropdown_home" style="width: 300px;height: 27px margin:30px 0 30px 0;">
+		                  <select id="especialidad" name="especialidad">
+		                    <option value="--">Especialidad</option>
+		                    <option value="Odontopediatria">Odontopediatria</option>
+		                    <option value="Endodoncia">Endodoncia</option>
+		                    <option value="Ortodoncia">Ortodoncia</option>
+		                    <option value="Estetica Dental">Estetica Dental</option>
+		                    <option value="Rehabilitacion Oral">Rehabilitacion Oral</option>
+		                    <option value="Cirugia Dental">Cirugia Dental</option>
+		                    <option value="Cirugia Maxilofacial">Cirugia Maxilofacial</option>
+		                    <option value="Odontólogía integral">Odontólogía integral</option>
+                            <option value="Odontólogía general">Odontólogía general</option>
+                            <option value="Prostodoncia">Prostodoncia</option>
+                            <option value="Implantología oral y reconstructiva">Implantología oral y reconstructiva</option>
+		                 </select>
+		            </div>
+					<div class="styled_dropdown_home_disable" style="width: 300px;height: 27px; margin:30px 0 30px 0;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Forma de Pago</option>
+		                 </select>
+		            </div>
+					<div class="styled_dropdown_home_disable" style="width: 300px;height: 27px; margin:30px 0 30px 0;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Prepagada</option>
+		                 </select>
+		            </div>
+		            <div class="styled_dropdown_home_disable" style="width: 300px;height: 27px; margin:30px 0 60px 0;">
+		                  <select id="mes_cita" disabled>
+		                    <option value="--">Zona</option>
+		                 </select>
+		            </div>
+					
+						
+					<div class="btn_buscar">
+						<%= submit_tag "Pide Una cita" , :class => 'submit'  %>
+					</div>
+
+				<% end %>
+
+
+			</div>
+
+		</div>
+		
+	</div>
+</div>
+
+<div class="beneficios">
+	<p class="texto titulo">Beneficios</p>
+	<div class="sombra_beneficios"></div>
+	<div class="center_beneficios">
+		<div class="elem_beneficio">
+			<%= image_tag "icono_beneficios_masinformacion.png" ,  :class => 'icon_beneficios' %>
+
+			<p class="titulo">Más información</p>
+			<p class="texto_beneficios">
+				Escoge a tu odontólogo, ten acceso a su perfil, su ubicación, 
+				su experiencia y a comentarios hechos por otros pacientes.
+			</p>
+		</div>
+
+		<div class="elem_beneficio mitad">
+			<%= image_tag "icono_beneficios_masopciones.png" ,  :class => 'icon_beneficios' %>
+			<p class="titulo">Mas opciones</p>
+			<p class="texto_beneficios">
+				Nos encargamos de recordarte tu cita. Podrás cancelarla o 
+				reagendarla de una forma fácil.
+			</p>
+		</div>
+
+		<div class="elem_beneficio ">
+			<%= image_tag "icono_beneficios_flexibilidad.png" ,  :class => 'icon_beneficios' %>
+			<p class="titulo">Más flexibilidad</p>
+			<p class="texto_beneficios">
+				Pide tu cita cualquier día de la semana, a cualquier hora del día, 
+				cerca tu caso o lugar de trabajo.
+			</p>
+		</div>
+	</div>
+</div>
+<div class="quotes">
+
+	<div class="contenedor_quotes">
+		" Pude encontrar un exelente odontologo cerca a mi casa. Pedi la cita rapido y de forma sencilla
+		desde mi iPad mientras veia television. Gracias Odontocitas! Recomendare el servicio a mis 
+		amigos. "
+		<p class="autor">Santiago Arango</p>
+	</div>
+
+
+</div>
+
+<div class="como_funciona">
+	<p class="texto1 titulo">¿Como Funciona?</p>
+	<div class="sombra_beneficios"></div>
+	<div class="como_funciona_centrado">
+		<div class="izq_funcion">
+			<div class="iconos_funciona">
+				<div class="area_icon_funciona">
+					<%= image_tag "elige_azul.png", :class => 'icon_funciona elige' %>
+					<p>&#160;&#160;&#160;elige</p>
+				</div>
+				
+				<div class="area_icon_funciona">
+					<%= image_tag "agenda.png", :class => 'icon_funciona agenda' %>
+					<p>agenda</p>
+				</div>
+
+				<div class="area_icon_funciona">
+					<%= image_tag "muela.png", :class => 'icon_funciona asiste' %>
+					<p>&#160;&#160;asiste</p>
+				</div>
+			</div>
+			<div class="texto_funciona">
+				Olvida los eternos y complicados call centers, las llamadas en espera o 
+				los teléfonos que siempre están ocupados. Te presentamos una nueva forma de 
+				pedir citas por internet para cualquier tipo de tratamiento odontológico.
+				<br><br>
+				Elige a tu odontólogo según su perfil, experiencia y recomendaciones hechas 
+				por otros usuarios. También ten en cuenta tu ubicación y forma de pago que 
+				más te convenga.
+			</div>
+		</div>
+		<div class="der_funcion">
+			<%= image_tag 'home/imagen-agendar-odonto-home.png' %>
+		</div>
+	</div>
+
+	<img src="">
+</div>
+
+
+
+<script type="text/javascript">
+	$(function(){
+
+		$('body').css('background','#fff');
+		console.log('cargo aca');
+		$('.btn_agendar').on('click',function(){
+			$('.formulario_buscar').animate({
+				left:'-10px'
+			},1000);
+
+			$(this).animate({
+				top: '230px',
+				'opacity' :0
+			},1000);	
+		});
+		$('.cerrar_form_buscar_odonto').on('click',function() {
+			$('.formulario_buscar').animate({
+				left: '510px'
+			},1000);
+
+			$('.btn_agendar').animate({
+				top: '272px',
+				'opacity' :1
+			},1000);
+		});
+
+
+
+
+		$('.area_icon_funciona').on('click',function(){
+			var n =  $(this).children('p').html().split("&nbsp;");
+			var clikeado =  n[n.length-1];
+			//console.log(clikeado);
+			if(clikeado == "elige"){
+				reset_botones_funciona();
+				$(this).children('img').attr('src','/assets/elige_azul.png');
+
+				$('.texto_funciona').html(
+				'Olvida los eternos y complicados call centers, las llamadas en espera '+
+				'o los teléfonos que siempre están ocupados. Te presentamos una nueva '+
+				'forma de pedir citas por internet para cualquier tipo de tratamiento '+
+				'odontológico.'+
+				'<br><br>'+
+				'Elige a tu odontólogo según su perfil, experiencia y recomendaciones '+
+				'hechas por otros usuarios. También ten en cuenta tu ubicación y forma de '+
+				'pago que más te convenga.');
+			
+				$('.der_funcion').html("<img src='assets/home/imagen-agendar-odonto-home.png' >");
+			}
+
+			if (clikeado == "agenda") {
+				reset_botones_funciona();
+				$(this).children('img').attr('src','/assets/agenda_azul.png');
+
+			$('.texto_funciona').html(
+					'Pide tu cita el día y a la hora que más te convenga. '+
+					'<br> <br>'+
+					'Espera la confirmación de tu odontólogo. Te recordaremos tu '+
+					'cita un día antes a través de un correo electrónico. Con '+
+					'odontocitas puedes reagendar y cancelar tus citas de una forma ' +
+					'sencilla. Buscamos facilitar las cosas para tí y para tu odontólogo.');
+
+			$('.der_funcion').html("<img src='assets/home/imagen-elige-odonto-home.png' >");
+			}
+			if (clikeado == "asiste") {
+				reset_botones_funciona();
+				$(this).children('img').attr('src','/assets/asiste_azul.png');
+
+				$('.texto_funciona').html(
+					'Asiste a tu cita sin complicaciones y disfruta de nuestro servicio. ' +
+					'En odontocitas queremos que los pacientes encuentren y pidan sus citas '+
+					'en línea desde cualquier parte, sin importar la hora.'+
+					'<br> <br>'+
+					'Disfruta de los servicios de odontocitas y aprovecha el tiempo para '+
+					'hacer las cosas que realmente quieres.');
+
+				$('.der_funcion').html("<img src='assets/home/imagen-asiste-odonto-home.png' >");
+			}
+		});
+
+		function reset_botones_funciona(){
+			$('.elige').attr('src','/assets/elige.png');
+			$('.agenda').attr('src','/assets/agenda.png');
+			$('.asiste').attr('src','/assets/muela.png');
+		}
+
+	});	
+</script>

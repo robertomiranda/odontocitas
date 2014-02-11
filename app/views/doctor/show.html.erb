@@ -1,0 +1,576 @@
+<div class="wrapper_perfil_v_odonto">
+	<div class="pestana_odonto">
+		<%= image_tag 'odontologo/perfil_publico/pestana_odontologo.png', class: '' %>
+	</div>
+	<div class="area_superior">
+		<div class="izquierda">
+			<%= image_tag @odontologo.image_url, class: 'imagen_perfil' %>
+	      	<div class="redes_sociales">
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_facebook.png'), @odontologo.facebook , class: 'facebook' , target: '_blanck' %>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_twitter.png'), @odontologo.twitter , class: 'twitter' , target: '_blanck'%>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_linkedin.png'), @odontologo.linkedin , class: 'linkedin' , target: '_blanck'%>
+	      		<%= link_to (image_tag 'perfil_odontologos/icono_youtube.png'), @odontologo.youtube , class: 'youtube' , target: '_blanck'%>
+	      	</div>
+	      	<table class="datos_perfil">
+	      		<tr>
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_lugar.png' %></td>
+					<td class="dato_p">
+						<% if @odontologo.consultorios.any? %>
+							<%= @odontologo.consultorios[0].direccion %>
+						<% end %>
+					</td>
+				<tr>
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_telefono.png' %></td>
+					<td class="dato_p">
+						<% if @odontologo.consultorios.any? %>
+							<%= @odontologo.consultorios[0].telefono %>
+						<% end %>
+					</td>
+				</tr>
+				<tr class="mas_espacio">
+					<td><%= image_tag 'odontologo/perfil_publico/nuevos_iconos/icono_web.png' %></td>
+					<td class="dato_p"><a href="<%= @odontologo.web %>" target= "_blanck">sitio web</a></td>
+				</tr>
+	      	</table>
+	      	<div class="fotos_consultorio">
+	      		<% if @odontologo.consultorios.any? %>
+	      			<a class="fancybox" href="<%= @odontologo.consultorios[0].imagen1_url %>" data-fancybox-group="gallery">
+	      				<%= image_tag @odontologo.consultorios[0].imagen1_url , class: 'imagen_open'  %>
+	      			</a>
+	      			<a class="fancybox" href="<%= @odontologo.consultorios[0].imagen2_url %>" data-fancybox-group="gallery">
+	      				<%= image_tag @odontologo.consultorios[0].imagen2_url , class: 'imagen_open'  %>
+	      			</a>
+	      			<a class="fancybox" href="<%= @odontologo.consultorios[0].imagen3_url %>" data-fancybox-group="gallery">
+	      				<%= image_tag @odontologo.consultorios[0].imagen3_url , class: 'imagen_open'  %>
+	      			</a>
+	      		<% else %>
+	      			<%= image_tag 'odontologo/perfil_publico/icono_foto_consultorio.png' , class: ''  %>
+	      		<% end %>
+	      	</div>
+		</div>
+
+		<div class="derecha">
+			<p class="titulo">
+				Dr . <%= @odontologo.nombre %> <%= @odontologo.apellido %>.
+			</p>
+			<hr>
+			<div class="arriba">
+				<div class="puntuacion">
+					<div class="puntualidad">
+						Puntualidad: 
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_amarilla.png' , class: ''  %>
+					</div>
+					<div class="servicio">
+						Servicio: 
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja_claro.png' , class: ''  %>
+					</div>
+					<div class="calidad">
+						Calidad:
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+						<%= image_tag 'odontologo/perfil_publico/estrellas/estrella_naranja.png' , class: ''  %>
+					</div>
+				</div>
+				<%= submit_tag "Agendar",  :class => 'submit_cita btn_agendar_publico'   %>
+			</div>
+			<div class="inferior">
+				<div id="mapa_publico">
+					<% if @odontologo.consultorios.any? %>
+						<%= @odontologo.consultorios[0].lat %> ~ <%= @odontologo.consultorios[0].long %>
+					<% end %>
+				</div>
+				<div class="parrafo1">
+
+					<% if @odontologo.specialities.length > 0 %>
+
+					<p class="titulo">Especialidad</p>
+					<ul class="listar_elementos">
+						<% @odontologo.specialities.order(:especialidad).each do |especialidad| %>
+					 		<li><%= especialidad.especialidad %></li>
+						<% end %>
+					</ul>
+
+					<% end %>
+
+					<% if @odontologo.prepagadas.length > 0 %>
+
+					<p class="titulo">Prepagadas</p>
+					<ul class="listar_elementos">
+						<% @odontologo.prepagadas.order(:prepagada).each do |prepagada| %>
+					 		<li><%= prepagada.prepagada %></li>
+						<% end %>
+					</ul>
+					<% end -%>
+
+					<% if @odontologo.consulta.length > 0 %>
+					<p class="titulo">Consultas Aceptadas</p>
+					<ul class="listar_elementos">
+						
+						<% @odontologo.consulta.order(:consulta_aceptada).each do |consulta| %>
+					 		<li><%= consulta.consulta_aceptada %></li>
+						<% end %>
+					</ul>
+					<% end %>
+					<!-- <%= @odontologo.consultorios %>-->
+
+				</div>
+				<div class="parrafo2">
+					<% if @odontologo.perfil %>
+						<% if !@odontologo.perfil.empty? %>
+						<p class="titulo">Perfil</p>
+						<p class="listar_elemento">
+							<%= @odontologo.perfil %>
+						</p>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="separador">
+		<%= image_tag 'odontologo/perfil_publico/flecha_abajo.png' %>
+	</div>
+	<div class="area_mitad">
+		<p>Disponibilidad</p>
+		<div class="arriba">
+				<div class="identificador_semana">
+					<div class="btn_izquierda">
+						<%= image_tag 'odontologo/perfil_publico/flecha_izquierda_fecha.png' %>
+					</div>
+					<div class="semana_visualizacion">
+						27 julio - 3 marzo 2013 
+					</div>
+					<div class="btn_derecha">
+						<%= image_tag 'odontologo/perfil_publico/flecha_derecha_fecha.png' %>
+					</div>
+				</div>
+			</div>
+		<div class="abajo">
+			<div class="semana">
+				<ul class="titulo_dias_semana">
+					<li id="dia1_sem">Lun 21</li>
+					<li>Mar 22</li>
+					<li>Mie 23</li>
+					<li>Jue 24</li>
+					<li>Vie 25</li>
+					<li>Sab 26</li>
+					<li style="margin:0;">Dom 27</li>
+				</ul>
+				<div class="horas_disponibles">
+					<ul class="horas_disponibles_dia" id="dia1">
+
+					</ul>
+					<ul class="horas_disponibles_dia" id="dia2">
+
+					</ul>
+					<ul class="horas_disponibles_dia" id="dia3">
+
+					</ul>
+					<ul class="horas_disponibles_dia" id="dia4">
+
+					</ul>
+					<ul class="horas_disponibles_dia" id="dia5">
+
+					</ul>
+					<ul class="horas_disponibles_dia" id="dia6">
+
+					</ul>
+					<ul class="horas_disponibles_dia" style="margin:0;" id="dia7">
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="separador">
+		<%= image_tag 'odontologo/perfil_publico/flecha_abajo.png' %>
+	</div>
+
+	<div class="area_abajo">
+		<div class="izquierda">
+			<div class="columna">
+				<% if @odontologo.specialities.length > 0 %>
+				<p class="titulo">Especialidad</p>
+				<ul class="listar_elementos">
+					<% @odontologo.specialities.order(:especialidad).each do |especialidad| %>
+					 	<li><%= especialidad.especialidad %></li>
+					<% end %>
+				</ul>
+				<% end %>
+				<% if @odontologo.prepagadas.length > 0 %>
+				<p class="titulo">Prepagadas</p>
+				<ul class="listar_elementos">
+					<% @odontologo.prepagadas.order(:prepagada).each do |prepagada| %>
+					 	<li><%= prepagada.prepagada %></li>
+					<% end %>
+				</ul>
+				<% end %>
+				<% if @odontologo.consulta.length > 0 %>
+				<p class="titulo">Consultas Aceptadas</p>
+				<ul class="listar_elementos">
+					<% @odontologo.consulta.order(:consulta_aceptada).each do |consulta| %>
+				 		<li><%= consulta.consulta_aceptada %></li>
+					<% end %>
+				</ul>
+				<% end %>
+			</div>
+			<div class="columna" style="margin: 75px 0px 0 0px;">
+				<% if @odontologo.estudio %>
+					<% if !@odontologo.estudio.empty? %>
+					<p class="titulo">Estudios</p>
+					<ul class="listar_elementos">
+						<%= @odontologo.estudio %>
+					</ul>
+					<% end %>
+				<% end %>
+				<% if @odontologo.membrecia %>
+					<% if !@odontologo.membrecia.empty? %>
+					<p class="titulo">Promociones</p>
+					<ul class="listar_elementos">
+						<%= @odontologo.membrecia %>
+					</ul>
+					<% end %>
+				<% end %>
+				<% if @odontologo.consulta.length > 0 %>
+				<p class="titulo">Medios pago</p>
+				<ul class="listar_elementos">
+					<% @odontologo.medio_pagos.order(:medio_pago).each do |medio_pago| %>
+				 		<li><%= medio_pago.medio_pago %></li>
+					<% end %>
+				</ul>
+				<% end %>
+			</div>
+		</div>
+		<div class="derecha">
+			<div class="arriba">
+				<div class="comentario">
+					<div class="abre_comilla">
+						<%= image_tag 'odontologo/perfil_publico/comillas_abre.png' %>
+					</div>
+					<div class="texto">
+					Pude encontrar un exelente odontologo cerca a mi casa. 
+					Pedi la cita rapido y de forma sencilla desde mi iPad 
+					mientras veia television.Gracias Odontocitas! <br> <br>
+					Recomendare el servicio a mis amigos.
+					</div>
+					<div class="cierra_comilla">
+						<%= image_tag 'odontologo/perfil_publico/comillas_cierra.png' %>
+					</div>
+				</div>
+				<div class="autor">
+					J.R. de Bogota
+				</div>
+			</div>
+			<hr>
+			<div class="arriba">
+				<div class="comentario">
+					<div class="abre_comilla">
+						<%= image_tag 'odontologo/perfil_publico/comillas_abre.png' %>
+					</div>
+					<div class="texto">
+					Pude encontrar un exelente odontologo cerca a mi casa. 
+					Pedi la cita rapido y de forma sencilla desde mi iPad 
+					mientras veia television.Gracias Odontocitas! <br> <br>
+					Recomendare el servicio a mis amigos.
+					</div>
+					<div class="cierra_comilla">
+						<%= image_tag 'odontologo/perfil_publico/comillas_cierra.png' %>
+					</div>
+				</div>
+				<div class="autor">
+					J.R. de Bogota
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<p class="cal-fix-num-1" style="color:rgb(230, 230, 230);">
+<%= @odontologo.id %>
+</p>
+<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBROsmq9l2BYxdHHxShJeQLrBc-eUiECBA&sensor=false"></script>
+
+
+
+<script type="text/javascript">
+
+	$(function(){
+
+		//acciones 
+	      $('.btn_agendar_publico').on('click',function(e){
+	      	e.preventDefault();
+	      	console.log('santiago');
+	      	$.scrollTo({ top:'700px', left:'0px' },800);
+	      });
+
+	      $('.fancybox').fancybox();
+
+	      /*
+	      $('.imagen_open').on('click',function () {
+	      	$.fancybox.open($(this).attr('src'));
+	      });
+	      */
+		//mapa
+		
+  function initialize(lat,longi) {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(parseFloat(lat), parseFloat(longi)),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          draggable: false, 
+        zoomControl: false, 
+        scrollwheel: false, 
+        disableDoubleClickZoom: true
+        };
+        map = new google.maps.Map(document.getElementById("mapa_publico"),mapOptions);
+        marker = new google.maps.Marker({
+          map: map,
+          position: map.getCenter()
+        });
+
+         google.maps.event.addListener(map, 'center_changed', function() {
+          //console.log(map.getCenter());
+          marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'dragend', function() {
+          console.log(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+          //marker.setPosition(map.getCenter());
+        });
+
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+          console.log(map.getCenter());
+          //marker.setPosition(map.getCenter());
+
+          geocoder.geocode( { 'location': map.getCenter()}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK ) {
+              console.log(results[0].formatted_address);
+            }else{
+              console.log('error');
+            }
+          });
+
+        });
+      }
+
+		
+
+
+     moment.lang('en', {
+        weekdays : [
+            "Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"
+        ],
+        weekdaysShort : ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+        months : [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+        "Agosto", "Septiembre", "Obtubre", "Noviembre", "Diciembre"
+        ],
+         monthsShort : [
+            "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+            "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+        ]
+    });
+      
+
+      var arr = $('#mapa_publico').html().trim().split('~');
+      google.maps.event.addDomListener(window, 'load', initialize(arr[0],arr[1]));
+      var mis_horas;
+
+
+      var Horas_DisPonibles =  Backbone.Collection.extend({
+        url : "/horas_disponibles",
+        comparator : function(c){
+          return parseInt(c.get("hora"));
+        }
+      });
+
+      var horas_disponibles = new Horas_DisPonibles();
+
+
+      var disponibilidad = {
+      	$dia1 : '',
+        delta : 0,
+      	init : function(){
+      		this.eventos();
+      		var id_ondoto = parseInt($('.cal-fix-num-1').html());
+      		console.log(id_ondoto);
+
+      		horas_disponibles.fetch({
+      			success : function(){
+	                mis_horas = horas_disponibles.where({odontologo_id:id_ondoto}); 
+	                //console.log(mis_horas);
+	                disponibilidad.delta =0;
+	                disponibilidad.cambio_semana(0);
+	            }
+
+      		});
+      	},
+      	eventos : function() {
+      		  $('.btn_derecha').on('click',function() {
+                disponibilidad.cambio_semana(7);
+		      });
+
+		      $('.btn_izquierda').on('click',function() {
+		          if (disponibilidad.delta  != 0 ) {
+		                disponibilidad.cambio_semana(-7);
+		          }
+      		  });
+      	},
+        cambio_semana : function(ava) {
+          this.limpiar_semana();
+          this.$dia1 = $('#dia1_sem');
+          this.delta = this.delta + ava;
+          this.cambio_textos_semana(this.delta);
+        },
+        cambio_textos_semana : function(ava) {
+            
+          var semana = moment().add('days',ava);
+          var dia1_nom = semana.format('ddd');
+          var dia1_num = semana.format('D');
+          var mes_inic = semana.format('MMM');
+          this.$dia1.html(dia1_nom+' '+dia1_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),1);
+
+          var dia2_nom = semana.add('days',1).format('ddd');
+          var dia2_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia2_nom+' '+dia2_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),2);
+
+          var dia3_nom = semana.add('days',1).format('ddd');
+          var dia3_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia3_nom+' '+dia3_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),3);
+
+          var dia4_nom = semana.add('days',1).format('ddd');
+          var dia4_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia4_nom+' '+dia4_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),4);
+
+          var dia5_nom = semana.add('days',1).format('ddd');
+          var dia5_num = semana.format('D');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia5_nom+' '+dia5_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),5);
+
+          var dia6_nom = semana.add('days',1).format('ddd');
+          var dia6_num = semana.format('D');
+          this.$dia1 = this.$dia1.next();
+          this.$dia1.html(dia6_nom+' '+dia6_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),6);
+
+          var dia7_nom = semana.add('days',1).format('ddd');
+          var dia7_num = semana.format('D');
+          var mes_fin = semana.format('MMM');
+          this.$dia1 = this.$dia1.next(); 
+          this.$dia1.html(dia7_nom+' '+dia7_num);
+          this.horasPorFecha(semana.format('YYYY'),semana.format('M'),semana.format('D'),7);
+
+          if (mes_inic != mes_fin) {
+              var notificaion_dia = dia1_num+' '+mes_inic+' - '+dia7_num+' '+mes_fin+' - '+semana.format('YYYY');
+          }else{
+              var notificaion_dia = dia1_num+' - '+dia7_num+' '+mes_fin+' - '+semana.format('YYYY');
+          }
+          $('.semana_visualizacion').html(notificaion_dia);
+        },
+        limpiar_semana : function () {
+          //$('.quince_minu_hora').tipper("destroy");
+          //$('.quince_minu_hora').html('').removeClass('activo_seleccion_mid').removeClass('activo_seleccion_inic').removeAttr('duracion').removeAttr('medio_pago').removeAttr('id_cita');
+
+          $('.horas_disponibles_dia').html('');
+        },
+        horasPorFecha : function(ano,mes,dia,diaDsemana){
+
+
+            var horas_dia = _.map(mis_horas, function(c){if (c.get('ano')==ano && c.get('mes')==parseInt(mes) && c.get('dia')==parseInt(dia)) {return c}; });
+            horas_dia = _.without(horas_dia, undefined);
+            this.dibujar_citas_dia(horas_dia,diaDsemana);
+
+
+            /*
+            console.log('dia '+dia);
+            console.log('mes '+mes);
+            console.log('ano'+ano);
+            console.log('aca estan las citas del dia '+diaDsemana);
+            console.log(horas_dia);
+            */
+        },
+        dibujar_citas_dia : function(citas,dia_sem) {
+
+        	if (citas.length == 0) {
+        		$('#'+'dia'+dia_sem).append('<li></li>');
+        	};
+
+            for (var i = 0; i < citas.length; i++) {
+                    var hora = citas[i].get('hora');
+                    var duracion = citas[i].get('duracion');
+                   	$('#'+'dia'+dia_sem).append('<a href="/agendar_cita?id_cita_hora='+citas[i].id+'"> <li>'+disponibilidad.hora_humanos(hora)+'</li> </a>');
+            };
+        },
+        hora_humanos : function(hora_minutos){
+              hora_minutos=parseFloat(hora_minutos)/60;
+              var n= String(hora_minutos).split(".");
+              if(n[1]){
+                var minutos;
+                switch(n[1]){
+                  case '25':
+                    minutos = '15';
+                  break;
+                  case '5' :
+                    minutos = '30';
+                  break;
+                  case '75' :
+                    minutos = '45';
+                  break;
+                  }
+
+                  if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':'+minutos+' pm';
+                  }else{
+                    n[0] = String(n[0])+':'+minutos+' am';
+                  }
+
+              }else{
+                if (n[0] > 12) {
+                    n[0] = n[0] -12;
+                    n[0] = String(n[0])+':00 pm';
+                }else{
+                   n[0] = String(n[0])+':00 am';
+                }
+              }
+              return n[0];
+          }
+      }
+
+
+
+      disponibilidad.init();
+
+	});
+	  	
+</script>
