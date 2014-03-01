@@ -37,7 +37,12 @@ def current_user
 
 
  		end	
+ 	else
+ 		if session[:admin_id] 
+	 		@current_user ||= User.find(session[:admin_id])
+	 	end
  	end
+ 	
 end
 
 helper_method :current_user

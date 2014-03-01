@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
 
   def index
-
+      
       #Appointment.cambiar_estado_asistida
 
   		@opciones_conoce = 		   [['---','---'],

@@ -318,6 +318,19 @@
                     <option value="31">31</option>
                   </select>
                   </div>
+                  <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
+                    <select id="ano_cita">
+                      <option value="--">aaaa</option>
+                      <option value="2014">2014</option>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                    </select>
+                  </div>
+
               </div>
 
                <br>
@@ -363,6 +376,8 @@
                  </div>
 
               </div>
+
+
               <br>
               <br>
               <div class="duracion_cita" style="margin: 12px 0 10px 11px;">
@@ -728,7 +743,7 @@
                     hora_cita = parseInt(hora_cita) + parseInt(minutos_cita);
               }
               citas_o.create({
-                ano: "2013",
+                ano: $("#ano_cita").val(),
                 comentarios: $('#comentarios_paciente_cita').val(),
                 dia: $('#dia_cita').val(),
                 duracion: $('#duracion_cita').val(),

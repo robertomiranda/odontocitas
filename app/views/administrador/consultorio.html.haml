@@ -1,0 +1,46 @@
+.wrapper_perfil_v_odonto{ style:"background:white;" }
+	= form_for @consultorio ,  :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" } do |f|
+		.field
+			= f.label :nombre
+			%br
+			= f.text_field :nombre  ,:class=> 'registro_campo'
+		.field
+			= f.label :direccion
+			%br
+			= f.text_field :direccion  ,:class=> 'registro_campo'
+		.field
+			= f.label :ciudad
+			%br
+			= f.text_field :ciudad  ,:class=> 'registro_campo'
+		.field
+			= f.label :zona
+			%br
+			= f.text_field :zona  ,:class=> 'registro_campo'
+		.field
+			= f.label :lat
+			%br
+			= f.text_field :lat  ,:class=> 'registro_campo'
+		.field
+			= f.label :long
+			%br
+			= f.text_field :long  ,:class=> 'registro_campo'
+		.field
+			= f.label :imagen1
+			%br
+			= f.file_field :imagen1
+		.field
+			= f.label :imagen2
+			%br
+			= f.file_field :imagen2
+		.field
+			= f.label :imagen3
+			%br
+			= f.file_field :imagen3
+		.field
+			= f.label :telefono
+			%br
+			= f.text_field :telefono
+
+		.actions
+			%br
+			= f.submit "Actualizar"

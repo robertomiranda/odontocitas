@@ -1,0 +1,23 @@
+.area_error_login
+	%br
+	%br
+	%br
+	%br
+	.login_form.naranja	
+		= form_tag "/adminlog" do
+			.conjunto_login
+				= label_tag "Username"
+				%br
+				%br
+				= text_field_tag :email, params[:email], size:"50"
+				%br
+				%br
+			.conjunto_login
+				= label_tag :password 
+				%br
+				%br
+				= password_field_tag :password,"", size:"50"
+				%br
+				%br
+			= submit_tag "Log In" , class: "submit" , style:"margin: 0"
+

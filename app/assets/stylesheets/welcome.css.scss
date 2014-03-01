@@ -60,7 +60,7 @@ $tam_centrado : 980px;
     margin: 0 0 10px 0;
     font-size: 14pt;
     text-align: center;
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
 }
 
 .form_registro{
@@ -254,7 +254,7 @@ $tam_centrado : 980px;
             margin: 0 12px 0 12px;
             display: inline;
             font-size: 10pt;
-            font-family: 'Helvetica-Neue';
+            font-family: 'Lato', sans-serif;
             color: $letra_menu;
             cursor: hand;
             cursor: pointer;
@@ -317,7 +317,7 @@ $tam_centrado : 980px;
     position: relative;
     top: 25px;
     left: -10px;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
     font-size: 18pt;
     color: $azul_claro;
     line-height:120%;
@@ -341,7 +341,7 @@ $tam_centrado : 980px;
     text-align: center;
     position: relative;
     top: 12px;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
     font-size: 16pt;
 }
 
@@ -390,7 +390,7 @@ $tam_centrado : 980px;
 
 .buscador_centrado p{
     color: #F37021;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
     font-size: 22pt;
     line-height:120%;
     margin-bottom: 30px;
@@ -433,14 +433,14 @@ $tam_centrado : 980px;
 
 .titulo{
     color:#B3B3B3;
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
     text-transform: uppercase;
     margin: 0 0 20px 0;
 }
 
 .texto_beneficios{
     color:#808080;
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
     text-align: justify;
 }
 
@@ -498,7 +498,7 @@ $tam_centrado : 980px;
 }
 
 .contenedor_quotes{
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
     width: $tam_centrado;
     height: 90px;
     margin: auto;
@@ -514,7 +514,7 @@ $tam_centrado : 980px;
     position: relative;
     top: 20px;
     float: right;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
 }
 
 .comillas{
@@ -558,7 +558,7 @@ $tam_centrado : 980px;
     color: #B3B3B3;
     cursor: pointer;
     cursor: hand;
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
 }
 
 .icon_funciona{
@@ -572,7 +572,7 @@ $tam_centrado : 980px;
     height: 200px;
     margin: 15px 0 0 0;
     color: #808080;
-    font-family: helvetica;
+    font-family: 'Lato', sans-serif;
     line-height: 140%;
     font-size: 12pt;
 }
@@ -609,7 +609,7 @@ $tam_centrado : 980px;
 
 .elem_beneficio_nav p{
     margin: 15px 0 15px 0;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
         a{
             color: #6fcff0;
             text-decoration: none;
@@ -628,13 +628,13 @@ $tam_centrado : 980px;
 
 .parrafo_nav{
     line-height:180%;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
 }
 
 .titulo_navegacion{
     font-size: 11pt;
     margin: 0 0 30px 0 !important;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
 }
 
 .boton_eres_odontologo{
@@ -766,7 +766,7 @@ hr.linea_arbol_nav {
                 text-transform: none;
                 color: $azul_verde;
                 font-size: 23pt;
-                font-family: 'Helvetica-Neue';
+                font-family: 'Lato', sans-serif;
                 line-height: 100%;
                 margin: 0 0 40px 0;
             }
@@ -843,7 +843,7 @@ hr.linea_arbol_nav {
 
                         p{
                             color: white;
-                            font-family: 'Helvetica-Neue';
+                            font-family: 'Lato', sans-serif;
                             margin: 0 0 0 0px;
                             position: relative;
                             top: 13px;
@@ -881,13 +881,13 @@ hr.linea_arbol_nav {
 
                         .titulo_o{
                             font-size: 9pt;
-                            font-family: 'Helvetica-Neue';
+                            font-family: 'Lato', sans-serif;
                             color: #4d4d4d;
                         }
 
                         .direccion{
                             font-size: 8pt;
-                            font-family: 'Helvetica-Neue';
+                            font-family: 'Lato', sans-serif;
                             color: #666;
                             margin: 10px 0 0 0;
                             line-height: 18px;
@@ -895,14 +895,14 @@ hr.linea_arbol_nav {
 
                         .titulo_especialidades{
                             font-size: 9pt;
-                            font-family: 'Helvetica-Neue';
+                            font-family: 'Lato', sans-serif;
                             color: #4d4d4d;
                             margin: 13px 0 0 0;
                         }
 
                         .especialidades{
                             font-size: 8pt;
-                            font-family: 'Helvetica-Neue';
+                            font-family: 'Lato', sans-serif;
                             color: #666;
                             margin: 4px 0 0 0;
                             line-height: 18px;
@@ -935,7 +935,7 @@ hr.linea_arbol_nav {
                     margin: 20px auto 10px auto;
                     color: $naranja;
                     font-size: 14pt;
-                    font-family: 'Helvetica-Neue';
+                    font-family: 'Lato', sans-serif;
 
                     .prev{
                         font-size: 11pt;
@@ -1048,7 +1048,7 @@ hr.linea_arbol_nav {
 
         p{
             color: white;
-            font-family: helvetica;
+            font-family: 'Lato', sans-serif;
             position: relative;
             top: 5px;
         }

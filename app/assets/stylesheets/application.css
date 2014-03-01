@@ -11,6 +11,7 @@
  *= require_self
  *= require libs/fancybox/jquery.fancybox
  *= require libs/jquery.fs.scroller
+ *= require libs/pushy
  *= require_tree .
  */
 
@@ -46,7 +47,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	font-family: helvetica;
+	font-family: 'Lato', sans-serif;
 	font-size: 11pt;
 }
 ol, ul {
@@ -62,28 +63,17 @@ q:before, q:after {
 }
 
 
-@font-face {
-	
-    font-family: 'Helvetica-Neue';
-    src: url('HelveticaLTStd-Roman.otf') format('opentype'), 
-    	 url('helveticaltstd-roman-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-	     url('helveticaltstd-roman-webfont.woff') format('woff'), /* Modern Browsers */
-	     url('helveticaltstd-roman-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-	     url('helveticaltstd-roman-webfont.svg#svghelveticaltstd-roman-webfont') format('svg'); /* Legacy iOS */
-    font-weight: normal;
-    font-style: normal;
-}
 
 input{
 	background-color: #F2F2F2 !important; 
 	border: none;
 	height: 25px;
-	font-family: helvetica;
+	font-family: 'Lato', sans-serif;
 }
 
 	.tipper-positioner { left: -99999px; position: absolute; pointer-events: none; top: -99999px; }
 	.tipper-positioner .tipper-wrapper { position: relative; }
-	.tipper-positioner .tipper-content { background: #FCCC6B; border-radius: 3px; color: #666; display: block; font-family: sans-serif; font-size: 12px; margin: 0; padding: 8px 12px; white-space: nowrap; }
+	.tipper-positioner .tipper-content { background: #FCCC6B; border-radius: 3px; color: #666; display: block; font-family: 'Lato', sans-serif; font-size: 12px; margin: 0; padding: 8px 12px; white-space: nowrap; }
 	.tipper-positioner .tipper-caret { background: url(fs-tipper-icons.png) no-repeat; display: block; height: 11px; margin: 0; overflow: hidden; position: absolute; width: 5px; }
 	
 	.tipper-positioner.right { box-shadow: 1px 0 3px rgba(0, 0, 0, 0.25); }

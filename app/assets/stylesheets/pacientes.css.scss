@@ -132,7 +132,7 @@ $letra_menu : #CCCCCC;
     margin: 20px 0 10px 0;
     font-size: 14pt;
     text-align: center;
-    font-family: 'Helvetica-Neue';
+    font-family: 'Lato', sans-serif;
 }
 
 .lista_pacientes_asociados{
@@ -173,7 +173,7 @@ $letra_menu : #CCCCCC;
 .saludo_p{
 	width: 960px;
 	height: 50px;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	font-size: 40pt;
 	margin: 10px auto;
 	color: #bbb;
@@ -266,13 +266,13 @@ $letra_menu : #CCCCCC;
 
 		.titulo_p{
 			font-size: 25pt;
-			font-family: 'Helvetica-Neue';
+			font-family: 'Lato', sans-serif;
 			color: #666;
 			p{
 				margin: 10px 0 0 0;
 				float: right;
 				font-size: 12pt;
-				font-family: 'Helvetica-Neue';
+				font-family: 'Lato', sans-serif;
 				color: $naranja;
 
 				em{
@@ -321,7 +321,7 @@ $letra_menu : #CCCCCC;
       				.titulo_perfil_p{
       					font-size: 12pt;
       					color: #254861;
-      					font-family: helvetica;
+      					font-family: 'Lato', sans-serif;
       					margin: 10px 0 5px 0;
       				}
       			}

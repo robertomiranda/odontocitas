@@ -1,0 +1,70 @@
+.wrapper_perfil_v_odonto{ style:"background:white;" }
+	= form_for @odontologo ,  :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" } do |f|
+		.field
+			= f.label :nombre
+			%br
+			= f.text_field :nombre  ,:class=> 'registro_campo'
+		.field
+			= f.label :apellido
+			%br
+			= f.text_field :apellido  ,:class=> 'registro_campo'
+		.field
+			= f.label :correo
+			%br
+			= f.text_field :correo  ,:class=> 'registro_campo'
+		.field
+			= f.label :clave
+			%br
+			= f.text_field :clave  ,:class=> 'registro_campo'
+		.field
+			= f.label :celular
+			%br
+			= f.text_field :celular  ,:class=> 'registro_campo'
+		.field
+			= label_tag "Estado"
+			%br
+			= select_tag("odontologo[autorizado]", options_for_select({ "Activo" => "si", "Innactivo" => "no", "Cancelado" => "cancelado" },@odontologo.autorizado))
+		.field
+			= f.label :usuario
+			%br
+			= f.text_field :usuario  ,:class=> 'registro_campo'
+		.field
+			= f.label :perfil
+			%br
+			= text_area(:odontologo ,:perfil, cols: 40, rows: 10)
+		.field
+			= f.label :image
+			%br
+			= f.file_field :image
+		.field
+			= f.label :facebook
+			%br
+			= f.text_field :facebook
+		.field
+			= f.label :twitter
+			%br
+			= f.text_field :twitter
+		.field
+			= f.label :linkedin
+			%br
+			= f.text_field :linkedin
+		.field
+			= f.label :youtube
+			%br
+			= f.text_field :youtube
+		.field
+			= f.label :estudio
+			%br
+			= text_area(:odontologo ,:estudio, cols: 40, rows: 10) 
+		.field
+			= f.label :web
+			%br
+			= f.text_field :web
+		.field
+			= f.label :genero
+			%br
+			= f.text_field :genero
+		.actions
+			%br
+			= f.submit "Actualizar"
+

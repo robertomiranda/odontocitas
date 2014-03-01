@@ -40,7 +40,7 @@ $naranja : #F37021;
 
 .saludo{
 	font-size: 40pt;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	color: #CCCCCC;
 	position: relative;
 	top: 40px;
@@ -49,7 +49,7 @@ $naranja : #F37021;
 .link_item_registrado{ 
 	margin: 14px 0 14px 0;
 	text-transform: none;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	cursor: pointer;
 	font-size: 11pt;
 	color: #00A5E2 ;
@@ -86,7 +86,7 @@ $naranja : #F37021;
 	top: 13px;
 	left: 10px;
 	color: white;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	font-size: 14pt;
 }
 
@@ -100,7 +100,7 @@ $naranja : #F37021;
 
 	margin: 14px 0 14px 0;
 	text-transform: none;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	cursor: pointer;
 	font-size: 11pt;
 	color: #00A5E2;
@@ -142,7 +142,7 @@ $naranja : #F37021;
 	color: $naranja;
 	font-size: 23px;
 	text-align: center;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 }
 
 .dia_especifico .flecha_der_camb_dia{
@@ -211,14 +211,14 @@ $naranja : #F37021;
 }
 
 .arriba .dia{
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	width: 400px;
 	height: 170px;
 	float: right;
 }
 
 .arriba .dia .nombre_dia{
-	 font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	text-align: right;
 	width: 130px;
 	height: 40px;
@@ -354,7 +354,7 @@ textarea {
     padding: 12px;
     cursor: default;
  
-    font-family: Tahoma;
+    font-family: 'Lato', sans-serif;
     font-size: 12px;
  
     background: #F2F2F2;
@@ -488,7 +488,7 @@ a:hover{
 	height: 15px;
 	border-bottom: 1px solid #CCCCCC;
 	text-align: center;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	font-size: 12px;
 }
 
@@ -527,7 +527,7 @@ a:hover{
 	margin: -2px 0 56px 0;
 	font-size: 8pt;
 	display: inline-block;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 	color: #00a5e2;
 	text-transform: none;
 }
@@ -546,7 +546,7 @@ a:hover{
 	margin: 10px 26px 0px 24px;
 	float: left;
 	color: #00A5E2;
-	font-family: 'Helvetica-Neue';
+	font-family: 'Lato', sans-serif;
 }
 
 .semanero{
@@ -590,7 +590,7 @@ a:hover{
 		 	cursor: pointer;
 		 	
 		 	.citas_dia{
-		 		font-family: 'Helvetica-Neue';
+		 		font-family: 'Lato', sans-serif;
 		 		width: 100%;
 		 		text-align: center;
 		 		color: #00a5e2;
@@ -610,7 +610,7 @@ a:hover{
 		 	cursor: pointer;
 
 		 	.citas_dia{
-		 		font-family: 'Helvetica-Neue';
+		 		font-family: 'Lato', sans-serif;
 		 		width: 100%;
 		 		text-align: center;
 		 		color: #00a5e2;
@@ -637,7 +637,7 @@ a:hover{
 		 	text-align: center;
 		 	font-size: 11pt;
 		 	td{
-		 		font-family: 'Helvetica-Neue';
+		 		font-family: 'Lato', sans-serif;
 		 	}
 		}
 }
@@ -658,7 +658,7 @@ a:hover{
 			text-align: center;
 			padding:5px;
 			color: #666666;
-			font-family: helvetica;
+			font-family: 'Lato', sans-serif;
 			font-size: 11pt;
 		}
 

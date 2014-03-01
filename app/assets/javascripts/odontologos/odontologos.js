@@ -113,7 +113,7 @@
     var medioPagos = new MediosPagos();
 
 
-    //citas
+    //citas ordenadas
 
      var CitasO = Backbone.Collection.extend({
         url :'/appointments',
