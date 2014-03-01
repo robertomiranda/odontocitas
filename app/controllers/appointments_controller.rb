@@ -106,7 +106,7 @@ class AppointmentsController < ApplicationController
   def enviar_correo_cita_nueva_paciente cita
 
     cabezote = "&#161;Tienes una nueva cita&#33;"
-    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' style='200px;height:220px; vertical-align:middle;'/>"
+    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' height='220' width='180' style='vertical-align:middle;'/>"
       require 'mail'
       Mail.defaults do
           delivery_method :smtp, { :address   => "smtp.sendgrid.net",
@@ -142,7 +142,7 @@ class AppointmentsController < ApplicationController
                         "<br>"+
                       "</div>"+
                       "<div style='width:550px; height:300px;'>"+
-                        "<div style='width:200px;height:300px; float:left; text-align:center;'>"+
+                        "<div style='width:200px;height:300px; overflow:hidden; float:left; text-align:center;'>"+
                             imagen+"<br>"+
                             "<a href='http://odontocitas.com/doctor/#{cita.odontologo.usuario}'>Ver perfil</a>"+
                         "</div>"+
@@ -183,7 +183,7 @@ class AppointmentsController < ApplicationController
   def enviar_correo_cita_nueva_odontologo cita
 
     cabezote = "&#161;Tienes una nueva cita&#33;"
-    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' style='200px;height:220px; vertical-align:middle;'/>"
+    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' height='220' width='180' style='vertical-align:middle;'/>"
       require 'mail'
       Mail.defaults do
           delivery_method :smtp, { :address   => "smtp.sendgrid.net",
@@ -252,7 +252,7 @@ class AppointmentsController < ApplicationController
   def enviar_correo_confirmada cita
 
     cabezote = "&#161;Tu Odontocita fue confirmada&#33;"
-    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' style='200px;height:220px; vertical-align:middle;'/>"
+    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' height='220' width='180' style='vertical-align:middle;'/>"
       require 'mail'
       Mail.defaults do
           delivery_method :smtp, { :address   => "smtp.sendgrid.net",
@@ -292,7 +292,7 @@ class AppointmentsController < ApplicationController
                         "<br>"+
                       "</div>"+
                       "<div style='width:550px; height:300px;'>"+
-                        "<div style='width:200px;height:300px; float:left; text-align:center;'>"+
+                        "<div style='width:200px;height:300px; overflow:hidden; float:left; text-align:center;'>"+
                             imagen+"<br>"+
                             "<a href='http://odontocitas.com/doctor/#{cita.odontologo.usuario}'>Ver perfil</a>"+
                         "</div>"+
@@ -333,7 +333,7 @@ class AppointmentsController < ApplicationController
   def enviar_correo_cancelada cita
 
     cabezote = "&#161;Tu Odontocita fue Cancelada&#33; "
-    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' style='200px;height:220px; vertical-align:middle;'/>"
+    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' height='220' width='180' style='vertical-align:middle;'/>"
 
       require 'mail'
       Mail.defaults do
@@ -373,7 +373,7 @@ class AppointmentsController < ApplicationController
                         "<br>"+
                       "</div>"+
                       "<div style='width:550px; height:300px;'>"+
-                        "<div style='width:200px;height:300px; float:left; text-align:center;'>"+
+                        "<div style='width:200px;height:300px; overflow:hidden; float:left; text-align:center;'>"+
                             imagen+"<br>"+
                             "<a href='http://odontocitas.com/doctor/#{cita.odontologo.usuario}'>Ver perfil</a>"+
                         "</div>"+
@@ -421,7 +421,7 @@ class AppointmentsController < ApplicationController
   def enviar_correo_reagendada cita
 
     cabezote = "&#161;Tu Odontocita fue reagendada&#33; "
-    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' style='200px;height:220px; vertical-align:middle;'/>"
+    imagen = "<img src='http://odontocitas.com/#{cita.odontologo.image_url}' height='220' width='180' style='vertical-align:middle;'/>"
 
       require 'mail'
       Mail.defaults do
@@ -461,7 +461,7 @@ class AppointmentsController < ApplicationController
                         "<br>"+
                       "</div>"+
                       "<div style='width:550px; height:300px;'>"+
-                        "<div style='width:200px;height:300px; float:left; text-align:center;'>"+
+                        "<div style='width:200px;height:300px; overflow:hidden; float:left; text-align:center;'>"+
                             imagen+"<br>"+
                             "<a href='http://odontocitas.com/doctor/#{cita.odontologo.usuario}'>Ver perfil</a>"+
                         "</div>"+

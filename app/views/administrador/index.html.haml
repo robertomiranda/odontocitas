@@ -1,0 +1,38 @@
+.wrapper_perfil_v_odonto{ style:"background:white;" }
+	%br
+	%h1{ :style => "text-align:center;" }
+		Datos Generales
+	%p
+		Odontologos Registrados 
+		= @odontologos.length
+	%p
+		Pacientes Registrados 
+		= @pacientes.length
+	%p
+		Citas Pedidas
+		= @citas.length
+	%p
+		Citas Online
+		= @online
+	%p
+		Citas Offline
+		= @offline
+	%p
+		Citas que no asistieron
+		= @noasistio
+	%p
+		Citas que asistieron
+		= @asistio
+	%p
+		Citas confirmadas
+		= @confirmada
+	%p
+		Citas por confirmar
+		= @porconfirmar
+	%p
+		Citas regendadeas
+		= @reagandada
+	%p
+		Citas cancelada
+		= @cancelada
+	%br

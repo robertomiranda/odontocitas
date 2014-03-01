@@ -1,0 +1,87 @@
+.wrapper_perfil_v_odonto{ style:"background:white;" }
+	= image_tag  @odontologo.image_url
+
+	%p
+		= "Nombre #{@odontologo.nombre} #{@odontologo.apellido}" 
+	%p
+		= "Correo #{@odontologo.correo}"
+	%p
+		= "Celular #{@odontologo.celular}"
+	%p
+		= "Usuario #{@odontologo.usuario}"
+	%p
+		= "Fecha de nacimiento #{@odontologo.fecha_nacimiento}"
+	%p
+		- if @odontologo.autorizado == "si"
+			= "Autorizado"
+		- else
+			= "No esta Autorizado"
+
+	%h1
+		Citas
+	%p
+		= "Total Citas #{@odontologo.appointments.length}"
+	%p
+		= "Citas Online #{@online}"
+	%p
+		= "Citas Offline #{@offline}"
+	%p
+		= "Citas que el paciento no asistio #{@noasistio}"
+	%p
+		= "Citas que el paciente asistio #{@asistio}"
+	%p
+		= "Citas confirmadas #{@confirmada}"
+	%p
+		= "Citas por confirmar #{@porconfirmar}"
+	%p
+		= "Citas reagendadas #{@reagandada}"
+	%p
+		= "Citas canceladas #{@cancelada}"
+
+	%table
+		%tr
+			%th
+				= "Id"
+			%th
+				= "Paciente"
+			%th
+				= "Estado"
+			%th
+				= "Dia"
+			%th
+				= "Mes"
+			%th
+				= "Año"
+			%th
+				= "Hora"
+
+		- @odontologo.appointments.each do |cita|
+		
+			%tr
+				%th
+					= "#{cita.id}"
+				%th
+					= "#{cita.paciente.nombre} #{cita.paciente.apellido}"
+				%th
+					= "#{cita.estado}"
+				%th
+					= "#{cita.dia}"
+				%th
+					= "#{cita.mes}"
+				%th
+					= "#{cita.ano}"
+				%th
+					= "#{cita.hora_arreglada}"
+			
+
+	%h1
+		= "Pacientes"
+	%p
+		= "Total Pacientes #{@pacientes.length}"
+	- @pacientes.each do |paciente|
+		%p
+			%a{:href => "/administrador/pacientes/#{paciente.paciente.id}"}
+				= "#{paciente.paciente.nombre} #{paciente.paciente.apellido} --  #{paciente.paciente.correo}"
+
+
+	

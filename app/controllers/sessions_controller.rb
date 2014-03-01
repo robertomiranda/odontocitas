@@ -114,18 +114,18 @@ class SessionsController < ApplicationController
 
       else
 
-        clinica = Clinica.find_by_correo(params[:correo])
+        #clinica = Clinica.find_by_correo(params[:correo])
 
-        if clinica 
-          clinica.clave = completo
+        #if clinica 
+        #  clinica.clave = completo
 
-          if clinica.save
-            enviar_correo_restaurar_clave params[:correo], completo
-          end
+        #  if clinica.save
+        #    enviar_correo_restaurar_clave params[:correo], completo
+        #  end
 
-        else
+        #else
           render "new"
-        end
+        #end
       end
     
     end

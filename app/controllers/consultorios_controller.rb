@@ -52,7 +52,7 @@ class ConsultoriosController < ApplicationController
 
     respond_to do |format|
       if @consultorio.save
-        format.html { redirect_to @consultorio, notice: 'Consultorio was successfully created.' }
+        format.html { redirect_to "/administrador/odontologos" }
         format.json { render json: @consultorio, status: :created, location: @consultorio }
       else
         format.html { render action: "new" }
@@ -68,7 +68,7 @@ class ConsultoriosController < ApplicationController
 
     respond_to do |format|
       if @consultorio.update_attributes(params[:consultorio])
-        format.html { redirect_to @consultorio, notice: 'Consultorio was successfully updated.' }
+        format.html { redirect_to "/administrador/odontologos" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

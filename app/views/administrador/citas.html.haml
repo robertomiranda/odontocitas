@@ -1,0 +1,43 @@
+.wrapper_perfil_v_odonto{ style:"background:white;text-align:center;" }
+	%h1 
+		Citas
+	%br
+	%table{style: "margin:auto;",class: "tabla_estilos_datos"}
+		%tr
+			%th
+				Id
+			%th
+				Odontologo
+			%th
+				Paciente
+			%th
+				Dia
+			%th
+				Mes
+			%th
+				Ano
+			%th
+				Hora
+			%th
+				
+
+		- @citas.each do |cita|
+
+			%tr
+				%td
+					= cita.id
+				%td
+					%a{:href => "/administrador/odontologos/#{cita.odontologo.id}"}
+						= "#{cita.odontologo.nombre} #{cita.odontologo.apellido}"
+				%td
+					%a{:href => "/administrador/pacientes/#{cita.paciente.id}"}
+						= "#{cita.paciente.nombre} #{cita.paciente.apellido}"
+				%td
+					= cita.dia 
+				%td
+					= cita.mes 
+				%td
+					= cita.ano
+				%td
+					= cita.hora_arreglada
+	%br

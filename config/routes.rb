@@ -1,8 +1,25 @@
 Odontocitas::Application.routes.draw do
 
+  get "administrador/index"
+  get "administrador/odontologos"  
+  get 'administrador/odontologos/:id', to: 'administrador#show_odontologo'
+  get "administrador/odontologos/:id/editar", to: "administrador#edit_odontologo"
+  put "administrador/odontologos/:id", to: "administrador#update_odontologo"
+  get "administrador/activar_odontologo"
+  get "administrador/odontologos/:id/consultorio", to: "administrador#consultorio"
+  
+  get 'administrador/pacientes/:id', to: 'administrador#show_paciente'
+  get "administrador/pacientes"
+  get "administrador/citas"
+
+
+  get "outadmin", to: "adminlog#destroy", as:"outadmin"
+
+  resources :odontologos
+  resources :users
+  resources :adminlog
+  resources :administrador
   resources :clinicas
-
-
   resources :doctor
   resources :medio_pagos
   resources :consulta
@@ -10,7 +27,7 @@ Odontocitas::Application.routes.draw do
   resources :specialities
   resources :consultorios
   resources :horas_disponibles
-  resources :odontologos
+
 
 
   get "welcome/index"

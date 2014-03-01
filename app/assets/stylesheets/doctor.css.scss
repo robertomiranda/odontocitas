@@ -63,7 +63,7 @@ $naranja : #F37021;
 
 				tr td{
 					font-size: 9pt;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 					color: #808080;
 				}
 
@@ -115,7 +115,7 @@ $naranja : #F37021;
 			.titulo{
 				margin: 15px 0 0px 0;
 				font-size: 25pt;
-				font-family: 'Helvetica-Neue';
+				font-family: 'Lato', sans-serif;
 				color: #666;
 				position: relative;
 				top: -10px;
@@ -155,13 +155,13 @@ $naranja : #F37021;
 					height: 100%;
 					float: left;
 					margin: 0 7px 0 28px;
-					font-family: helvetica;
+					font-family: 'Lato', sans-serif;
 
 					.titulo{
 						font-size: 13pt;
 						margin: 0 0 5px 0;
 						color: #254861;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 					}
 					.listar_elementos{
 						list-style: disc;
@@ -171,7 +171,7 @@ $naranja : #F37021;
 						font-size: 11pt;
 						li{
 							color: #808080;
-							font-family: 'Helvetica-Neue';
+							font-family: 'Lato', sans-serif;
 							font-size: 11pt;
 
 						}
@@ -182,17 +182,17 @@ $naranja : #F37021;
 					width: 200px;
 					height: 100%;
 					float: left;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 
 					.titulo{
 						font-size: 13pt;
 						margin: 0 0 5px 0;
 						color: #254861;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 					}
 					.listar_elemento{
 						color: #808080;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 						margin: 0 0 20px 0; 
 						font-size: 11pt;
 					}
@@ -219,7 +219,7 @@ $naranja : #F37021;
 		p{
 			margin: auto;
 			color: $naranja;
-			font-family: 'Helvetica-Neue';
+			font-family: 'Lato', sans-serif;
 			font-size: 14pt;
 			position: relative;
 			top: 20px;
@@ -350,7 +350,7 @@ $naranja : #F37021;
 						font-size: 13pt;
 						margin: 0 0 10px 0;
 						color: #254861;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 					}
 				.listar_elementos{
 					list-style-type: disc;
@@ -362,7 +362,7 @@ $naranja : #F37021;
 						position: relative;
 						left: 17px;
 						color: #808080;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 						font-size: 11pt;
 					}
 				}
@@ -385,7 +385,7 @@ $naranja : #F37021;
 					top: 60px;
 					margin: auto;
 					width: 380px;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 					font-size: 13pt;
 					color: #254861;
 					.abre_comilla{
@@ -403,7 +403,7 @@ $naranja : #F37021;
 						width: 310px;
 						height: 100%;
 						float: left;
-						font-family: 'Helvetica-Neue';
+						font-family: 'Lato', sans-serif;
 					}
 					.cierra_comilla{
 						width: 27px;
@@ -415,7 +415,7 @@ $naranja : #F37021;
 					color: #254861;
 					margin: auto;
 					width: 380px;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 					font-size: 8pt;
 					position: relative;
 					top: 70px;
@@ -497,7 +497,7 @@ $naranja : #F37021;
 				height: 27px;
 				font-size: 20pt;
 				color: #a3a3a3;
-				font-family: 'Helvetica-Neue';
+				font-family: 'Lato', sans-serif;
 				text-align: center;
 			}
 
@@ -515,7 +515,7 @@ $naranja : #F37021;
 
 					.titulo_espe{
 						color: $naranja;
-						font-family: helvetica;
+						font-family: 'Lato', sans-serif;
 						margin: 0 0 2px 35px;
 					}
 
@@ -603,7 +603,7 @@ $naranja : #F37021;
 				width: 100%;
 				height: 30px;
 				color: #fccc6b;
-				font-family: 'Helvetica-Neue';
+				font-family: 'Lato', sans-serif;
 
 				img{
 					float: right;
@@ -614,7 +614,7 @@ $naranja : #F37021;
 					width: 100%;
 					height: 30px;
 					color: #f79d68;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 					img{
 							float: right;
 					}
@@ -624,7 +624,7 @@ $naranja : #F37021;
 					width: 100%;
 					height: 30px;
 					color: #f37021;
-					font-family: 'Helvetica-Neue';
+					font-family: 'Lato', sans-serif;
 					img{
 						float: right;
 					}

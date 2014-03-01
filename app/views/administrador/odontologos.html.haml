@@ -1,0 +1,55 @@
+.wrapper_perfil_v_odonto{ style:"background:white;text-align:center;" }
+	
+	%br
+	%h1{class:"titulo"}
+		Odontologos
+	%table{style: "margin:auto;", class: "tabla_estilos_datos"}
+		%tr
+			%th
+				Id
+			%th
+				Autorizado
+			%th
+				Nombre
+			%th
+				Apellido
+			%th
+				Celular
+			%th
+				Usuario
+			%th
+				Citas
+			%th
+
+			%th
+				
+
+		- @odontologos.each do |odontologo|
+
+			%tr
+				%td
+					= odontologo.id
+				%td
+					= odontologo.autorizado 
+				%td
+					%a{:href => "/administrador/odontologos/#{odontologo.id}"}
+						= odontologo.nombre 
+				%td
+					= odontologo.apellido 
+				%td
+					= odontologo.celular 
+				%td
+					= odontologo.usuario 
+				%td
+					= odontologo.appointments.length
+				%td
+					%a{:href => "/administrador/odontologos/#{odontologo.id}/editar"}
+						= "Editar"
+				%td
+					- if odontologo.autorizado != "si"
+						%a{:href => "/administrador/activar_odontologo/?id=#{odontologo.id}"}
+							= "Activar"
+					-else
+						%a{:href => "/administrador/odontologos/#{odontologo.id}/consultorio"}
+							= "Consultorio"
+	%br

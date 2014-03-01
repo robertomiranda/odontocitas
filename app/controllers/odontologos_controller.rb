@@ -44,7 +44,7 @@ class OdontologosController < ApplicationController
 
     correo = @odontologo.correo
     clave = @odontologo.clave
-
+    
     respond_to do |format|
       if @odontologo.save
         format.html { redirect_to @odontologo, notice: 'Odontologo was successfully created.' }

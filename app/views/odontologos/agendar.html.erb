@@ -316,8 +316,13 @@
                   <div class="styled_dropdown" style="width: 60px;height: 25px; float:left; margin-left:7px;">
                   <select id="ano_cita">
                     <option value="--">aaaa</option>
-                    <option value="2013">2013</option>
                     <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
                   </select>
                   </div>
                   
@@ -521,32 +526,50 @@
 
       }
 
-
-
     var Pacientes = Backbone.Collection.extend({});
     var pacientes = new Pacientes;
     pacientes.url = "/pacientes";
-    pacientes.fetch({
-      success:function(){
-        
-        var correos = new Array();
-        
-        for (var i = 0; i < pacientes.models.length; i++) {
-          if (true) {
+    
+    var Citas = Backbone.Collection.extend({});
+    var citas = new Citas;
+    citas.url = "/appointments";
 
+
+    $.when(pacientes.fetch(),citas.fetch()).done(function(){
+          var misCitas = citas.where({odontologo_id: parseInt(id_odontologo)});
+
+
+          var mis_pacientes = new Array();
+          var correos = new Array();
+        
+          var obj; 
+          for (var i = 0; i < misCitas.length; i++) {
+               var p = pacientes.where({id:misCitas[i].get('paciente_id')});
+               mis_pacientes.push(p[0]);
+          }
+          var unicos = _.uniq(mis_pacientes);
+          //console.log(unicos);
+          console.log(unicos);
+
+
+          for (var i = 0; i < unicos.length; i++) {
+            if (true) {
+
+            };
+            correos.push(unicos[i].get('correo'));
+            
           };
-          correos.push(pacientes.models[i].get('correo'));
-          //console.log(pacientes.models[i].get('correo'));
-        };
-        //console.log(correos);
-        
-        $('#correo_age').typeahead({
-          name: 'Correo',
-          local: correos
-        });
+          
+          $('#correo_age').typeahead({
+            name: 'Correo',
+            local: correos
+          });
 
-      }
+
     });
+
+
+
     
     pacientes.on('add',function(p){
       console.log('entro uno nuevo');
@@ -597,9 +620,7 @@
 
 
 
-    var Citas = Backbone.Collection.extend({});
-    var citas = new Citas;
-    citas.url = "/appointments";
+    
 
 
 
@@ -608,6 +629,8 @@
         //console.log(citas);
       }
     });
+    
+
     var guardo_la_cita = function(){
       alert('La cita fue agendada correctamente');
       window.location.href="/odontologos/"+id_odontologo;
