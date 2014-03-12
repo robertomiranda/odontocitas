@@ -28,26 +28,31 @@
     	<div class="menu">
 
 			<div class="centrado">
-			<%= link_to  (image_tag "logo_odontocitas_azul.png" ,  :class => 'logo_header'),  root_url  , :class=> 'link_logo'%>
+				<% if current_user %>
+					<div class="menu_btn menu-btn"></div>
+	  			<% end %>
 			
-			<% if current_user %>
+
+				<%= link_to  (image_tag "logo_odontocitas_azul.png" ,  :class => 'logo_header'),  root_url  , :class=> 'link_logo'%>
 				
+				<% if current_user %>
+					
 
-				<% if current_user.is_a?(User)%>
-					<a href="/logout">SALIR ADMIN</a>
+					<% if current_user.is_a?(User)%>
+						<em id="acciones_menu" style="position:relative;left: 700px;">
+							<a href="/outadmin">SALIR ADMIN</a>
+						</em>
+					<% end %>
+
+				  	
+				  	</em>
+				
 				<% end %>
-
-			  	
-			  	</em>
-			
-			<% end %>
 			</div>
 
 		</div>
 
-		<% if current_user %>
-	    	<div class="menu-btn">&#9776; Menu</div>
-	    <% end %>
+
 		<%= yield %>
 	</div>
 

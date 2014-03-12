@@ -1,44 +1,85 @@
 .wrapper_perfil_v_odonto{ style:"background:white;" }
-	= image_tag  @odontologo.image_url
-
-	%p
-		= "Nombre #{@odontologo.nombre} #{@odontologo.apellido}" 
-	%p
-		= "Correo #{@odontologo.correo}"
-	%p
-		= "Celular #{@odontologo.celular}"
-	%p
-		= "Usuario #{@odontologo.usuario}"
-	%p
-		= "Fecha de nacimiento #{@odontologo.fecha_nacimiento}"
-	%p
-		- if @odontologo.autorizado == "si"
-			= "Autorizado"
-		- else
-			= "No esta Autorizado"
-
-	%h1
+	%br
+	.imagen_odonto_admin
+		= image_tag  @odontologo.image_url, width:"190" ,height:"220"
+	.informacion_o_admin
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Nombre :"
+			= "#{@odontologo.nombre} #{@odontologo.apellido}" 
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Correo" 
+			= "#{@odontologo.correo}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Celular" 
+			= "#{@odontologo.celular}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Usuario" 
+			= "#{@odontologo.usuario}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Fecha de nacimiento" 
+			= "#{@odontologo.fecha_nacimiento}"
+		%p{class:"info_admin"}
+			- if @odontologo.autorizado == "si"
+				%em{class:"bold"}
+					= "Autorizado"
+			- else
+				%em{class:"bold"}
+					= "No esta Autorizado"
+	
+	
+	.informacion_o_admin
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Total Citas" 
+			="#{@odontologo.appointments.length}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas Online" 
+			="#{@online}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas Offline" 
+			="#{@offline}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas que el paciento no asistio" 
+			="#{@noasistio}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas que el paciente asistio" 
+			= "#{@asistio}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas confirmadas" 	
+			= "#{@confirmada}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas por confirmar"  
+			= "#{@porconfirmar}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas reagendadas" 
+			= "#{@reagandada}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Citas canceladas" 
+			= "#{@cancelada}"
+		%p{class:"info_admin"}
+			%em{class:"bold"}
+				= "Total Pacientes" 
+			= "#{@pacientes.length}"
+		
+	
+	.clearfix
+	%h1{ style:"text-align:center;" }
 		Citas
-	%p
-		= "Total Citas #{@odontologo.appointments.length}"
-	%p
-		= "Citas Online #{@online}"
-	%p
-		= "Citas Offline #{@offline}"
-	%p
-		= "Citas que el paciento no asistio #{@noasistio}"
-	%p
-		= "Citas que el paciente asistio #{@asistio}"
-	%p
-		= "Citas confirmadas #{@confirmada}"
-	%p
-		= "Citas por confirmar #{@porconfirmar}"
-	%p
-		= "Citas reagendadas #{@reagandada}"
-	%p
-		= "Citas canceladas #{@cancelada}"
 
-	%table
+	%table{style: "margin:auto;", class: "tabla_estilos_datos"}
 		%tr
 			%th
 				= "Id"
@@ -73,15 +114,28 @@
 				%th
 					= "#{cita.hora_arreglada}"
 			
+	%br
+	%br
 
-	%h1
+	%h1{ style:"text-align:center;" }
 		= "Pacientes"
-	%p
-		= "Total Pacientes #{@pacientes.length}"
-	- @pacientes.each do |paciente|
-		%p
-			%a{:href => "/administrador/pacientes/#{paciente.paciente.id}"}
-				= "#{paciente.paciente.nombre} #{paciente.paciente.apellido} --  #{paciente.paciente.correo}"
+	
+	%table{style: "margin:auto;", class: "tabla_estilos_datos"}
+		%tr 
+			%th 
+				= "Nombre"
+			%th 
+				= "Correo"
 
+		- @pacientes.each do |paciente|
+			%tr
+				%th 
+					%a{:href => "/administrador/pacientes/#{paciente.paciente.id}"}
+						= "#{paciente.paciente.nombre} #{paciente.paciente.apellido}"
+				%th 
 
+					= "#{paciente.paciente.correo}"
+
+	%br
+	%br
 	

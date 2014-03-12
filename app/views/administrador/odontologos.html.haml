@@ -22,6 +22,8 @@
 			%th
 
 			%th
+
+			%th 
 				
 
 		- @odontologos.each do |odontologo|
@@ -46,10 +48,12 @@
 					%a{:href => "/administrador/odontologos/#{odontologo.id}/editar"}
 						= "Editar"
 				%td
-					- if odontologo.autorizado != "si"
+					- if !odontologo.consultorios[0]
 						%a{:href => "/administrador/activar_odontologo/?id=#{odontologo.id}"}
 							= "Activar"
 					-else
 						%a{:href => "/administrador/odontologos/#{odontologo.id}/consultorio"}
 							= "Consultorio"
+				%td 
+					= link_to 'Eliminar', odontologo, method: :delete, data: { confirm: 'Estas Seguro?' }
 	%br

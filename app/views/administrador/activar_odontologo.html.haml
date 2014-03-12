@@ -1,55 +1,80 @@
 .wrapper_perfil_v_odonto{ style:"background:white;text-align:center;" }
+	%br
 	%h1
 		Activar Odontologo
 	= form_tag '/consultorios', multipart: true do
 		.field
-			= label_tag "nombre consultorio"
-			%br
-			= text_field_tag "consultorio[nombre]" ,"",size:"50"
-		.field
-			= label_tag "direccion"
-			%br
-			= text_field_tag "consultorio[direccion]" ,"",size:"50"
-		.field
-			= label_tag "ciudad"
-			%br
-			= select_tag("consultorio[ciudad]", options_for_select({ "Bogota" => "bogota", "Medellin" => "medellin", "Bucaramanga" => "bucaramanga" }))
-		.field
-			= label_tag "zona"
-			%br
-			= text_field_tag "consultorio[zona]" ,"",size:"50"
-		.field
-			= label_tag "lat"
-			%br
-			= text_field_tag "consultorio[lat]","",size:"50" 
-		.field
-			= label_tag "long"
-			%br
-			= text_field_tag "consultorio[long]" ,"",size:"50"
-		.field
-			= label_tag "odontologo_id"
-			%br
-			= text_field_tag "consultorio[odontologo_id]" , @odontologo.id ,size:"50"
-		.field
-			= label_tag "imagen1"
-			%br
-			= file_field_tag "consultorio[imagen1]" 
-		.field
-			= label_tag "imagen2"
-			%br
-			= file_field_tag "consultorio[imagen2]" 
-		.field
-			= label_tag "imagen3"
-			%br
-			= file_field_tag "consultorio[imagen3]" 
-		.field
-			= label_tag "telefono"
-			%br
-			= text_field_tag "consultorio[telefono]" ,"",size:"50"
-		.field
-			= label_tag "username"
-			%br
-			= text_field_tag "username" ,"",size:"50"
-		.field
-			= submit_tag "activar"
+			%p{class:"informacion_admin"}
+				= label_tag "nombre consultorio"
 
+			= text_field_tag "consultorio[nombre]" ,"",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "direccion"
+			
+			= text_field_tag "consultorio[direccion]" ,"",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "ciudad"
+			
+			= select_tag("consultorio[ciudad]", options_for_select({ "Bogota" => "bogota", "Medellin" => "medellin", "Bucaramanga" => "bucaramanga" }))
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "zona"
+			
+			= text_field_tag "consultorio[zona]" ,"",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "lat"
+			
+			= text_field_tag "consultorio[lat]","",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "long"
+			
+			= text_field_tag "consultorio[long]" ,"",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "odontologo_id"
+			
+			= text_field_tag "consultorio[odontologo_id]" , @odontologo.id ,size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "imagen1"
+			
+			= file_field_tag "consultorio[imagen1]" 
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "imagen2"
+			
+			= file_field_tag "consultorio[imagen2]"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "imagen3"
+			
+			= file_field_tag "consultorio[imagen3]"
+		%br 
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "telefono"
+			
+			= text_field_tag "consultorio[telefono]" ,"",size:"50"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= label_tag "username"
+			
+			= text_field_tag "username" ,"",size:"50"
+		%br
+		.field
+			= submit_tag "ACTIVAR"
+	%br

@@ -4,7 +4,6 @@ Odontocitas::Application.routes.draw do
   get "administrador/odontologos"  
   get 'administrador/odontologos/:id', to: 'administrador#show_odontologo'
   get "administrador/odontologos/:id/editar", to: "administrador#edit_odontologo"
-  put "administrador/odontologos/:id", to: "administrador#update_odontologo"
   get "administrador/activar_odontologo"
   get "administrador/odontologos/:id/consultorio", to: "administrador#consultorio"
   

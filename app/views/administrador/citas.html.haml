@@ -11,6 +11,8 @@
 			%th
 				Paciente
 			%th
+				Estado
+			%th
 				Dia
 			%th
 				Mes
@@ -32,6 +34,8 @@
 				%td
 					%a{:href => "/administrador/pacientes/#{cita.paciente.id}"}
 						= "#{cita.paciente.nombre} #{cita.paciente.apellido}"
+				%td
+					= cita.estado 
 				%td
 					= cita.dia 
 				%td

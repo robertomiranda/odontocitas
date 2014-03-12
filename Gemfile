@@ -33,7 +33,7 @@ end
 gem 'mail'
 gem "friendly_id"
 
-#gem 'therubyracer'
+gem 'therubyracer'
 
 gem "carrierwave"
 gem 'jquery-fileupload-rails'

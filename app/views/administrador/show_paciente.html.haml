@@ -1,2 +1,60 @@
-.wrapper_perfil_v_odonto{ style:"background:white;" }
-	= @paciente.nombre
+.wrapper_perfil_v_odonto{ style:"background:white;text-align:center;" }
+	%br
+	%h1
+		Editar Paciente
+	= form_for @paciente ,  :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" } do |f|
+
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :nombre
+			
+			= f.text_field :nombre  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :apellido
+			
+			= f.text_field :apellido  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :correo
+			
+			= f.text_field :correo  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :clave
+			
+			= f.text_field :clave  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :celular
+			
+			= f.text_field :celular  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :genero
+			
+			= f.text_field :genero  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :como_se_entero
+			
+			= f.text_field :como_se_entero  ,:class=> 'registro_campo'
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :fecha_nacimiento
+			
+			= f.text_field :fecha_nacimiento  ,:class=> 'registro_campo'
+		%br
+
+		
+		.actions
+			%br
+			= f.submit "Actualizar"
+	%br

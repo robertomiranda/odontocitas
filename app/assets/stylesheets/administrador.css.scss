@@ -1,3 +1,58 @@
 // Place all the styles related to the administrador controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.menu_btn{
+	width: 33px;
+	height: 23px;
+	background:url(boton.png);
+	background-position: 0px 0px;
+	float: left;
+	margin: 17px 0 0 0;
+	cursor: pointer;
+}
+
+.menu_btn:hover{
+	background-position: 0px -33px;
+}
+
+h1{
+	color: #B3B3B3;
+	font-family: "Lato", sans-serif;
+	text-transform: uppercase;
+	margin: 0 0 20px 0;
+}
+
+.info_admin{
+	margin: 0 0 5px 0 ;
+}
+
+.informacion_admin{
+	color: #666;
+	text-align: center;
+}
+
+.imagen_odonto_admin{
+	width: 200px;
+	float: left;
+	color: #666;
+	margin: 0 0 0 50px;
+}
+
+.informacion_o_admin{
+	width: 320px;
+	height: 300px;
+	float: left;
+	color: #666;
+}
+
+.bold{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+/* new clearfix */
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html .clearfix { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */

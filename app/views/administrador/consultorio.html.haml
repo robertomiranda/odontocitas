@@ -1,46 +1,78 @@
-.wrapper_perfil_v_odonto{ style:"background:white;" }
+.wrapper_perfil_v_odonto{ style:"background:white;text-align:center;" }
+	%br
+	%h1
+		Consultorio de 
+		= "#{@odontologo.nombre}  #{@odontologo.apellido}"
 	= form_for @consultorio ,  :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" } do |f|
 		.field
-			= f.label :nombre
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :nombre
+			
 			= f.text_field :nombre  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :direccion
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :direccion
+			
 			= f.text_field :direccion  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :ciudad
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :ciudad
+			
 			= f.text_field :ciudad  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :zona
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :zona
+			
 			= f.text_field :zona  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :lat
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :lat
+			
 			= f.text_field :lat  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :long
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :long
+			
 			= f.text_field :long  ,:class=> 'registro_campo'
+		%br
 		.field
-			= f.label :imagen1
-			%br
+			%br/ 
+			%h1 
+				Imagenes del consultorio
+			= image_tag @consultorio.imagen1, width:"200" ,height:"200"
+			= image_tag @consultorio.imagen2, width:"200" ,height:"200"
+			= image_tag @consultorio.imagen3, width:"200" ,height:"200"
+		%br
+		.field
+			%p{class:"informacion_admin"}
+				= f.label :imagen1
+			
 			= f.file_field :imagen1
+		%br
 		.field
-			= f.label :imagen2
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :imagen2
+			
 			= f.file_field :imagen2
+		%br
 		.field
-			= f.label :imagen3
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :imagen3
+			
 			= f.file_field :imagen3
+		%br
 		.field
-			= f.label :telefono
-			%br
+			%p{class:"informacion_admin"}
+				= f.label :telefono
+			
 			= f.text_field :telefono
-
+		%br
 		.actions
 			%br
 			= f.submit "Actualizar"
+	%br

@@ -81,7 +81,7 @@ class PacientesController < ApplicationController
 
     respond_to do |format|
       if @paciente.update_attributes(params[:paciente])
-        format.html { redirect_to @paciente, notice: 'Paciente was successfully updated.' }
+        format.html { redirect_to "/administrador/pacientes" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -97,7 +97,7 @@ class PacientesController < ApplicationController
     @paciente.destroy
 
     respond_to do |format|
-      format.html { redirect_to pacientes_url }
+      format.html { redirect_to "/administrador/pacientes" }
       format.json { head :no_content }
     end
   end

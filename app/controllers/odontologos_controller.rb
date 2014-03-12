@@ -88,7 +88,7 @@ class OdontologosController < ApplicationController
 
     respond_to do |format|
       if @odontologo.update_attributes(params[:odontologo])
-        format.html { render json: @odontologo }
+        format.html { redirect_to "/administrador/odontologos" }
         format.json { render json: @odontologo  }
       else
         format.html { render text: "error" }
@@ -118,7 +118,7 @@ class OdontologosController < ApplicationController
     @odontologo.destroy
 
     respond_to do |format|
-      format.html { redirect_to odontologos_url }
+      format.html { redirect_to "/administrador/odontologos" }
       format.json { head :no_content }
     end
   end

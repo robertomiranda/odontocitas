@@ -1,5 +1,6 @@
 class AdministradorController < ApplicationController
   layout "administrador"
+  before_filter :authorize
 
   def index
     @odontologos = Odontologo.all
@@ -110,20 +111,6 @@ class AdministradorController < ApplicationController
 
   def edit_odontologo
   	@odontologo = Odontologo.find(params[:id])
-  end
-
-  def update_odontologo
-    @odontologo = Odontologo.find(params[:id])
-
-    respond_to do |format|
-      if @odontologo.update_attributes(params[:odontologo])
-        format.html 
-        format.json { render json: @odontologo  }
-      else
-        format.html { render text: "error" }
-        format.json { render json: @odontologo.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def activar_odontologo
